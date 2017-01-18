@@ -13,12 +13,8 @@ class FeedViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        displayText()
         self.title = "Feed"
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        displayText()
     }
     
     func displayText() {
@@ -27,5 +23,9 @@ class FeedViewController : UIViewController {
         textBox.backgroundColor = UIColor.red
         textBox.text = "Welcome 2 tha f33d."
         textBox.borderStyle = UITextBorderStyle.line
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
 }

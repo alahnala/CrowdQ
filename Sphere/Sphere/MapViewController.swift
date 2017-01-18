@@ -10,25 +10,38 @@ import UIKit
 import Foundation
 import GoogleMaps
 
-class MapViewController : UIViewController {
+class MapViewController : UIViewController, CLLocationManagerDelegate {
+    
+    let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.red
-        
-        let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera:camera)
-        view = mapView
-        
-        // Creates a marker in the center of the map
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapView
-        
         self.title = "Map"
+        self.setupLocation()
+    }
+    
+    func setupLocation() {
+        // Pop-up asking user to authorize location services
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // Give us permission to use location in-app
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            self.locationManager.startUpdatingLocation()
+        }
+    }
+    
+    // Set up map to show current location
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let loc : CLLocationCoordinate2D = manager.location!.coordinate
+        
+        // Set up the map
+        let mapView = MapView(location: loc, zoom: 12.0)
+        self.view = mapView.getMapView()
+        self.locationManager.stopUpdatingLocation()
     }
     
     override func didReceiveMemoryWarning() {

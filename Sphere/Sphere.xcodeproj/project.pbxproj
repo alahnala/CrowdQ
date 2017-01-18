@@ -22,6 +22,7 @@
 		112CD9121E2ED84B0059E4DC /* paper-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD90F1E2ED84B0059E4DC /* paper-dim.png */; };
 		112CD9131E2ED84B0059E4DC /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD9101E2ED84B0059E4DC /* paper.png */; };
 		112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */; };
+		11C23BDD1E2FD37000D64933 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C23BDC1E2FD37000D64933 /* MapView.swift */; };
 		B319FC6558B75D3366437451 /* libPods-Sphere.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD065D8BCAE12BA91B031E86 /* libPods-Sphere.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		112CD90F1E2ED84B0059E4DC /* paper-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper-dim.png"; path = "Assets.xcassets/images/paper-dim.png"; sourceTree = "<group>"; };
 		112CD9101E2ED84B0059E4DC /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper.png; path = Assets.xcassets/images/paper.png; sourceTree = "<group>"; };
 		112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPI.swift; sourceTree = "<group>"; };
+		11C23BDC1E2FD37000D64933 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		B72EE54F59D9A746A6B611A8 /* Pods-Sphere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sphere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sphere/Pods-Sphere.debug.xcconfig"; sourceTree = "<group>"; };
 		C1560F535F327D6C81B83912 /* Pods-Sphere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sphere.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sphere/Pods-Sphere.release.xcconfig"; sourceTree = "<group>"; };
 		FD065D8BCAE12BA91B031E86 /* libPods-Sphere.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sphere.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				112CD8F71E2ECB4D0059E4DC /* MapViewController.swift */,
+				11C23BDC1E2FD37000D64933 /* MapView.swift */,
 			);
 			name = MapViewController;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11C23BDD1E2FD37000D64933 /* MapView.swift in Sources */,
 				112CD8C81E2EC99E0059E4DC /* ViewController.swift in Sources */,
 				112CD8CE1E2EC99E0059E4DC /* Sphere.xcdatamodeld in Sources */,
 				112CD9001E2ED2440059E4DC /* FeedViewController.swift in Sources */,

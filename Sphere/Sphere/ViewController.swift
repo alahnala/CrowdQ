@@ -7,15 +7,16 @@
 //
 
 import UIKit
+import CoreLocation
 
 class ViewController: UITabBarController, UITabBarControllerDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         self.delegate = self
-        self.view.backgroundColor = UIColor.cyan
     }
     
     override func viewWillAppear(_ animated: Bool) {
