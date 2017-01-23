@@ -10,14 +10,10 @@ import Foundation
 import CoreLocation
 
 class GoogleAPI : NSObject {
+    
     static let sharedInstance = GoogleAPI()
-    let API_KEY: String
     
     override init() {
-        self.API_KEY = "AIzaSyAXsROURYZImcAisdF58Bud-NWcJbvoJjQ"
-    }
     
-    func createMap(loc: CLLocation) {
-        
     }
 }

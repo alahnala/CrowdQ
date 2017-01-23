@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import GoogleMaps
 
-class MapViewController : UIViewController, CLLocationManagerDelegate {
+class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
     let locationManager = CLLocationManager()
     
@@ -37,7 +37,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate {
     // Set up map to show current location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc = manager.location!.coordinate
-        self.view = renderGoogleMap(loc: loc, title: "NEEDS TITLE", snippet: "NEED SNIPPET")
+        let mapView = renderGoogleMap(loc: loc, title: "NEEDS TITLE", snippet: "NEED SNIPPET")
+        let textBox = renderTextBox()
+        self.view = mapView
+        self.view.addSubview(textBox)
+        self.view.bringSubview(toFront: mapView)
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -45,6 +49,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate {
         let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 12.0)
         let gmap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         gmap.isMyLocationEnabled = true
+        gmap.delegate = self
+        gmap.indoorDisplay.delegate = self
+        gmap.settings.myLocationButton = true
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
@@ -52,6 +59,14 @@ class MapViewController : UIViewController, CLLocationManagerDelegate {
         marker.snippet = snippet!
         marker.map = gmap
         return gmap
+    }
+    
+    func renderTextBox() -> UITextField {
+        let textBox = UITextField(frame: CGRect(x: 10, y: 20, width: 180, height: 40))
+        textBox.attributedPlaceholder = NSAttributedString(string: "Enter a location")
+        textBox.backgroundColor = UIColor.white
+        textBox.delegate = self
+        return textBox
     }
     
     override func didReceiveMemoryWarning() {
