@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import GoogleMaps
+import SwiftyJSON
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
@@ -16,7 +17,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
     
     let locationManager = CLLocationManager()
-    let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe", "store", "gym", "library"]
+    let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe", "store", "gym", "library", "art-gallery"]
     
     var venuesToColors = [String:UIColor]()
     var gmap = GMSMapView()
