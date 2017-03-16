@@ -14,9 +14,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
     let PLACES_KEY = "AIzaSyBLbvnLoXYu1ypBpqrdp0lLu9K_t1R0mZQ"
     let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+    let THRESHOLD = 30
     
     let locationManager = CLLocationManager()
-    let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe", "store", "gym", "library"]
+    let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
     
     var venuesToColors = [String:UIColor]()
     var gmap = GMSMapView()
@@ -58,7 +59,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Creates a Google Map View around the user's current location
      */
     func renderGoogleMap(loc: CLLocationCoordinate2D) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 12.0)
+        let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 15.0)
         self.gmap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         self.gmap.isMyLocationEnabled = true
         self.gmap.delegate = self
@@ -78,11 +79,12 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: venuesToColors dictionary
      #  Effects: Creates colored markers to match each incoming location
      */
-    func displayBuildings() {
+    func displayBuildings(pagetoken: String = "") {
+        
         let venueTypes = availablePlaceTypes.joined(separator: "|")
         let loc = (locationManager.location?.coordinate)!
-        let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        let requestURL = URL(string: PLACES_URL + params!)
+        let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)\(pagetoken)"
+        let requestURL = URL(string: (PLACES_URL + params.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
         
         let request = URLRequest(url: requestURL!)
         let task = URLSession.shared.dataTask(with: request) {
@@ -100,8 +102,19 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             
             // CREATE MARKERS!
             self.createMarkers()
+            
+            if let next_page_token = json["next_page_token"].string {
+                print(self.venuesToColors.count)
+                self.displayBuildings(pagetoken: "&pagetoken=\(next_page_token)")
+            } else {
+                print(json)
+            }
         }
         task.resume()
+    }
+    
+    func makePlacesRequest() -> String {
+        return ""
     }
     
     /*
