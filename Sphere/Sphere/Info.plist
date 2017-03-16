@@ -43,5 +43,7 @@
 	</array>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Sphere would like to use your location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Sphere will only use your data for locational purposes.</string>
 </dict>
 </plist>
