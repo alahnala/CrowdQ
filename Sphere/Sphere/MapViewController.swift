@@ -12,12 +12,14 @@ import GoogleMaps
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
-    let locationManager = CLLocationManager()
-    var venuesToMarkers = [String:UIColor]()
-    let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe", "store", "gym", "library"]
-    
     let PLACES_KEY = "AIzaSyBLbvnLoXYu1ypBpqrdp0lLu9K_t1R0mZQ"
     let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+    
+    let locationManager = CLLocationManager()
+    let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe", "store", "gym", "library"]
+    
+    var venuesToColors = [String:UIColor]()
+    var gmap = GMSMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +44,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     // Set up map to show current location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc = manager.location!.coordinate
-        let mapView = renderGoogleMap(loc: loc, title: "NEEDS TITLE", snippet: "NEED SNIPPET")
+        let mapView = renderGoogleMap(loc: loc)
         let textBox = renderTextBox()
         self.view = mapView
         self.view.addSubview(textBox)
@@ -55,19 +57,17 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: None
      *  Effects: Creates a Google Map View around the user's current location
      */
-    func renderGoogleMap(loc: CLLocationCoordinate2D, title: String?, snippet: String?) -> GMSMapView {
+    func renderGoogleMap(loc: CLLocationCoordinate2D) -> GMSMapView {
         let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 12.0)
-        let gmap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        gmap.isMyLocationEnabled = true
-        gmap.delegate = self
-        gmap.indoorDisplay.delegate = self
-        gmap.settings.myLocationButton = true
+        self.gmap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        self.gmap.isMyLocationEnabled = true
+        self.gmap.delegate = self
+        self.gmap.indoorDisplay.delegate = self
+        self.gmap.settings.myLocationButton = true
         
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
-        marker.title = title!
-        marker.snippet = snippet!
-        marker.map = gmap
+        marker.map = self.gmap
         
         displayBuildings()
         return gmap
@@ -75,7 +75,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
     /*
      *  Requires: Locational coordinates of all buildings within 5 mile radius
-     *  Modifies: venuesToMarkers dictionary
+     *  Modifies: venuesToColors dictionary
      #  Effects: Creates colored markers to match each incoming location
      */
     func displayBuildings() {
@@ -95,10 +95,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             let results = json["results"]
             
             for result in results {
-                self.assignColorToVenue(venue: result.1["place_id"].string!)
+                self.assignColorToVenue(loc: result.1["geometry"]["location"])
             }
             
             // CREATE MARKERS!
+            self.createMarkers()
         }
         task.resume()
     }
@@ -108,8 +109,26 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: The dictionary of venue ids to colors
      *  Effects: See "modifies"
      */
-    func assignColorToVenue(venue: String) {
-        self.venuesToMarkers[venue] = UIColor.black
+    func assignColorToVenue(loc: JSON) {
+        let coords = "\(loc["lat"]),\(loc["lng"])"
+        self.venuesToColors[coords] = UIColor.black
+    }
+    
+    /*
+     *  Requires: --
+     *  Modifies: Google Map
+     *  Effects: Creates colored markers of Places
+     */
+    func createMarkers() {
+        var markers = [GMSMarker]()
+        for (venue, color) in self.venuesToColors {
+            let lat = Double(String(venue.characters.split(separator: ",")[0]))
+            let long = Double(String(venue.characters.split(separator: ",")[1]))
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat!, longitude: long!))
+            marker.icon = GMSMarker.markerImage(with: color)
+            marker.map = self.gmap
+            markers.append(marker)
+        }
     }
     
     func renderTextBox() -> UITextField {
