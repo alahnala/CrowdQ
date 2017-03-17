@@ -13,8 +13,8 @@ import UIKit
 
 class UserTypeController: UIViewController, SSRadioButtonControllerDelegate {
     
-    @IBOutlet weak var vendor: UIButton!
-    @IBOutlet weak var explorer: UIButton!
+    var vendor: UIButton!
+    var explorer: UIButton!
     
     var radioButtonController: SSRadioButtonsController?
     
