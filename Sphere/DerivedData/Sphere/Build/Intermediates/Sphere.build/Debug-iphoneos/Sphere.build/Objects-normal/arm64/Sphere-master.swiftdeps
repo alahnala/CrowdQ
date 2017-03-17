@@ -1,0 +1,9 @@
+version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
+options: "56b5df8fd3a0142dbd03430da42400d0"
+build_time: [543029359, 1814000]
+inputs:
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/ViewController.swift": !dirty [543028784, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/FeedViewController.swift": [542993982, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/GoogleAPI.swift": [543002017, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/AppDelegate.swift": [543002017, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/MapViewController.swift": !dirty [543028096, 0]

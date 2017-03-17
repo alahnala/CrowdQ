@@ -1,0 +1,60 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/DerivedData/Sphere/Build/Products/Debug-iphoneos/Pods_Sphere.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Pods-Sphere-umbrella.h",
+          'external-contents': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/Target Support Files/Pods-Sphere/Pods-Sphere-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "Pods_Sphere-Swift.h",
+          'external-contents': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/DerivedData/Sphere/Build/Products/Debug-iphoneos/Pods_Sphere.framework/Headers/Pods_Sphere-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/DerivedData/Sphere/Build/Products/Debug-iphoneos/Pods_Sphere.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/DerivedData/Sphere/Build/Intermediates/Pods.build/Debug-iphoneos/Pods-Sphere.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/DerivedData/Sphere/Build/Products/Debug-iphoneos/SwiftyJSON/SwiftyJSON.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "SwiftyJSON-Swift.h",
+          'external-contents': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/DerivedData/Sphere/Build/Products/Debug-iphoneos/SwiftyJSON/SwiftyJSON.framework/Headers/SwiftyJSON-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "SwiftyJSON-umbrella.h",
+          'external-contents': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/DerivedData/Sphere/Build/Products/Debug-iphoneos/SwiftyJSON/SwiftyJSON.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/DerivedData/Sphere/Build/Intermediates/Pods.build/Debug-iphoneos/SwiftyJSON.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

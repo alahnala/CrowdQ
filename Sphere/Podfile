@@ -4,8 +4,5 @@ target 'Sphere' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
   pod 'GooglePlacePicker'
-  pod 'SwiftyJSON'
-  
-  use_frameworks!
 end
 
