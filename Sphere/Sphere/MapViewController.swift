@@ -9,7 +9,6 @@
 import UIKit
 import Foundation
 import GoogleMaps
-import SwiftyJSON
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
