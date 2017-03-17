@@ -30,7 +30,11 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         let feedTab = FeedViewController()
         feedTab.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
-        self.viewControllers = [mapTab, feedTab]
+        // Make Tab Two 
+        let userTab = UserTypeController()
+        userTab.tabBarItem = UITabBarItem(title: "User", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
+        
+        self.viewControllers = [mapTab, feedTab, userTab]
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
