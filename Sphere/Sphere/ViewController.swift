@@ -30,7 +30,11 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         let feedTab = FeedViewController()
         feedTab.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
-        self.viewControllers = [mapTab, feedTab]
+        // TODO move to xinrui's folder when she pushes
+        let whereTab = WhereViewController()
+        whereTab.tabBarItem = UITabBarItem(title: "Where", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
+        
+        self.viewControllers = [mapTab, feedTab, whereTab]
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
