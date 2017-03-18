@@ -1,0 +1,12 @@
+version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
+options: "00d7f34f93cabe85f3b1e427811f182a"
+build_time: [543011249, 295205000]
+inputs:
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/ViewController.swift": [542993982, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/FeedViewController.swift": [542993982, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/GoogleAPI.swift": [543002017, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/AppDelegate.swift": [543002017, 0]
+  "/Users/xinruiyang/Downloads/SSRadioButtonsController-master/SSRadioButtonController/SSRadioButtonsController.swift": [529918908, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/SwiftyJSON.swift": [543002017, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/UserTypeController.swift": [543011244, 0]
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Sphere/MapViewController.swift": [543006579, 0]

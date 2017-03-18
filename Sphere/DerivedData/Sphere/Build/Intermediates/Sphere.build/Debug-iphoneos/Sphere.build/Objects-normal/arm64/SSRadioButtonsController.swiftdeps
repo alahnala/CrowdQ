@@ -1,0 +1,602 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SSRadioButtonControllerDelegate"
+- "SSRadioButtonsController"
+provides-nominal:
+- "P6Sphere31SSRadioButtonControllerDelegate"
+- "C6Sphere24SSRadioButtonsController"
+provides-member:
+- ["P6Sphere31SSRadioButtonControllerDelegate", ""]
+- ["C6Sphere24SSRadioButtonsController", ""]
+provides-dynamic-lookup:
+- "setButtonsArray"
+- "delegate"
+- "shouldLetDeSelect"
+- "pressed"
+- "addButton"
+- "didSelectButton"
+- "selectedButton"
+- "removeButton"
+depends-top-level:
+- "AssignmentPrecedence"
+- !private "=="
+- !private "!="
+- !private "UIControlEvents"
+- "NSObject"
+- "SSRadioButtonsController"
+- "SSRadioButtonControllerDelegate"
+- "BooleanLiteralType"
+- !private "StringLiteralType"
+- "UIButton"
+depends-member:
+- !private ["Ps9AnyObject", "SSRadioButtonsController"]
+- ["Ps9AnyObject", "UIButton"]
+- !private ["Ps9AnyObject", "UIControlEvents"]
+- ["Ps9AnyObject", "addButton"]
+- !private ["Ps9AnyObject", "addTarget"]
+- ["Ps9AnyObject", "buttonsArray"]
+- ["Ps9AnyObject", "currentSelectedButton"]
+- ["Ps9AnyObject", "delegate"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "isSelected"]
+- ["Ps9AnyObject", "pressed"]
+- ["Ps9AnyObject", "removeButton"]
+- !private ["Ps9AnyObject", "removeTarget"]
+- ["Ps9AnyObject", "selectedButton"]
+- ["Ps9AnyObject", "setButtonsArray"]
+- ["Ps9AnyObject", "shouldLetDeSelect"]
+- ["Ps9AnyObject", ""]
+- !private ["Sa", "Index"]
+- !private ["Sa", "Iterator"]
+- !private ["Sa", "_Element"]
+- !private ["Sa", "append"]
+- !private ["Sa", "contains"]
+- ["Sa", "deinit"]
+- !private ["Sa", "index"]
+- ["Sa", "init"]
+- !private ["Sa", "remove"]
+- !private ["Ps23BidirectionalCollection", "Index"]
+- !private ["Ps23BidirectionalCollection", "Iterator"]
+- !private ["Ps23BidirectionalCollection", "_Element"]
+- !private ["Ps23BidirectionalCollection", "append"]
+- !private ["Ps23BidirectionalCollection", "contains"]
+- !private ["Ps23BidirectionalCollection", "index"]
+- ["Ps23BidirectionalCollection", "init"]
+- !private ["Ps23BidirectionalCollection", "remove"]
+- !private ["Ps22BidirectionalIndexable", "Index"]
+- !private ["Ps22BidirectionalIndexable", "Iterator"]
+- !private ["Ps22BidirectionalIndexable", "_Element"]
+- !private ["Ps22BidirectionalIndexable", "append"]
+- !private ["Ps22BidirectionalIndexable", "contains"]
+- !private ["Ps22BidirectionalIndexable", "index"]
+- ["Ps22BidirectionalIndexable", "init"]
+- !private ["Ps22BidirectionalIndexable", "remove"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- ["Sb", "deinit"]
+- !private ["PSo15CALayerDelegate", "addTarget"]
+- !private ["PSo15CALayerDelegate", "isSelected"]
+- !private ["PSo15CALayerDelegate", "removeTarget"]
+- !private ["Ps7CVarArg", "Index"]
+- !private ["Ps7CVarArg", "Iterator"]
+- !private ["Ps7CVarArg", "SSRadioButtonsController"]
+- ["Ps7CVarArg", "UIButton"]
+- !private ["Ps7CVarArg", "UIControlEvents"]
+- !private ["Ps7CVarArg", "_Element"]
+- ["Ps7CVarArg", "addButton"]
+- !private ["Ps7CVarArg", "addTarget"]
+- !private ["Ps7CVarArg", "append"]
+- ["Ps7CVarArg", "buttonsArray"]
+- !private ["Ps7CVarArg", "contains"]
+- ["Ps7CVarArg", "currentSelectedButton"]
+- ["Ps7CVarArg", "delegate"]
+- !private ["Ps7CVarArg", "index"]
+- ["Ps7CVarArg", "init"]
+- !private ["Ps7CVarArg", "isSelected"]
+- ["Ps7CVarArg", "pressed"]
+- !private ["Ps7CVarArg", "remove"]
+- ["Ps7CVarArg", "removeButton"]
+- !private ["Ps7CVarArg", "removeTarget"]
+- ["Ps7CVarArg", "selectedButton"]
+- ["Ps7CVarArg", "setButtonsArray"]
+- ["Ps7CVarArg", "shouldLetDeSelect"]
+- ["Ps7CVarArg", ""]
+- !private ["Ps10Collection", "Index"]
+- !private ["Ps10Collection", "Iterator"]
+- !private ["Ps10Collection", "_Element"]
+- !private ["Ps10Collection", "append"]
+- !private ["Ps10Collection", "contains"]
+- !private ["Ps10Collection", "index"]
+- ["Ps10Collection", "init"]
+- !private ["Ps10Collection", "remove"]
+- !private ["Ps28CustomDebugStringConvertible", "Index"]
+- !private ["Ps28CustomDebugStringConvertible", "Iterator"]
+- !private ["Ps28CustomDebugStringConvertible", "SSRadioButtonsController"]
+- ["Ps28CustomDebugStringConvertible", "UIButton"]
+- !private ["Ps28CustomDebugStringConvertible", "UIControlEvents"]
+- !private ["Ps28CustomDebugStringConvertible", "_Element"]
+- ["Ps28CustomDebugStringConvertible", "addButton"]
+- !private ["Ps28CustomDebugStringConvertible", "addTarget"]
+- !private ["Ps28CustomDebugStringConvertible", "append"]
+- ["Ps28CustomDebugStringConvertible", "buttonsArray"]
+- !private ["Ps28CustomDebugStringConvertible", "contains"]
+- ["Ps28CustomDebugStringConvertible", "currentSelectedButton"]
+- ["Ps28CustomDebugStringConvertible", "delegate"]
+- !private ["Ps28CustomDebugStringConvertible", "index"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "isSelected"]
+- ["Ps28CustomDebugStringConvertible", "pressed"]
+- !private ["Ps28CustomDebugStringConvertible", "remove"]
+- ["Ps28CustomDebugStringConvertible", "removeButton"]
+- !private ["Ps28CustomDebugStringConvertible", "removeTarget"]
+- ["Ps28CustomDebugStringConvertible", "selectedButton"]
+- ["Ps28CustomDebugStringConvertible", "setButtonsArray"]
+- ["Ps28CustomDebugStringConvertible", "shouldLetDeSelect"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps29CustomPlaygroundQuickLookable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "Index"]
+- !private ["Ps17CustomReflectable", "Iterator"]
+- !private ["Ps17CustomReflectable", "_Element"]
+- !private ["Ps17CustomReflectable", "_getBuiltinLogicValue"]
+- !private ["Ps17CustomReflectable", "append"]
+- !private ["Ps17CustomReflectable", "contains"]
+- !private ["Ps17CustomReflectable", "index"]
+- ["Ps17CustomReflectable", "init"]
+- !private ["Ps17CustomReflectable", "remove"]
+- !private ["Ps23CustomStringConvertible", "Index"]
+- !private ["Ps23CustomStringConvertible", "Iterator"]
+- !private ["Ps23CustomStringConvertible", "SSRadioButtonsController"]
+- ["Ps23CustomStringConvertible", "UIButton"]
+- !private ["Ps23CustomStringConvertible", "UIControlEvents"]
+- !private ["Ps23CustomStringConvertible", "_Element"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- ["Ps23CustomStringConvertible", "addButton"]
+- !private ["Ps23CustomStringConvertible", "addTarget"]
+- !private ["Ps23CustomStringConvertible", "append"]
+- ["Ps23CustomStringConvertible", "buttonsArray"]
+- !private ["Ps23CustomStringConvertible", "contains"]
+- ["Ps23CustomStringConvertible", "currentSelectedButton"]
+- ["Ps23CustomStringConvertible", "delegate"]
+- !private ["Ps23CustomStringConvertible", "index"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "isSelected"]
+- ["Ps23CustomStringConvertible", "pressed"]
+- !private ["Ps23CustomStringConvertible", "remove"]
+- ["Ps23CustomStringConvertible", "removeButton"]
+- !private ["Ps23CustomStringConvertible", "removeTarget"]
+- ["Ps23CustomStringConvertible", "selectedButton"]
+- ["Ps23CustomStringConvertible", "setButtonsArray"]
+- ["Ps23CustomStringConvertible", "shouldLetDeSelect"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "SSRadioButtonsController"]
+- ["Ps9Equatable", "UIButton"]
+- !private ["Ps9Equatable", "UIControlEvents"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- ["Ps9Equatable", "addButton"]
+- !private ["Ps9Equatable", "addTarget"]
+- ["Ps9Equatable", "buttonsArray"]
+- ["Ps9Equatable", "currentSelectedButton"]
+- ["Ps9Equatable", "delegate"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "isSelected"]
+- ["Ps9Equatable", "pressed"]
+- ["Ps9Equatable", "removeButton"]
+- !private ["Ps9Equatable", "removeTarget"]
+- ["Ps9Equatable", "selectedButton"]
+- ["Ps9Equatable", "setButtonsArray"]
+- ["Ps9Equatable", "shouldLetDeSelect"]
+- !private ["Ps9Equatable", "touchUpInside"]
+- ["Ps9Equatable", ""]
+- !private ["Ps25ExpressibleByArrayLiteral", "Index"]
+- !private ["Ps25ExpressibleByArrayLiteral", "Iterator"]
+- !private ["Ps25ExpressibleByArrayLiteral", "_Element"]
+- !private ["Ps25ExpressibleByArrayLiteral", "append"]
+- !private ["Ps25ExpressibleByArrayLiteral", "contains"]
+- !private ["Ps25ExpressibleByArrayLiteral", "index"]
+- ["Ps25ExpressibleByArrayLiteral", "init"]
+- !private ["Ps25ExpressibleByArrayLiteral", "remove"]
+- !private ["Ps25ExpressibleByArrayLiteral", "touchUpInside"]
+- !private ["Ps27ExpressibleByBooleanLiteral", "_getBuiltinLogicValue"]
+- !private ["Ps43ExpressibleByExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps26ExpressibleByStringLiteral", "init"]
+- !private ["Ps33ExpressibleByUnicodeScalarLiteral", "init"]
+- !private ["Ps8Hashable", "SSRadioButtonsController"]
+- ["Ps8Hashable", "UIButton"]
+- !private ["Ps8Hashable", "UIControlEvents"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- ["Ps8Hashable", "addButton"]
+- !private ["Ps8Hashable", "addTarget"]
+- ["Ps8Hashable", "buttonsArray"]
+- ["Ps8Hashable", "currentSelectedButton"]
+- ["Ps8Hashable", "delegate"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "isSelected"]
+- ["Ps8Hashable", "pressed"]
+- ["Ps8Hashable", "removeButton"]
+- !private ["Ps8Hashable", "removeTarget"]
+- ["Ps8Hashable", "selectedButton"]
+- ["Ps8Hashable", "setButtonsArray"]
+- ["Ps8Hashable", "shouldLetDeSelect"]
+- ["Ps8Hashable", ""]
+- !private ["Ps9Indexable", "Index"]
+- !private ["Ps9Indexable", "Iterator"]
+- !private ["Ps9Indexable", "_Element"]
+- !private ["Ps9Indexable", "append"]
+- !private ["Ps9Indexable", "contains"]
+- !private ["Ps9Indexable", "index"]
+- ["Ps9Indexable", "init"]
+- !private ["Ps9Indexable", "remove"]
+- !private ["Ps13IndexableBase", "Index"]
+- !private ["Ps13IndexableBase", "Iterator"]
+- !private ["Ps13IndexableBase", "_Element"]
+- !private ["Ps13IndexableBase", "append"]
+- !private ["Ps13IndexableBase", "contains"]
+- !private ["Ps13IndexableBase", "index"]
+- ["Ps13IndexableBase", "init"]
+- !private ["Ps13IndexableBase", "remove"]
+- !private ["Vs16IndexingIterator", "Element"]
+- ["Si", "deinit"]
+- !private ["Ps16IteratorProtocol", "Element"]
+- !private ["Ps25LosslessStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps17MutableCollection", "Index"]
+- !private ["Ps17MutableCollection", "Iterator"]
+- !private ["Ps17MutableCollection", "_Element"]
+- !private ["Ps17MutableCollection", "append"]
+- !private ["Ps17MutableCollection", "contains"]
+- !private ["Ps17MutableCollection", "index"]
+- ["Ps17MutableCollection", "init"]
+- !private ["Ps17MutableCollection", "remove"]
+- !private ["Ps16MutableIndexable", "Index"]
+- !private ["Ps16MutableIndexable", "Iterator"]
+- !private ["Ps16MutableIndexable", "_Element"]
+- !private ["Ps16MutableIndexable", "append"]
+- !private ["Ps16MutableIndexable", "contains"]
+- !private ["Ps16MutableIndexable", "index"]
+- ["Ps16MutableIndexable", "init"]
+- !private ["Ps16MutableIndexable", "remove"]
+- !private ["PSo8NSCoding", "addTarget"]
+- !private ["PSo8NSCoding", "isSelected"]
+- !private ["PSo8NSCoding", "removeTarget"]
+- ["CSo8NSObject", "SSRadioButtonControllerDelegate"]
+- !private ["CSo8NSObject", "SSRadioButtonsController"]
+- ["CSo8NSObject", "UIButton"]
+- !private ["CSo8NSObject", "UIControlEvents"]
+- ["CSo8NSObject", "addButton"]
+- !private ["CSo8NSObject", "addTarget"]
+- ["CSo8NSObject", "buttonsArray"]
+- ["CSo8NSObject", "currentSelectedButton"]
+- ["CSo8NSObject", "deinit"]
+- ["CSo8NSObject", "delegate"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "isSelected"]
+- ["CSo8NSObject", "pressed"]
+- ["CSo8NSObject", "removeButton"]
+- !private ["CSo8NSObject", "removeTarget"]
+- ["CSo8NSObject", "selectedButton"]
+- ["CSo8NSObject", "setButtonsArray"]
+- ["CSo8NSObject", "shouldLetDeSelect"]
+- ["CSo8NSObject", ""]
+- !private ["PSo16NSObjectProtocol", "SSRadioButtonsController"]
+- ["PSo16NSObjectProtocol", "UIButton"]
+- !private ["PSo16NSObjectProtocol", "UIControlEvents"]
+- ["PSo16NSObjectProtocol", "addButton"]
+- !private ["PSo16NSObjectProtocol", "addTarget"]
+- ["PSo16NSObjectProtocol", "buttonsArray"]
+- ["PSo16NSObjectProtocol", "currentSelectedButton"]
+- ["PSo16NSObjectProtocol", "delegate"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "isSelected"]
+- ["PSo16NSObjectProtocol", "pressed"]
+- ["PSo16NSObjectProtocol", "removeButton"]
+- !private ["PSo16NSObjectProtocol", "removeTarget"]
+- ["PSo16NSObjectProtocol", "selectedButton"]
+- ["PSo16NSObjectProtocol", "setButtonsArray"]
+- ["PSo16NSObjectProtocol", "shouldLetDeSelect"]
+- ["PSo16NSObjectProtocol", ""]
+- ["Os5Never", "deinit"]
+- !private ["Ps9OptionSet", "touchUpInside"]
+- ["Sq", "deinit"]
+- !private ["Ps22RandomAccessCollection", "Index"]
+- !private ["Ps22RandomAccessCollection", "Iterator"]
+- !private ["Ps22RandomAccessCollection", "_Element"]
+- !private ["Ps22RandomAccessCollection", "append"]
+- !private ["Ps22RandomAccessCollection", "contains"]
+- !private ["Ps22RandomAccessCollection", "index"]
+- ["Ps22RandomAccessCollection", "init"]
+- !private ["Ps22RandomAccessCollection", "remove"]
+- !private ["Ps21RandomAccessIndexable", "Index"]
+- !private ["Ps21RandomAccessIndexable", "Iterator"]
+- !private ["Ps21RandomAccessIndexable", "_Element"]
+- !private ["Ps21RandomAccessIndexable", "append"]
+- !private ["Ps21RandomAccessIndexable", "contains"]
+- !private ["Ps21RandomAccessIndexable", "index"]
+- ["Ps21RandomAccessIndexable", "init"]
+- !private ["Ps21RandomAccessIndexable", "remove"]
+- !private ["Ps26RangeReplaceableCollection", "Index"]
+- !private ["Ps26RangeReplaceableCollection", "Iterator"]
+- !private ["Ps26RangeReplaceableCollection", "_Element"]
+- !private ["Ps26RangeReplaceableCollection", "append"]
+- !private ["Ps26RangeReplaceableCollection", "contains"]
+- !private ["Ps26RangeReplaceableCollection", "index"]
+- ["Ps26RangeReplaceableCollection", "init"]
+- !private ["Ps26RangeReplaceableCollection", "remove"]
+- !private ["Ps25RangeReplaceableIndexable", "Index"]
+- !private ["Ps25RangeReplaceableIndexable", "Iterator"]
+- !private ["Ps25RangeReplaceableIndexable", "_Element"]
+- !private ["Ps25RangeReplaceableIndexable", "append"]
+- !private ["Ps25RangeReplaceableIndexable", "contains"]
+- !private ["Ps25RangeReplaceableIndexable", "index"]
+- ["Ps25RangeReplaceableIndexable", "init"]
+- !private ["Ps25RangeReplaceableIndexable", "remove"]
+- !private ["Ps16RawRepresentable", "touchUpInside"]
+- ["P6Sphere31SSRadioButtonControllerDelegate", "UIButton"]
+- ["P6Sphere31SSRadioButtonControllerDelegate", "didSelectButton"]
+- ["C6Sphere24SSRadioButtonsController", "SSRadioButtonControllerDelegate"]
+- !private ["C6Sphere24SSRadioButtonsController", "SSRadioButtonsController"]
+- ["C6Sphere24SSRadioButtonsController", "UIButton"]
+- !private ["C6Sphere24SSRadioButtonsController", "UIControlEvents"]
+- ["C6Sphere24SSRadioButtonsController", "addButton"]
+- !private ["C6Sphere24SSRadioButtonsController", "buttonsArray"]
+- !private ["C6Sphere24SSRadioButtonsController", "currentSelectedButton"]
+- ["C6Sphere24SSRadioButtonsController", "deinit"]
+- ["C6Sphere24SSRadioButtonsController", "delegate"]
+- ["C6Sphere24SSRadioButtonsController", "init"]
+- ["C6Sphere24SSRadioButtonsController", "pressed"]
+- ["C6Sphere24SSRadioButtonsController", "removeButton"]
+- ["C6Sphere24SSRadioButtonsController", "selectedButton"]
+- ["C6Sphere24SSRadioButtonsController", "setButtonsArray"]
+- ["C6Sphere24SSRadioButtonsController", "shouldLetDeSelect"]
+- ["V10ObjectiveC8Selector", "deinit"]
+- !private ["Ps8Sequence", "Element"]
+- !private ["Ps8Sequence", "Index"]
+- !private ["Ps8Sequence", "Iterator"]
+- !private ["Ps8Sequence", "_Element"]
+- !private ["Ps8Sequence", "append"]
+- !private ["Ps8Sequence", "contains"]
+- !private ["Ps8Sequence", "index"]
+- ["Ps8Sequence", "init"]
+- !private ["Ps8Sequence", "remove"]
+- !private ["Ps10SetAlgebra", "touchUpInside"]
+- ["Vs12StaticString", "deinit"]
+- !private ["Vs12StaticString", "init"]
+- !private ["PSo29UIAccessibilityIdentification", "addTarget"]
+- !private ["PSo29UIAccessibilityIdentification", "isSelected"]
+- !private ["PSo29UIAccessibilityIdentification", "removeTarget"]
+- !private ["PSo12UIAppearance", "addTarget"]
+- !private ["PSo12UIAppearance", "isSelected"]
+- !private ["PSo12UIAppearance", "removeTarget"]
+- !private ["PSo21UIAppearanceContainer", "addTarget"]
+- !private ["PSo21UIAppearanceContainer", "isSelected"]
+- !private ["PSo21UIAppearanceContainer", "removeTarget"]
+- !private ["CSo8UIButton", "addTarget"]
+- ["CSo8UIButton", "deinit"]
+- !private ["CSo8UIButton", "isSelected"]
+- !private ["CSo8UIButton", "removeTarget"]
+- !private ["CSo9UIControl", "addTarget"]
+- !private ["CSo9UIControl", "isSelected"]
+- !private ["CSo9UIControl", "removeTarget"]
+- ["VSC15UIControlEvents", "deinit"]
+- !private ["VSC15UIControlEvents", "touchUpInside"]
+- !private ["PSo17UICoordinateSpace", "addTarget"]
+- !private ["PSo17UICoordinateSpace", "isSelected"]
+- !private ["PSo17UICoordinateSpace", "removeTarget"]
+- !private ["PSo13UIDynamicItem", "addTarget"]
+- !private ["PSo13UIDynamicItem", "isSelected"]
+- !private ["PSo13UIDynamicItem", "removeTarget"]
+- !private ["PSo18UIFocusEnvironment", "addTarget"]
+- !private ["PSo18UIFocusEnvironment", "isSelected"]
+- !private ["PSo18UIFocusEnvironment", "removeTarget"]
+- !private ["PSo11UIFocusItem", "addTarget"]
+- !private ["PSo11UIFocusItem", "isSelected"]
+- !private ["PSo11UIFocusItem", "removeTarget"]
+- !private ["CSo11UIResponder", "addTarget"]
+- !private ["CSo11UIResponder", "isSelected"]
+- !private ["CSo11UIResponder", "removeTarget"]
+- !private ["PSo30UIResponderStandardEditActions", "addTarget"]
+- !private ["PSo30UIResponderStandardEditActions", "isSelected"]
+- !private ["PSo30UIResponderStandardEditActions", "removeTarget"]
+- !private ["PSo18UITraitEnvironment", "addTarget"]
+- !private ["PSo18UITraitEnvironment", "isSelected"]
+- !private ["PSo18UITraitEnvironment", "removeTarget"]
+- !private ["CSo6UIView", "addTarget"]
+- !private ["CSo6UIView", "isSelected"]
+- !private ["CSo6UIView", "removeTarget"]
+- ["Su", "deinit"]
+- !private ["Ps14_ArrayProtocol", "Index"]
+- !private ["Ps14_ArrayProtocol", "Iterator"]
+- !private ["Ps14_ArrayProtocol", "_Element"]
+- !private ["Ps14_ArrayProtocol", "append"]
+- !private ["Ps14_ArrayProtocol", "contains"]
+- !private ["Ps14_ArrayProtocol", "index"]
+- ["Ps14_ArrayProtocol", "init"]
+- !private ["Ps14_ArrayProtocol", "remove"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "addTarget"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "isSelected"]
+- !private ["Ps37_DefaultCustomPlaygroundQuickLookable", "removeTarget"]
+- !private ["Ps24_DestructorSafeContainer", "Index"]
+- !private ["Ps24_DestructorSafeContainer", "Iterator"]
+- !private ["Ps24_DestructorSafeContainer", "_Element"]
+- !private ["Ps24_DestructorSafeContainer", "append"]
+- !private ["Ps24_DestructorSafeContainer", "contains"]
+- !private ["Ps24_DestructorSafeContainer", "index"]
+- ["Ps24_DestructorSafeContainer", "init"]
+- !private ["Ps24_DestructorSafeContainer", "remove"]
+- !private ["Ps35_ExpressibleByBuiltinBooleanLiteral", "_getBuiltinLogicValue"]
+- !private ["Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral", "init"]
+- !private ["Ps34_ExpressibleByBuiltinStringLiteral", "init"]
+- !private ["Ps41_ExpressibleByBuiltinUnicodeScalarLiteral", "init"]
+- !private ["Ps9_Hashable", "SSRadioButtonsController"]
+- ["Ps9_Hashable", "UIButton"]
+- !private ["Ps9_Hashable", "UIControlEvents"]
+- !private ["Ps9_Hashable", "_getBuiltinLogicValue"]
+- ["Ps9_Hashable", "addButton"]
+- !private ["Ps9_Hashable", "addTarget"]
+- ["Ps9_Hashable", "buttonsArray"]
+- ["Ps9_Hashable", "currentSelectedButton"]
+- ["Ps9_Hashable", "delegate"]
+- ["Ps9_Hashable", "init"]
+- !private ["Ps9_Hashable", "isSelected"]
+- ["Ps9_Hashable", "pressed"]
+- ["Ps9_Hashable", "removeButton"]
+- !private ["Ps9_Hashable", "removeTarget"]
+- ["Ps9_Hashable", "selectedButton"]
+- ["Ps9_Hashable", "setButtonsArray"]
+- ["Ps9_Hashable", "shouldLetDeSelect"]
+- ["Ps9_Hashable", ""]
+- !private ["Ps21_ObjectiveCBridgeable", "Index"]
+- !private ["Ps21_ObjectiveCBridgeable", "Iterator"]
+- !private ["Ps21_ObjectiveCBridgeable", "_Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "append"]
+- !private ["Ps21_ObjectiveCBridgeable", "contains"]
+- !private ["Ps21_ObjectiveCBridgeable", "index"]
+- ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Ps21_ObjectiveCBridgeable", "remove"]
+- !private ["Vs26_OptionalNilComparisonType", "deinit"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Sa"
+- "Ps23BidirectionalCollection"
+- "Ps22BidirectionalIndexable"
+- "Sb"
+- !private "PSo15CALayerDelegate"
+- "Ps7CVarArg"
+- "Ps10Collection"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps29CustomPlaygroundQuickLookable"
+- "Ps17CustomReflectable"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- "Ps25ExpressibleByArrayLiteral"
+- !private "Ps27ExpressibleByBooleanLiteral"
+- !private "Ps43ExpressibleByExtendedGraphemeClusterLiteral"
+- !private "Ps26ExpressibleByStringLiteral"
+- !private "Ps33ExpressibleByUnicodeScalarLiteral"
+- "Ps8Hashable"
+- "Ps9Indexable"
+- "Ps13IndexableBase"
+- !private "Vs16IndexingIterator"
+- "Si"
+- !private "Ps16IteratorProtocol"
+- !private "Ps25LosslessStringConvertible"
+- "Ps17MutableCollection"
+- "Ps16MutableIndexable"
+- !private "PSo8NSCoding"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "Os5Never"
+- !private "Ps9OptionSet"
+- "Sq"
+- "Ps22RandomAccessCollection"
+- "Ps21RandomAccessIndexable"
+- "Ps26RangeReplaceableCollection"
+- "Ps25RangeReplaceableIndexable"
+- !private "Ps16RawRepresentable"
+- "P6Sphere31SSRadioButtonControllerDelegate"
+- "C6Sphere24SSRadioButtonsController"
+- "V10ObjectiveC8Selector"
+- "Ps8Sequence"
+- !private "Ps10SetAlgebra"
+- "Vs12StaticString"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "PSo12UIAppearance"
+- !private "PSo21UIAppearanceContainer"
+- "CSo8UIButton"
+- !private "CSo9UIControl"
+- "VSC15UIControlEvents"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- !private "PSo18UIFocusEnvironment"
+- !private "PSo11UIFocusItem"
+- !private "CSo11UIResponder"
+- !private "PSo30UIResponderStandardEditActions"
+- !private "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- "Su"
+- "Ps14_ArrayProtocol"
+- !private "Ps37_DefaultCustomPlaygroundQuickLookable"
+- "Ps24_DestructorSafeContainer"
+- !private "Ps35_ExpressibleByBuiltinBooleanLiteral"
+- !private "Ps51_ExpressibleByBuiltinExtendedGraphemeClusterLiteral"
+- !private "Ps34_ExpressibleByBuiltinStringLiteral"
+- !private "Ps41_ExpressibleByBuiltinUnicodeScalarLiteral"
+- "Ps9_Hashable"
+- "Ps21_ObjectiveCBridgeable"
+- !private "Vs26_OptionalNilComparisonType"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/SwiftOnoneSupport.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/QuartzCore.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreData.swiftmodule"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Base/Frameworks/GoogleMapsBase.framework/Headers/GMSCoordinateBounds.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Base/Frameworks/GoogleMapsBase.framework/Headers/GMSCompatabilityMacros.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Base/Frameworks/GoogleMapsBase.framework/Headers/GoogleMapsBase.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Base/Frameworks/GoogleMapsBase.framework/Modules/module.modulemap"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSURLTileLayer.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSTileLayer.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSSyncTileLayer.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSServices.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPolyline.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPolygon.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPanoramaView.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPanoramaService.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPanoramaLink.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPanoramaLayer.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPanoramaCameraUpdate.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPanoramaCamera.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPanorama.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSOrientation.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSMutablePath.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSMarkerLayer.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSMarker.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSUISettings.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSMapView.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSMapView+Animation.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSMapStyle.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSMapLayer.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSIndoorLevel.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSIndoorDisplay.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSIndoorBuilding.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSGroundOverlay.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSPath.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSGeometryUtils.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSGeocoder.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSProjection.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSCoordinateBounds+GoogleMaps.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSOverlay.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSCircle.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSCameraUpdate.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSCameraPosition.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSCALayer.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSDeprecationMacros.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GMSAddress.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Headers/GoogleMaps.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Modules/module.modulemap"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSUserAddedPlace.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSPlacesErrors.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSPlacesClient.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSPlaceTypes.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSPlacePhotoMetadataList.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSPlacePhotoMetadata.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSPlaceLikelihoodList.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSPlaceLikelihood.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSAutocompleteViewController.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSAutocompleteTableDataSource.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSPlace.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSAutocompleteResultsViewController.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSAutocompletePrediction.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSAutocompleteMatchFragment.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSAutocompleteFilter.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSAutocompleteFetcher.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GMSAddressComponent.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Headers/GooglePlaces.h"
+- "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/GooglePlaces/Frameworks/GooglePlaces.framework/Modules/module.modulemap"
+interface-hash: "bec9f6ac233a389efd1e60bd4b651af3"
