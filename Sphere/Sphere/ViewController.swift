@@ -30,19 +30,11 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         let feedTab = FeedViewController()
         feedTab.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
-<<<<<<< HEAD
         // TODO move to xinrui's folder when she pushes
         let whereTab = WhereViewController()
         whereTab.tabBarItem = UITabBarItem(title: "Where", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
         self.viewControllers = [mapTab, feedTab, whereTab]
-=======
-        // Make Tab Three
-        let userTab = UserTypeController()
-        userTab.tabBarItem = UITabBarItem(title: "User", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
-        
-        self.viewControllers = [mapTab, feedTab, userTab]
->>>>>>> e86d320952acde437e5e139219a53ef89a476b44
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {

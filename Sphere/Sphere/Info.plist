@@ -47,7 +47,6 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-<<<<<<< HEAD
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Sphere would like to use your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -57,7 +56,5 @@
     	<key>NSAllowsArbitraryLoads</key>
     	<true/>
 	</dict>
-=======
->>>>>>> e86d320952acde437e5e139219a53ef89a476b44
 </dict>
 </plist>
