@@ -1,3 +1,4 @@
+
 //
 //  UserClassification.swift
 //  Sphere
@@ -11,31 +12,103 @@
 import Foundation
 import UIKit
 
-class UserTypeController: UIViewController, SSRadioButtonControllerDelegate {
-    
-    var vendor: UIButton!
-    var explorer: UIButton!
-    
-    var radioButtonController: SSRadioButtonsController?
+class UserTypeController: UIViewController {
+
+    let vendor = UIButton()
+    let explorer = UIButton()
+    var userType = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        radioButtonController = SSRadioButtonsController(buttons: vendor, explorer)
-        radioButtonController!.delegate = self
-        radioButtonController!.shouldLetDeSelect = true
+        self.title = "User"
         
-        // Do any additional setup after loading the view, typically from a nib.
+        // Set up the vendor button
+        vendor.frame = CGRect(x: 0, y: 200 , width: self.view.bounds.width, height: 100)
+        vendor.setTitle("Vendor", for: .normal)
+        vendor.titleLabel!.font = UIFont.systemFont(ofSize: 26)
+        vendor.addTarget(self, action: #selector(self.vendorButtonPressed), for: .touchUpInside)
+        self.view.addSubview(vendor)
+        
+        // Set up the explorer button
+        explorer.frame = CGRect(x: 0, y: 300, width: self.view.bounds.width, height: 100)
+        explorer.setTitle("Explorer", for: .normal)
+        explorer.titleLabel!.font = UIFont.systemFont(ofSize: 26)
+        explorer.addTarget(self, action: #selector(self.explorerButtonPressed), for: .touchUpInside)
+        self.view.addSubview(explorer)
+        
     }
     
-    func didSelectButton(aButton: UIButton?) {
-        print(aButton as Any)
+    func sendUserType(userType: String) {
+        // prepare json data
+        // let json: [String: String] = ["userType": userType]
+        
+        let jsonPostString = "userType=" + userType
+        
+//        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+//        print(jsonData!)
+        
+        // create post request to connect
+        let serverURL = "https://sgodbold.com:3000/index"
+        // let serverURL = "http://0.0.0.0:4443"
+        // let serverURL = "http://0.0.0.0:8000"
+        let url = URL(string: serverURL)!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonPostString.data(using: .utf8)
+        
+        // insert json data to the request
+        // request.httpBody = jsonData
+        
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard let data = data, error == nil else {
+//                print(error?.localizedDescription ?? "No data")
+//                return
+//            }
+//            let response = try? JSONSerialization.jsonObject(with: data, options: [])
+//            // print(response!)
+//            if let response = response as? [String: Any] {
+//                print(response)
+//            }
+//        }
+//        
+//        task.resume()
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+        }
+        task.resume()
+    }
+    
+    // Called when vendor button pressed
+    func vendorButtonPressed() {
+        // Send JSON info to server
+        userType = "vendor"
+        print("vendor pressed")
+        sendUserType(userType: userType)
+        // simpleGet()
+    }
+
+    // Called when explorer button pressed
+    func explorerButtonPressed() {
+        // Send JSON info to server
+        userType = "explorer"
+        print("explorer pressed")
+        sendUserType(userType: userType)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
