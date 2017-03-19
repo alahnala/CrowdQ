@@ -25,7 +25,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         // Make Tab One
         let mapTab = MapViewController()
         mapTab.tabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "globe.png"), selectedImage: UIImage(named: "globe.png"))
-
+        
         // Make Tab Two
         let feedTab = FeedViewController()
         feedTab.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
@@ -34,16 +34,21 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         let whereTab = WhereViewController()
         whereTab.tabBarItem = UITabBarItem(title: "Where", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
-        self.viewControllers = [mapTab, feedTab, whereTab]
+
+        // Make Tab Three
+        let userTab = UserTypeController()
+        userTab.tabBarItem = UITabBarItem(title: "User", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
+        
+        self.viewControllers = [mapTab, feedTab, whereTab, userTab]
+
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         print("Selected \(viewController.title!)")
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 }
-

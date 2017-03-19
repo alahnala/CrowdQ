@@ -17,9 +17,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     let THRESHOLD = 30
     
     let locationManager = CLLocationManager()
+
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
-    
+
     var venuesToColors = [String:UIColor]()
+    var markers = [GMSMarker]()
     var gmap = GMSMapView()
     
     override func viewDidLoad() {
@@ -42,13 +44,13 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         }
     }
     
-    // Set up map to show current location
+    // When device finds GPS coordinates, render the Map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc = manager.location!.coordinate
         let mapView = renderGoogleMap(loc: loc)
-        let textBox = renderTextBox()
+        self.makePlacesRequest()
+        
         self.view = mapView
-        self.view.addSubview(textBox)
         self.view.bringSubview(toFront: mapView)
         self.locationManager.stopUpdatingLocation()
     }
@@ -59,7 +61,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Creates a Google Map View around the user's current location
      */
     func renderGoogleMap(loc: CLLocationCoordinate2D) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 16.0)
         self.gmap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         self.gmap.isMyLocationEnabled = true
         self.gmap.delegate = self
@@ -69,8 +71,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
         marker.map = self.gmap
-        
-        displayBuildings()
         return gmap
     }
     
@@ -79,77 +79,74 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: venuesToColors dictionary
      #  Effects: Creates colored markers to match each incoming location
      */
-    func displayBuildings(pagetoken: String = "") {
+    // TODO:    - Move this to GoogleAPI class
+    //          - Take in a URL and completion handler as parameters
+    //          - Move pagetoken checking portion into storePlacesResults code
+    func makePlacesRequest() {
+        let venueTypes = self.availablePlaceTypes.joined(separator: "|")
+        let loc = (self.locationManager.location?.coordinate)!
         
-        let venueTypes = availablePlaceTypes.joined(separator: "|")
-        let loc = (locationManager.location?.coordinate)!
-        let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)\(pagetoken)"
+        let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)"
         let requestURL = URL(string: (PLACES_URL + params.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
-        
         let request = URLRequest(url: requestURL!)
+
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) -> Void in
+            
             if error != nil {
                 print("ERROR: \(error)")
                 return
             }
-            let json = JSON(data: data!)
-            let results = json["results"]
-            
-            for result in results {
-                self.assignColorToVenue(loc: result.1["geometry"]["location"])
-            }
-            
-            // CREATE MARKERS!
-            self.createMarkers()
-            
-            if let next_page_token = json["next_page_token"].string {
-                print(self.venuesToColors.count)
-                self.displayBuildings(pagetoken: "&pagetoken=\(next_page_token)")
-            } else {
-                print(json)
-            }
+
+            _ = self.storePlacesResults(json: JSON(data: data!))
         }
         task.resume()
     }
     
-    func makePlacesRequest() -> String {
-        return ""
+    /*
+     *  Requires: JSON data from Google Places Request
+     *  Modifies: Constructs Dictionary of venue locations to colors
+     *  Effects: Returns next page token for re-querying
+     */
+    func storePlacesResults(json: JSON) -> String? {
+        let results = json["results"]
+        for result in results {
+            self.assignColorToVenue(loc: result.1["geometry"]["location"])
+        }
+        self.createMarkers()
+        let next_page_json : String? = json["next_page_token"].string
+        return next_page_json
     }
     
     /*
      *  Requires: A venue id as the key
      *  Modifies: The dictionary of venue ids to colors
-     *  Effects: See "modifies"
+     *  Effects: --
      */
     func assignColorToVenue(loc: JSON) {
         let coords = "\(loc["lat"]),\(loc["lng"])"
-        self.venuesToColors[coords] = UIColor.black
+        
+        // Make database query to get genre of location
+        // Make MusicManager call to get color of genre
+        if self.venuesToColors[coords] == nil {
+            self.venuesToColors[coords] = UIColor.black
+        }
     }
     
     /*
      *  Requires: --
-     *  Modifies: Google Map
+     *  Modifies: Array of Map Markers
      *  Effects: Creates colored markers of Places
      */
     func createMarkers() {
-        var markers = [GMSMarker]()
         for (venue, color) in self.venuesToColors {
             let lat = Double(String(venue.characters.split(separator: ",")[0]))
             let long = Double(String(venue.characters.split(separator: ",")[1]))
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat!, longitude: long!))
             marker.icon = GMSMarker.markerImage(with: color)
+            self.markers.append(marker)
             marker.map = self.gmap
-            markers.append(marker)
         }
-    }
-    
-    func renderTextBox() -> UITextField {
-        let textBox = UITextField(frame: CGRect(x: 10, y: 20, width: 180, height: 40))
-        textBox.attributedPlaceholder = NSAttributedString(string: "Enter a location")
-        textBox.backgroundColor = UIColor.white
-        textBox.delegate = self
-        return textBox
     }
     
     override func didReceiveMemoryWarning() {

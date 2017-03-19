@@ -22,6 +22,8 @@
 		112CD9121E2ED84B0059E4DC /* paper-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD90F1E2ED84B0059E4DC /* paper-dim.png */; };
 		112CD9131E2ED84B0059E4DC /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD9101E2ED84B0059E4DC /* paper.png */; };
 		112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */; };
+		11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */; };
+		11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */; };
 		B319FC6558B75D3366437451 /* libPods-Sphere.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD065D8BCAE12BA91B031E86 /* libPods-Sphere.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		112CD90F1E2ED84B0059E4DC /* paper-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper-dim.png"; path = "Assets.xcassets/images/paper-dim.png"; sourceTree = "<group>"; };
 		112CD9101E2ED84B0059E4DC /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper.png; path = Assets.xcassets/images/paper.png; sourceTree = "<group>"; };
 		112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPI.swift; sourceTree = "<group>"; };
+		11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereViewController.swift; sourceTree = "<group>"; };
 		B72EE54F59D9A746A6B611A8 /* Pods-Sphere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sphere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sphere/Pods-Sphere.debug.xcconfig"; sourceTree = "<group>"; };
 		C1560F535F327D6C81B83912 /* Pods-Sphere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sphere.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sphere/Pods-Sphere.release.xcconfig"; sourceTree = "<group>"; };
 		FD065D8BCAE12BA91B031E86 /* libPods-Sphere.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Sphere.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +169,7 @@
 				112CD8FE1E2ED22E0059E4DC /* FeedViewController */,
 				112CD8F61E2ECB360059E4DC /* MapViewController */,
 				112CD8C71E2EC99E0059E4DC /* ViewController.swift */,
+				11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -192,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */,
+				11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -410,6 +416,8 @@
 				112CD9001E2ED2440059E4DC /* FeedViewController.swift in Sources */,
 				112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */,
 				112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */,
+				11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */,
+				11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */,
 				112CD8F81E2ECB4D0059E4DC /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
