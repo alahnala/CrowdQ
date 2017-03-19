@@ -12,7 +12,8 @@ import Foundation
 class WhereViewController : UIViewController {
     
     let textBox = UITextField()
-    let button = UIButton(type: .system)
+    let submitButton = UIButton(type: .system)
+    let backButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,19 +36,33 @@ class WhereViewController : UIViewController {
         
 
         
-        // Set up the button
-        button.frame = CGRect(x: 0, y: 300, width: self.view.bounds.width, height: 100)
-        button.setTitle("Next", for: .normal)
-        button.titleLabel!.font = UIFont.systemFont(ofSize: 26)
-        button.addTarget(self, action: #selector(self.buttonPressed), for: .touchUpInside)
-        self.view.addSubview(button)
-        // displayText()
+        // Set up the submit button
+        submitButton.frame = CGRect(x: 0, y: 300, width: self.view.bounds.width, height: 100)
+        submitButton.setTitle("Next", for: .normal)
+        submitButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
+        submitButton.addTarget(self, action: #selector(self.submitButtonPressed), for: .touchUpInside)
+        self.view.addSubview(submitButton)
+        
+        backButton.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
+        backButton.setTitle("Back", for: .normal)
+        backButton.titleLabel!.font = UIFont.systemFont(ofSize: 24)
+        backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
+        self.view.addSubview(backButton)
     }
     
     
-    // Called when the button's pressed
-    func buttonPressed() {
-        print("Button pressed! You typed: \(textBox.text!)")
+    // Called when the submitButton's pressed
+    func submitButtonPressed() {
+        print("Submit Button pressed! You typed: \(textBox.text!)")
+        UserData.sharedInstance.userVenueLocation = textBox.text!
+        let mapViewController = MapViewController()
+        self.present(mapViewController, animated: true, completion: nil)
+    }
+    
+    func backButtonPressed() {
+        print("Back Button pressed!")
+        let userTypeController = UserTypeController()
+        self.present(userTypeController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

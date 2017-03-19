@@ -47,6 +47,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     // When device finds GPS coordinates, render the Map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc = manager.location!.coordinate
+        UserData.sharedInstance.currentLocation = loc
         
         let mapView = renderGoogleMap(loc: loc)
         self.makePlacesRequest()
