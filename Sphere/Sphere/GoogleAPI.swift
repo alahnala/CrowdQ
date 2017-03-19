@@ -12,8 +12,14 @@ import CoreLocation
 class GoogleAPI : NSObject {
     
     static let sharedInstance = GoogleAPI()
+    let PLACES_KEYS = ["AIzaSyDgyXwygcFNpPY2Wi8d1jSFZDyNuIZlPCM", "AIzaSyAjwAgSMtWGWKRIxC-qC--x0TlkAlSCVfw"]
+    var key_index = 0
     
-    override init() {
+    func getCurrentKey() -> String {
+        return PLACES_KEYS[key_index]
+    }
     
+    func incrementKey() {
+        key_index = (key_index + 1) % PLACES_KEYS.count
     }
 }

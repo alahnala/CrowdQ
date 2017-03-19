@@ -12,10 +12,8 @@ import GoogleMaps
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
-    let PLACES_KEYS = ["AIzaSyBLbvnLoXYu1ypBpqrdp0lLu9K_t1R0mZQ", "AIzaSyAjwAgSMtWGWKRIxC-qC--x0TlkAlSCVfw"]
     let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
     let THRESHOLD = 30
-    var key_index = 0
     
     let locationManager = CLLocationManager()
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
@@ -100,7 +98,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     func makePlacesRequest() {
         let venueTypes = self.availablePlaceTypes.joined(separator: "|")
         let loc = (self.locationManager.location?.coordinate)!
-        let places_key = PLACES_KEYS[key_index]
+        let places_key = GoogleAPI.sharedInstance.getCurrentKey()
         
         let params = "key=\(places_key)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)"
         let requestURL = URL(string: (PLACES_URL + params.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
@@ -127,7 +125,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     func storePlacesResults(json: JSON) -> String? {
         print(json)
         if json["status"].string == "OVER_QUERY_LIMIT" {
-            self.key_index = (self.key_index + 1) % PLACES_KEYS.count
+            GoogleAPI.sharedInstance.incrementKey()
             self.makePlacesRequest()
             return ""
         }
