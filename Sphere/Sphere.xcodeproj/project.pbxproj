@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B524971E7F128A005D6C46 /* UserTypeController.swift */; };
 		06B5249D1E7F25CC005D6C46 /* TestingAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5249C1E7F25CC005D6C46 /* TestingAutocomplete.swift */; };
+		06B524A01E7F3F30005D6C46 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5249E1E7F3F30005D6C46 /* MusicManager.swift */; };
+		06B524A11E7F3F30005D6C46 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5249F1E7F3F30005D6C46 /* UserData.swift */; };
 		112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8C51E2EC99E0059E4DC /* AppDelegate.swift */; };
 		112CD8C81E2EC99E0059E4DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8C71E2EC99E0059E4DC /* ViewController.swift */; };
 		112CD8CB1E2EC99E0059E4DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112CD8C91E2EC99E0059E4DC /* Main.storyboard */; };
@@ -49,6 +51,8 @@
 /* Begin PBXFileReference section */
 		06B524971E7F128A005D6C46 /* UserTypeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTypeController.swift; sourceTree = "<group>"; };
 		06B5249C1E7F25CC005D6C46 /* TestingAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAutocomplete.swift; sourceTree = "<group>"; };
+		06B5249E1E7F3F30005D6C46 /* MusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
+		06B5249F1E7F3F30005D6C46 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		112CD8C21E2EC99E0059E4DC /* Sphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		112CD8C51E2EC99E0059E4DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		112CD8C71E2EC99E0059E4DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -198,6 +202,8 @@
 				112CD8FE1E2ED22E0059E4DC /* FeedViewController */,
 				112CD8F61E2ECB360059E4DC /* MapViewController */,
 				112CD8C71E2EC99E0059E4DC /* ViewController.swift */,
+				06B5249E1E7F3F30005D6C46 /* MusicManager.swift */,
+				06B5249F1E7F3F30005D6C46 /* UserData.swift */,
 				06B524991E7F1B1A005D6C46 /* WhereViewController */,
 				06B5249A1E7F1B2F005D6C46 /* UserViewController */,
 			);
@@ -445,7 +451,9 @@
 				112CD8CE1E2EC99E0059E4DC /* Sphere.xcdatamodeld in Sources */,
 				112CD9001E2ED2440059E4DC /* FeedViewController.swift in Sources */,
 				112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */,
+				06B524A01E7F3F30005D6C46 /* MusicManager.swift in Sources */,
 				06B5249D1E7F25CC005D6C46 /* TestingAutocomplete.swift in Sources */,
+				06B524A11E7F3F30005D6C46 /* UserData.swift in Sources */,
 				112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */,
 				06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */,
 				11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */,
