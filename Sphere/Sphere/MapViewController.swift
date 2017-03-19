@@ -48,9 +48,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc = manager.location!.coordinate
         let mapView = renderGoogleMap(loc: loc)
-        let textBox = renderTextBox()
+        self.makePlacesRequest()
+        
         self.view = mapView
-        self.view.addSubview(textBox)
         self.view.bringSubview(toFront: mapView)
         self.locationManager.stopUpdatingLocation()
     }
@@ -61,7 +61,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Creates a Google Map View around the user's current location
      */
     func renderGoogleMap(loc: CLLocationCoordinate2D) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 15.0)
+        let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 16.0)
         self.gmap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         self.gmap.isMyLocationEnabled = true
         self.gmap.delegate = self
@@ -71,10 +71,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
         marker.map = self.gmap
-        
-        makePlacesRequest()
-        print(self.venuesToColors)
-        createMarkers()
         return gmap
     }
     
@@ -83,7 +79,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: venuesToColors dictionary
      #  Effects: Creates colored markers to match each incoming location
      */
-    
     // TODO:    - Move this to GoogleAPI class
     //          - Take in a URL and completion handler as parameters
     //          - Move pagetoken checking portion into storePlacesResults code
@@ -93,7 +88,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)"
         let requestURL = URL(string: (PLACES_URL + params.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
-        var request = URLRequest(url: requestURL!)
+        let request = URLRequest(url: requestURL!)
 
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) -> Void in
@@ -103,13 +98,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
                 return
             }
 
-            let token = self.storePlacesResults(json: JSON(data: data!))
-            print(token)
-            if token != nil {
-                let newParams = "\(params)&pagetoken=\(token)"
-                let newRequestURL = URL(string: (self.PLACES_URL + newParams.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
-                request = URLRequest(url: newRequestURL!)
-            }
+            _ = self.storePlacesResults(json: JSON(data: data!))
         }
         task.resume()
     }
@@ -121,10 +110,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      */
     func storePlacesResults(json: JSON) -> String? {
         let results = json["results"]
-        
         for result in results {
             self.assignColorToVenue(loc: result.1["geometry"]["location"])
         }
+        self.createMarkers()
         let next_page_json : String? = json["next_page_token"].string
         return next_page_json
     }
@@ -136,7 +125,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      */
     func assignColorToVenue(loc: JSON) {
         let coords = "\(loc["lat"]),\(loc["lng"])"
-        self.venuesToColors[coords] = UIColor.black
+        if self.venuesToColors[coords] == nil {
+            self.venuesToColors[coords] = UIColor.black
+        }
     }
     
     /*
@@ -155,12 +146,13 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         }
     }
     
-    func renderTextBox() -> UITextField {
-        let textBox = UITextField(frame: CGRect(x: 10, y: 20, width: 180, height: 40))
-        textBox.attributedPlaceholder = NSAttributedString(string: "Enter a location")
-        textBox.backgroundColor = UIColor.white
-        textBox.delegate = self
-        return textBox
+    /*
+     *  Requires: String denoting musical genre
+     *  Modifies: --
+     *  Effects: Returns the RGB value for the given musical genre
+     */
+    func convertGenreToColor(genre: String) -> UIColor {
+        return UIColor()
     }
     
     override func didReceiveMemoryWarning() {
