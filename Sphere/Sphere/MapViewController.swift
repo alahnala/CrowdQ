@@ -20,6 +20,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
     
     var venuesToColors = [String:UIColor]()
+    var markers = [GMSMarker]()
     var gmap = GMSMapView()
     
     override func viewDidLoad() {
@@ -70,7 +71,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         marker.position = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
         marker.map = self.gmap
         
-        displayBuildings()
+        makePlacesRequest()
+        print(self.venuesToColors)
+        createMarkers()
         return gmap
     }
     
@@ -79,48 +82,61 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: venuesToColors dictionary
      #  Effects: Creates colored markers to match each incoming location
      */
-    func displayBuildings(pagetoken: String = "") {
+    
+    // TODO:    - Move this to GoogleAPI class
+    //          - Take in a URL and completion handler as parameters
+    //          - Move pagetoken checking portion into storePlacesResults code
+    func makePlacesRequest() {
+        let venueTypes = self.availablePlaceTypes.joined(separator: "|")
+        let loc = (self.locationManager.location?.coordinate)!
+        var receivedPage = true
         
-        let venueTypes = availablePlaceTypes.joined(separator: "|")
-        let loc = (locationManager.location?.coordinate)!
-        let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)\(pagetoken)"
+        let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)"
         let requestURL = URL(string: (PLACES_URL + params.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
-        
-        let request = URLRequest(url: requestURL!)
+        var request = URLRequest(url: requestURL!)
+
         let task = URLSession.shared.dataTask(with: request) {
             (data, response, error) -> Void in
+            
             if error != nil {
                 print("ERROR: \(error)")
                 return
             }
-            let json = JSON(data: data!)
-            let results = json["results"]
-            
-            for result in results {
-                self.assignColorToVenue(loc: result.1["geometry"]["location"])
-            }
-            
-            // CREATE MARKERS!
-            self.createMarkers()
-            
-            if let next_page_token = json["next_page_token"].string {
-                print(self.venuesToColors.count)
-                self.displayBuildings(pagetoken: "&pagetoken=\(next_page_token)")
+
+            let token = self.storePlacesResults(json: JSON(data: data!))
+            print(token)
+            if token != nil {
+                receivedPage = true
+                let newParams = "\(params)&pagetoken=\(token)"
+                let newRequestURL = URL(string: (self.PLACES_URL + newParams.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
+                request = URLRequest(url: newRequestURL!)
+
             } else {
-                print(json)
+                receivedPage = false
             }
         }
         task.resume()
     }
     
-    func makePlacesRequest() -> String {
-        return ""
+    /*
+     *  Requires: JSON data from Google Places Request
+     *  Modifies: Constructs Dictionary of venue locations to colors
+     *  Effects: Returns next page token for re-querying
+     */
+    func storePlacesResults(json: JSON) -> String? {
+        let results = json["results"]
+        
+        for result in results {
+            self.assignColorToVenue(loc: result.1["geometry"]["location"])
+        }
+        let next_page_json : String? = json["next_page_token"].string
+        return next_page_json
     }
     
     /*
      *  Requires: A venue id as the key
      *  Modifies: The dictionary of venue ids to colors
-     *  Effects: See "modifies"
+     *  Effects: --
      */
     func assignColorToVenue(loc: JSON) {
         let coords = "\(loc["lat"]),\(loc["lng"])"
@@ -129,18 +145,17 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
     /*
      *  Requires: --
-     *  Modifies: Google Map
+     *  Modifies: Array of Map Markers
      *  Effects: Creates colored markers of Places
      */
     func createMarkers() {
-        var markers = [GMSMarker]()
         for (venue, color) in self.venuesToColors {
             let lat = Double(String(venue.characters.split(separator: ",")[0]))
             let long = Double(String(venue.characters.split(separator: ",")[1]))
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat!, longitude: long!))
             marker.icon = GMSMarker.markerImage(with: color)
+            self.markers.append(marker)
             marker.map = self.gmap
-            markers.append(marker)
         }
     }
     
