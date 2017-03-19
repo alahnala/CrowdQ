@@ -1,6 +1,6 @@
 
 //
-//  UserClassification.swift
+//  UserTypeController.swift
 //  Sphere
 //
 //  Created by Xinrui Yang on 3/16/17.
@@ -55,71 +55,6 @@ class UserTypeController: UIViewController {
 
     }
     
-<<<<<<< HEAD
-    
-    /* --------- This might have to go in WhereViewController.swift ---------
-    
-    // Input: (spotifyUserId, name, venueName, lat, lng)
-    // Output: Success/Failure
-    func sendVendorInfo() {
-        let jsonPostString = ""
-        let getVenue = WhereViewController() // Get this from WhereViewController.swift
-=======
-    func sendUserType(userType: String) {
-        // prepare json data
-        // let json: [String: String] = ["userType": userType]
-        
-        let jsonPostString = "userType=" + userType
-        
-        //        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        //        print(jsonData!)
->>>>>>> e1997e19e4861719aca7fc3b7ed402f3c3b94fd0
-        
-        // create post request to connect
-        let serverURL = "https://sgodbold.com:3000/registerVendor"
-        let url = URL(string: serverURL)!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = jsonPostString.data(using: .utf8)
-        
-<<<<<<< HEAD
-=======
-        // insert json data to the request
-        // request.httpBody = jsonData
-        
-        //        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-        //            guard let data = data, error == nil else {
-        //                print(error?.localizedDescription ?? "No data")
-        //                return
-        //            }
-        //            let response = try? JSONSerialization.jsonObject(with: data, options: [])
-        //            // print(response!)
-        //            if let response = response as? [String: Any] {
-        //                print(response)
-        //            }
-        //        }
-        //
-        //        task.resume()
-        
->>>>>>> e1997e19e4861719aca7fc3b7ed402f3c3b94fd0
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                print("error=\(error)")
-                return
-            }
-            
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
-                print("response = \(response)")
-            }
-            
-            let responseString = String(data: data, encoding: .utf8)
-            print("responseString = \(responseString)")
-        }
-        task.resume()
-    }
- 
-     */
-    
     // Called when vendor button pressed
     func vendorButtonPressed() {
         // Send JSON info to server
@@ -138,8 +73,8 @@ class UserTypeController: UIViewController {
     // Take vendor to WhereViewController.swift 
     // Which is the next step in rendering vendor view
     func getVenueLocation() {
-//        let WhereViewController = ViewController(nibNameOrNil: NibName, bundleOrNil: nil)
-//        self.presentedViewController(WhereViewController, animated: true, completion: nil)
+        // let WhereViewController = ViewController(nibNameOrNil: NibName, bundleOrNil: nil)
+        // self.presentedViewController(WhereViewController, animated: true, completion: nil)
         
         print("Here")
     }
@@ -163,7 +98,8 @@ class UserTypeController: UIViewController {
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(response)")
             }
             
@@ -178,4 +114,38 @@ class UserTypeController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    /* --------- This might have to go in WhereViewController.swift ---------
+     
+     // Input: (spotifyUserId, name, venueName, lat, lng)
+     // Output: Success/Failure
+     func sendVendorInfo() {
+     let jsonPostString = ""
+     let getVenue = WhereViewController() // Get this from WhereViewController.swift
+     
+     // create post request to connect
+     let serverURL = "https://sgodbold.com:3000/registerVendor"
+     let url = URL(string: serverURL)!
+     var request = URLRequest(url: url)
+     request.httpMethod = "POST"
+     request.httpBody = jsonPostString.data(using: .utf8)
+     
+     let task = URLSession.shared.dataTask(with: request) { data, response, error in
+     guard let data = data, error == nil else {
+     print("error=\(error)")
+     return
+     }
+     
+     if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
+     print("response = \(response)")
+     }
+     
+     let responseString = String(data: data, encoding: .utf8)
+     print("responseString = \(responseString)")
+     }
+     task.resume()
+     }
+     
+    */
+    
 }
