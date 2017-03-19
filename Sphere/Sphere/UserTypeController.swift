@@ -40,13 +40,7 @@ class UserTypeController: UIViewController {
     }
     
     func sendUserType(userType: String) {
-        // prepare json data
-        // let json: [String: String] = ["userType": userType]
-        
         let jsonPostString = "userType=" + userType
-        
-//        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-//        print(jsonData!)
         
         // create post request to connect
         let serverURL = "https://sgodbold.com:3000/index"
@@ -57,30 +51,14 @@ class UserTypeController: UIViewController {
         request.httpMethod = "POST"
         request.httpBody = jsonPostString.data(using: .utf8)
         
-        // insert json data to the request
-        // request.httpBody = jsonData
-        
-//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-//            guard let data = data, error == nil else {
-//                print(error?.localizedDescription ?? "No data")
-//                return
-//            }
-//            let response = try? JSONSerialization.jsonObject(with: data, options: [])
-//            // print(response!)
-//            if let response = response as? [String: Any] {
-//                print(response)
-//            }
-//        }
-//        
-//        task.resume()
-        
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(error)")
                 return
             }
             
-            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {                 print("statusCode should be 200, but is \(httpStatus.statusCode)")
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
                 print("response = \(response)")
             }
             
@@ -96,7 +74,10 @@ class UserTypeController: UIViewController {
         userType = "vendor"
         print("vendor pressed")
         sendUserType(userType: userType)
-        // simpleGet()
+        
+        UserData.sharedInstance.userIsExplorer = false
+        let whereViewController = WhereViewController()
+        self.present(whereViewController, animated: true, completion: nil)
     }
 
     // Called when explorer button pressed
@@ -105,6 +86,10 @@ class UserTypeController: UIViewController {
         userType = "explorer"
         print("explorer pressed")
         sendUserType(userType: userType)
+        
+        UserData.sharedInstance.userIsExplorer = true
+        let mapViewController = MapViewController()
+        self.present(mapViewController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

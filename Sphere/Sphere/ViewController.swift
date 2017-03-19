@@ -21,8 +21,6 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.view = UserTypeController()
-        
         // Make Tab One
         let mapTab = MapViewController()
         mapTab.tabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "globe.png"), selectedImage: UIImage(named: "globe.png"))

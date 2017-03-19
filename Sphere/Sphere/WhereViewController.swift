@@ -38,25 +38,17 @@ class WhereViewController : UIViewController {
         // displayText()
     }
     
-//    func displayText() {
-//        let textBox = UITextField(frame: CGRect(x: 100, y: 250, width: 200, height: 40.00))
-//        self.view.addSubview(textBox)
-//        textBox.backgroundColor = UIColor.red
-//        textBox.text = "Welcome 2 tha f33d."
-//        textBox.borderStyle = UITextBorderStyle.line
-//    }
-    
     // Called when the button's pressed
     func buttonPressed() {
         print("Button pressed! You typed: \(textBox.text!)")
+        let mapViewController = MapViewController()
+        self.present(mapViewController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }
 
 
