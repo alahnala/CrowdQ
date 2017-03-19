@@ -90,7 +90,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     func makePlacesRequest() {
         let venueTypes = self.availablePlaceTypes.joined(separator: "|")
         let loc = (self.locationManager.location?.coordinate)!
-        var receivedPage = true
         
         let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)"
         let requestURL = URL(string: (PLACES_URL + params.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
@@ -107,13 +106,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             let token = self.storePlacesResults(json: JSON(data: data!))
             print(token)
             if token != nil {
-                receivedPage = true
                 let newParams = "\(params)&pagetoken=\(token)"
                 let newRequestURL = URL(string: (self.PLACES_URL + newParams.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
                 request = URLRequest(url: newRequestURL!)
-
-            } else {
-                receivedPage = false
             }
         }
         task.resume()
