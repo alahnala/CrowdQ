@@ -14,7 +14,7 @@ import Foundation
 import UIKit
 
 class UserTypeController: UIViewController {
-
+    
     let vendor = UIButton()
     let explorer = UIButton()
     let label = UILabel()
@@ -55,6 +55,7 @@ class UserTypeController: UIViewController {
 
     }
     
+<<<<<<< HEAD
     
     /* --------- This might have to go in WhereViewController.swift ---------
     
@@ -63,6 +64,16 @@ class UserTypeController: UIViewController {
     func sendVendorInfo() {
         let jsonPostString = ""
         let getVenue = WhereViewController() // Get this from WhereViewController.swift
+=======
+    func sendUserType(userType: String) {
+        // prepare json data
+        // let json: [String: String] = ["userType": userType]
+        
+        let jsonPostString = "userType=" + userType
+        
+        //        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        //        print(jsonData!)
+>>>>>>> e1997e19e4861719aca7fc3b7ed402f3c3b94fd0
         
         // create post request to connect
         let serverURL = "https://sgodbold.com:3000/registerVendor"
@@ -71,6 +82,26 @@ class UserTypeController: UIViewController {
         request.httpMethod = "POST"
         request.httpBody = jsonPostString.data(using: .utf8)
         
+<<<<<<< HEAD
+=======
+        // insert json data to the request
+        // request.httpBody = jsonData
+        
+        //        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+        //            guard let data = data, error == nil else {
+        //                print(error?.localizedDescription ?? "No data")
+        //                return
+        //            }
+        //            let response = try? JSONSerialization.jsonObject(with: data, options: [])
+        //            // print(response!)
+        //            if let response = response as? [String: Any] {
+        //                print(response)
+        //            }
+        //        }
+        //
+        //        task.resume()
+        
+>>>>>>> e1997e19e4861719aca7fc3b7ed402f3c3b94fd0
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {
                 print("error=\(error)")

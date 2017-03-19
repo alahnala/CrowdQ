@@ -29,6 +29,11 @@
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Sphere would like to use your location.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -47,14 +52,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Sphere would like to use your location.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Sphere will only use your data for locational purposes.</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-    	<key>NSAllowsArbitraryLoads</key>
-    	<true/>
-	</dict>
 </dict>
 </plist>

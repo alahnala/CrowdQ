@@ -2,6 +2,27 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Sphere/GoogleAPI.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Sphere/SwiftyJSON.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Sphere/MapViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Sphere/MusicManager.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Sphere/UserTypeController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Sphere/ViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Sphere/WhereViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:Sphere.xcodeproj">
    </FileRef>
    <FileRef

@@ -28,6 +28,10 @@ class WhereViewController : UIViewController {
         textBox.placeholder = "Enter text here"
         self.view.addSubview(textBox)
         
+        //set up tap
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+        
         
         // Set up the button
         button.frame = CGRect(x: 0, y: 300, width: self.view.bounds.width, height: 100)
@@ -38,13 +42,6 @@ class WhereViewController : UIViewController {
         // displayText()
     }
     
-//    func displayText() {
-//        let textBox = UITextField(frame: CGRect(x: 100, y: 250, width: 200, height: 40.00))
-//        self.view.addSubview(textBox)
-//        textBox.backgroundColor = UIColor.red
-//        textBox.text = "Welcome 2 tha f33d."
-//        textBox.borderStyle = UITextBorderStyle.line
-//    }
     
     // Called when the button's pressed
     func buttonPressed() {
@@ -55,6 +52,14 @@ class WhereViewController : UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
+    // return name and coordinates
     
     
 }
