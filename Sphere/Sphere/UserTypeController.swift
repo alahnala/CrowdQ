@@ -73,12 +73,10 @@ class UserTypeController: UIViewController {
     // Take vendor to WhereViewController.swift 
     // Which is the next step in rendering vendor view
     func getVenueLocation() {
-        // let WhereViewController = ViewController(nibNameOrNil: NibName, bundleOrNil: nil)
-        // self.presentedViewController(WhereViewController, animated: true, completion: nil)
-        
+        let venueSelectController = WhereViewController()
+        self.present(venueSelectController, animated: true, completion: nil)
         print("Here")
     }
-    
     
     // Input: (spotifyUserId, name)
     // Output: Success/Failure
@@ -107,6 +105,10 @@ class UserTypeController: UIViewController {
             print("responseString = \(responseString)")
         }
         task.resume()
+        
+        // if response returned from server 
+        let mapViewController = MapViewController()
+        self.present(mapViewController, animated: true, completion: nil)
     }
     
     
