@@ -44,7 +44,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         }
     }
     
-    // Set up map to show current location
+    // When device finds GPS coordinates, render the Map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let loc = manager.location!.coordinate
         let mapView = renderGoogleMap(loc: loc)
@@ -125,6 +125,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      */
     func assignColorToVenue(loc: JSON) {
         let coords = "\(loc["lat"]),\(loc["lng"])"
+        
+        // Make database query to get genre of location
+        // Make MusicManager call to get color of genre
         if self.venuesToColors[coords] == nil {
             self.venuesToColors[coords] = UIColor.black
         }
@@ -144,15 +147,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             self.markers.append(marker)
             marker.map = self.gmap
         }
-    }
-    
-    /*
-     *  Requires: String denoting musical genre
-     *  Modifies: --
-     *  Effects: Returns the RGB value for the given musical genre
-     */
-    func convertGenreToColor(genre: String) -> UIColor {
-        return UIColor()
     }
     
     override func didReceiveMemoryWarning() {

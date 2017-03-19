@@ -10,8 +10,8 @@ soup = BeautifulSoup(res.content, 'html.parser')
 genres = soup.findAll("div", { "class" : "genre scanme" })
 color_map = {}
 for g in genres:
-	color = g["style"][7:14]
-	color_map[g.text[:-1]] = color
+	color = g["style"][8:14]
+	color_map[g.text[:-2]] = color
 
 with open("genres_to_colors.json", 'w') as f:
 	json.dump(color_map, f)
