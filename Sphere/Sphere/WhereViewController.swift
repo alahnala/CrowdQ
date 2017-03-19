@@ -43,9 +43,9 @@ class WhereViewController : UIViewController {
         submitButton.addTarget(self, action: #selector(self.submitButtonPressed), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
-        backButton.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
+        backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
         backButton.setTitle("Back", for: .normal)
-        backButton.titleLabel!.font = UIFont.systemFont(ofSize: 24)
+        backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
         self.view.addSubview(backButton)
     }

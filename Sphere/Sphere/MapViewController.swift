@@ -12,13 +12,14 @@ import GoogleMaps
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
-    let PLACES_KEY = "AIzaSyBLbvnLoXYu1ypBpqrdp0lLu9K_t1R0mZQ"
+    let PLACES_KEYS = ["AIzaSyBLbvnLoXYu1ypBpqrdp0lLu9K_t1R0mZQ", "AIzaSyAjwAgSMtWGWKRIxC-qC--x0TlkAlSCVfw"]
     let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
     let THRESHOLD = 30
+    var key_index = 0
     
     let locationManager = CLLocationManager()
-
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
+    let changeButton = UIButton(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
 
     var venuesToColors = [String:UIColor]()
     var markers = [GMSMarker]()
@@ -28,6 +29,18 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         super.viewDidLoad()
         self.title = "Map"
         self.setupLocation()
+        
+        changeButton.setTitle("Change User Type", for: .normal)
+        changeButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
+        changeButton.addTarget(self, action: #selector(self.changeButtonPressed), for: .touchUpInside)
+        self.view.addSubview(changeButton)
+        self.view.bringSubview(toFront: changeButton)
+    }
+    
+    func changeButtonPressed() {
+        print("Change button pressed!")
+        let userTypeController = UserTypeController()
+        self.present(userTypeController, animated: true, completion: nil)
     }
     
     func setupLocation() {
@@ -87,8 +100,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     func makePlacesRequest() {
         let venueTypes = self.availablePlaceTypes.joined(separator: "|")
         let loc = (self.locationManager.location?.coordinate)!
+        let places_key = PLACES_KEYS[key_index]
         
-        let params = "key=\(PLACES_KEY)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)"
+        let params = "key=\(places_key)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)"
         let requestURL = URL(string: (PLACES_URL + params.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
         let request = URLRequest(url: requestURL!)
 
@@ -111,6 +125,13 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Returns next page token for re-querying
      */
     func storePlacesResults(json: JSON) -> String? {
+        print(json)
+        if json["status"].string == "OVER_QUERY_LIMIT" {
+            self.key_index = (self.key_index + 1) % PLACES_KEYS.count
+            self.makePlacesRequest()
+            return ""
+        }
+        
         let results = json["results"]
         for result in results {
             self.assignColorToVenue(loc: result.1["geometry"]["location"])
