@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import GooglePlaces
 
 class WhereViewController : UIViewController {
     
@@ -27,6 +28,7 @@ class WhereViewController : UIViewController {
         textBox.backgroundColor = UIColor.white
         textBox.borderStyle = .roundedRect
         textBox.placeholder = "Enter text here"
+        textBox.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         self.view.addSubview(textBox)
         
         
@@ -43,9 +45,9 @@ class WhereViewController : UIViewController {
         submitButton.addTarget(self, action: #selector(self.submitButtonPressed), for: .touchUpInside)
         self.view.addSubview(submitButton)
         
-        backButton.frame = CGRect(x: 10, y: 10, width: 100, height: 100)
+        backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
         backButton.setTitle("Back", for: .normal)
-        backButton.titleLabel!.font = UIFont.systemFont(ofSize: 24)
+        backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
         self.view.addSubview(backButton)
     }
@@ -63,6 +65,29 @@ class WhereViewController : UIViewController {
         print("Back Button pressed!")
         let userTypeController = UserTypeController()
         self.present(userTypeController, animated: true, completion: nil)
+    }
+    
+    func textFieldDidChange(_ textField: UITextField) {
+        print(textField.text)
+        placeAutocomplete(text: textField.text)
+    }
+    
+    func placeAutocomplete(text: String?) {
+        let filter = GMSAutocompleteFilter()
+        filter.type = .establishment
+        let placesClient = GMSPlacesClient()
+        placesClient.autocompleteQuery(text!, bounds: nil, filter: filter, callback: {
+            (results, error) -> Void in
+            if let error = error {
+                print("Autocomplete Error: \(error)")
+                return
+            }
+            if let results = results {
+                for result in results {
+                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
+                }
+            }
+        })
     }
     
     override func didReceiveMemoryWarning() {
