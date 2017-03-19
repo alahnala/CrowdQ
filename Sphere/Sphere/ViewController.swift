@@ -15,22 +15,19 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
-        
         self.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.view = UserTypeController()
+        
         // Make Tab One
         let mapTab = MapViewController()
         mapTab.tabBarItem = UITabBarItem(title: "Map", image: UIImage(named: "globe.png"), selectedImage: UIImage(named: "globe.png"))
         
         // Make Tab Two
-        let feedTab = FeedViewController()
-        feedTab.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
-        
-        // TODO move to xinrui's folder when she pushes
         let whereTab = WhereViewController()
         whereTab.tabBarItem = UITabBarItem(title: "Where", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
@@ -38,7 +35,7 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         let userTab = UserTypeController()
         userTab.tabBarItem = UITabBarItem(title: "User", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
-        self.viewControllers = [mapTab, feedTab, whereTab, userTab]
+        self.viewControllers = [mapTab, whereTab, userTab]
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
