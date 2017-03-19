@@ -101,6 +101,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06B524991E7F1B1A005D6C46 /* WhereViewController */ = {
+			isa = PBXGroup;
+			children = (
+				11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */,
+			);
+			name = WhereViewController;
+			sourceTree = "<group>";
+		};
+		06B5249A1E7F1B2F005D6C46 /* UserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				06B524971E7F128A005D6C46 /* UserTypeController.swift */,
+			);
+			name = UserViewController;
+			sourceTree = "<group>";
+		};
 		112CD8B91E2EC99D0059E4DC = {
 			isa = PBXGroup;
 			children = (
@@ -171,8 +187,8 @@
 				112CD8FE1E2ED22E0059E4DC /* FeedViewController */,
 				112CD8F61E2ECB360059E4DC /* MapViewController */,
 				112CD8C71E2EC99E0059E4DC /* ViewController.swift */,
-				11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */,
-				06B524971E7F128A005D6C46 /* UserTypeController.swift */,
+				06B524991E7F1B1A005D6C46 /* WhereViewController */,
+				06B5249A1E7F1B2F005D6C46 /* UserViewController */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
