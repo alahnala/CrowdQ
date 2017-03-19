@@ -28,10 +28,12 @@ class WhereViewController : UIViewController {
         textBox.placeholder = "Enter text here"
         self.view.addSubview(textBox)
         
+        
         //set up tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
+
         
         // Set up the button
         button.frame = CGRect(x: 0, y: 300, width: self.view.bounds.width, height: 100)
@@ -58,6 +60,7 @@ class WhereViewController : UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
+    
     
     // return name and coordinates
     

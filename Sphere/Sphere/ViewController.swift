@@ -34,12 +34,15 @@ class ViewController: UITabBarController, UITabBarControllerDelegate {
         let whereTab = WhereViewController()
         whereTab.tabBarItem = UITabBarItem(title: "Where", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
-
         // Make Tab Three
         let userTab = UserTypeController()
         userTab.tabBarItem = UITabBarItem(title: "User", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
         
-        self.viewControllers = [mapTab, feedTab, whereTab, userTab]
+        // Make Tab Four
+        let TestTab = TestViewController()
+        TestTab.tabBarItem = UITabBarItem(title: "Test", image: UIImage(named: "paper.png"), selectedImage: UIImage(named: "paper.png"))
+        
+        self.viewControllers = [mapTab, feedTab, whereTab, userTab, TestTab]
 
     }
     
