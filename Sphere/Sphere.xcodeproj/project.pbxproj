@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B524971E7F128A005D6C46 /* UserTypeController.swift */; };
 		112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8C51E2EC99E0059E4DC /* AppDelegate.swift */; };
 		112CD8C81E2EC99E0059E4DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8C71E2EC99E0059E4DC /* ViewController.swift */; };
 		112CD8CB1E2EC99E0059E4DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112CD8C91E2EC99E0059E4DC /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06B524971E7F128A005D6C46 /* UserTypeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTypeController.swift; sourceTree = "<group>"; };
 		112CD8C21E2EC99E0059E4DC /* Sphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		112CD8C51E2EC99E0059E4DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		112CD8C71E2EC99E0059E4DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				112CD8F61E2ECB360059E4DC /* MapViewController */,
 				112CD8C71E2EC99E0059E4DC /* ViewController.swift */,
 				11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */,
+				06B524971E7F128A005D6C46 /* UserTypeController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -290,7 +293,7 @@
 				TargetAttributes = {
 					112CD8C11E2EC99D0059E4DC = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = JQM7NB255N;
+						DevelopmentTeam = 5U538WKEMM;
 						ProvisioningStyle = Automatic;
 					};
 					112CD8D81E2EC99E0059E4DC = {
@@ -416,6 +419,7 @@
 				112CD9001E2ED2440059E4DC /* FeedViewController.swift in Sources */,
 				112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */,
 				112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */,
+				06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */,
 				11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */,
 				11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */,
 				112CD8F81E2ECB4D0059E4DC /* MapViewController.swift in Sources */,
@@ -569,10 +573,10 @@
 			baseConfigurationReference = B72EE54F59D9A746A6B611A8 /* Pods-Sphere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = JQM7NB255N;
+				DEVELOPMENT_TEAM = 5U538WKEMM;
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chuckry.Sphere;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.allie.Sphere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -583,10 +587,10 @@
 			baseConfigurationReference = C1560F535F327D6C81B83912 /* Pods-Sphere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = JQM7NB255N;
+				DEVELOPMENT_TEAM = 5U538WKEMM;
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chuckry.Sphere;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.allie.Sphere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
