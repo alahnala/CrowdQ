@@ -7,7 +7,7 @@
 //  Copyright © 2017 EECS441. All rights reserved.
 //
 
-// Decide whether vendor or explorer upon sign in
+// Decide which kind of user - vendor or explorer - upon sign in
 
 import Foundation
 import UIKit
