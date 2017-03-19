@@ -17,8 +17,9 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     let THRESHOLD = 30
     
     let locationManager = CLLocationManager()
+
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
-    
+
     var venuesToColors = [String:UIColor]()
     var markers = [GMSMarker]()
     var gmap = GMSMapView()

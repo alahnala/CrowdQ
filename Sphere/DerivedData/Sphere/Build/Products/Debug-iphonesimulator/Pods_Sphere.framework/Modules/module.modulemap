@@ -1,0 +1,6 @@
+framework module Pods_Sphere {
+  umbrella header "Pods-Sphere-umbrella.h"
+
+  export *
+  module * { export * }
+}

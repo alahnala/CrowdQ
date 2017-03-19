@@ -1,0 +1,5 @@
+version: "Apple Swift version 3.0.2 (swiftlang-800.0.63 clang-800.0.42.1)"
+options: "3f38fc79997fc13b15e627aa05cc3a9b"
+build_time: [543007614, 814114000]
+inputs:
+  "/Users/xinruiyang/Documents/WINTER_2017/EECS_441/sphere/CrowdQ/Sphere/Pods/SwiftyJSON/Source/SwiftyJSON.swift": [543005046, 0]
