@@ -13,6 +13,7 @@ import GooglePlaces
 class WhereViewController : UIViewController {
     
     let textBox = UITextField()
+    let resultText = UITextView()
     let submitButton = UIButton(type: .system)
     let backButton = UIButton(type: .system)
     
@@ -22,15 +23,23 @@ class WhereViewController : UIViewController {
         self.view.backgroundColor = UIColor.gray
         
         // Set up the text box
-        textBox.frame = CGRect(x: 20, y: 200, width: self.view.bounds.width - 20, height: 40)
+        textBox.frame = CGRect(x: 20, y: 100, width: self.view.bounds.width - 20, height: 40)
         textBox.center.x = self.view.center.x
         textBox.textAlignment = .justified
         textBox.backgroundColor = UIColor.white
         textBox.borderStyle = .roundedRect
         textBox.placeholder = "Enter text here"
         textBox.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        self.view.addSubview(textBox)
         
+        
+        resultText.frame = CGRect(x: 20, y: 150,
+                                              width: self.view.bounds.width - 20,
+                                              height: 200)
+        resultText.center.x = self.view.center.x
+        resultText.textAlignment = .justified
+        resultText.backgroundColor = UIColor.white
+        resultText.text = "No Results"
+        resultText.isEditable = false
         
         //set up tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
@@ -43,12 +52,19 @@ class WhereViewController : UIViewController {
         submitButton.setTitle("Next", for: .normal)
         submitButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
         submitButton.addTarget(self, action: #selector(self.submitButtonPressed), for: .touchUpInside)
-        self.view.addSubview(submitButton)
+        
         
         backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
         backButton.setTitle("Back", for: .normal)
         backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
+        self.view.addSubview(backButton)
+        
+        self.view.addSubview(textBox)
+        
+        resultText.isHidden = true
+        self.view.addSubview(resultText)
+        self.view.addSubview(submitButton)
         self.view.addSubview(backButton)
     }
     
@@ -69,6 +85,7 @@ class WhereViewController : UIViewController {
     
     func textFieldDidChange(_ textField: UITextField) {
         print(textField.text)
+        resultText.isHidden = false
         placeAutocomplete(text: textField.text)
     }
     
@@ -76,6 +93,8 @@ class WhereViewController : UIViewController {
         let filter = GMSAutocompleteFilter()
         filter.type = .establishment
         let placesClient = GMSPlacesClient()
+        let resultsStr = NSMutableString()
+        
         placesClient.autocompleteQuery(text!, bounds: nil, filter: filter, callback: {
             (results, error) -> Void in
             if let error = error {
@@ -84,9 +103,15 @@ class WhereViewController : UIViewController {
             }
             if let results = results {
                 for result in results {
-                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
+                    //print("Result \(result.attributedFullText) with placeID \(result.placeID)")
+                    //print("FULL: \(result.attributedFullText.)")
+                    print("PRIMARY: \(result.attributedPrimaryText)")
+                    print("SECONDARY: \(result.attributedSecondaryText)")
+                    resultsStr.appendFormat("%@\n", result.attributedPrimaryText)
                 }
+                self.resultText.text = resultsStr as String
             }
+            
         })
     }
     
