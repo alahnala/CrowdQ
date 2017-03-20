@@ -10,12 +10,14 @@ import UIKit
 import Foundation
 import GooglePlaces
 
-class WhereViewController : UIViewController {
+class WhereViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let textBox = UITextField()
-    let resultText = UITextView()
     let submitButton = UIButton(type: .system)
     let backButton = UIButton(type: .system)
+    @IBOutlet
+    var tableView : UITableView! = UITableView()
+    var options = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,43 +30,33 @@ class WhereViewController : UIViewController {
         textBox.textAlignment = .justified
         textBox.backgroundColor = UIColor.white
         textBox.borderStyle = .roundedRect
-        textBox.placeholder = "Enter text here"
+        textBox.placeholder = "Enter Full Address Here"
         textBox.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        self.view.addSubview(textBox)
         
-        
-        resultText.frame = CGRect(x: 20, y: 150,
-                                              width: self.view.bounds.width - 20,
-                                              height: 200)
-        resultText.center.x = self.view.center.x
-        resultText.textAlignment = .justified
-        resultText.backgroundColor = UIColor.white
-        resultText.text = "No Results"
-        resultText.isEditable = false
+        tableView.frame = CGRect(x: 20, y: 150, width: self.view.bounds.width - 20, height: 200)
+        tableView.center.x = self.view.center.x
+        tableView.backgroundColor = UIColor.white
+        tableView.isHidden = true
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.view.addSubview(tableView)
         
         //set up tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WhereViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-
-        
         // Set up the submit button
-        submitButton.frame = CGRect(x: 0, y: 300, width: self.view.bounds.width, height: 100)
+        submitButton.frame = CGRect(x: 0, y: 340, width: self.view.bounds.width, height: 100)
         submitButton.setTitle("Next", for: .normal)
         submitButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
         submitButton.addTarget(self, action: #selector(self.submitButtonPressed), for: .touchUpInside)
-        
+        self.view.addSubview(submitButton)
         
         backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
         backButton.setTitle("Back", for: .normal)
         backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
-        self.view.addSubview(backButton)
-        
-        self.view.addSubview(textBox)
-        
-        resultText.isHidden = true
-        self.view.addSubview(resultText)
-        self.view.addSubview(submitButton)
         self.view.addSubview(backButton)
     }
     
@@ -84,8 +76,10 @@ class WhereViewController : UIViewController {
     }
     
     func textFieldDidChange(_ textField: UITextField) {
-        print(textField.text)
-        resultText.isHidden = false
+        return
+        if !(textField.text?.isEmpty)! {
+            tableView.isHidden = false
+        }
         placeAutocomplete(text: textField.text)
     }
     
@@ -93,7 +87,6 @@ class WhereViewController : UIViewController {
         let filter = GMSAutocompleteFilter()
         filter.type = .establishment
         let placesClient = GMSPlacesClient()
-        let resultsStr = NSMutableString()
         
         placesClient.autocompleteQuery(text!, bounds: nil, filter: filter, callback: {
             (results, error) -> Void in
@@ -103,16 +96,27 @@ class WhereViewController : UIViewController {
             }
             if let results = results {
                 for result in results {
-                    //print("Result \(result.attributedFullText) with placeID \(result.placeID)")
-                    //print("FULL: \(result.attributedFullText.)")
+                    self.options.append((result.attributedSecondaryText?.string)!)
                     print("PRIMARY: \(result.attributedPrimaryText)")
                     print("SECONDARY: \(result.attributedSecondaryText)")
-                    resultsStr.appendFormat("%@\n", result.attributedPrimaryText)
                 }
-                self.resultText.text = resultsStr as String
             }
             
         })
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
+        return self.options.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell : UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "CELL")! as UITableViewCell
+        cell.textLabel?.text = self.options[indexPath.row]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("You selected cell #\(indexPath.row)!")
     }
     
     override func didReceiveMemoryWarning() {

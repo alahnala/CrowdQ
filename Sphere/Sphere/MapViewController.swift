@@ -140,7 +140,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Returns next page token for re-querying
      */
     func storePlacesResults(json: JSON) -> String? {
-        print(json)
         if json["status"].string == "OVER_QUERY_LIMIT" {
             GoogleAPI.sharedInstance.incrementKey()
             self.makePlacesRequest()
@@ -149,8 +148,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         let results = json["results"]
         for result in results {
-            print(result)
-            
             let loc = CLLocationCoordinate2D(latitude: CLLocationDegrees(result.1["geometry"]["location"]["lat"].float!), longitude: CLLocationDegrees(result.1["geometry"]["location"]["lng"].float!))
             let address = result.1["vicinity"].string
             let place_id = result.1["id"].string
