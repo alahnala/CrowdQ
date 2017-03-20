@@ -42,7 +42,7 @@ class WhereViewController : UIViewController {
         resultText.isEditable = false
         
         //set up tap
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WhereViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
 
