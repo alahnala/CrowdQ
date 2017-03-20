@@ -33,7 +33,7 @@ class WhereViewController : UIViewController {
         
         
         //set up tap
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WhereViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
 
@@ -68,7 +68,7 @@ class WhereViewController : UIViewController {
     }
     
     func textFieldDidChange(_ textField: UITextField) {
-        print(textField.text)
+        print(textField.text!)
         placeAutocomplete(text: textField.text)
     }
     

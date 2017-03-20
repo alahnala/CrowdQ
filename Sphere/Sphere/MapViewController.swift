@@ -17,30 +17,35 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
     let locationManager = CLLocationManager()
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
-    let changeButton = UIButton(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
+    let changeButton = UIButton(frame: CGRect(x: 15, y: 20, width: 100, height: 50))
 
-    var venuesToColors = [String:UIColor]()
-    var markers = [GMSMarker]()
+    var venues = [VenueData]()
+    var markers = [(GMSMarker, GMSCircle)]()
     var gmap = GMSMapView()
+    var markersOnMap = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Map"
         self.setupLocation()
-        
-        changeButton.setTitle("Change User Type", for: .normal)
-        changeButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
-        changeButton.addTarget(self, action: #selector(self.changeButtonPressed), for: .touchUpInside)
-        self.view.addSubview(changeButton)
-        self.view.bringSubview(toFront: changeButton)
     }
     
+    /*
+     *  Requires: --
+     *  Modifies: Current view controller
+     *  Effects: Moves user back to initial page
+     */
     func changeButtonPressed() {
         print("Change button pressed!")
         let userTypeController = UserTypeController()
         self.present(userTypeController, animated: true, completion: nil)
     }
     
+    /*
+     *  Requires: --
+     *  Modifies: Location Manager
+     *  Effects: Updates location using iOS hardware
+     */
     func setupLocation() {
         // Pop-up asking user to authorize location services
         self.locationManager.requestAlwaysAuthorization()
@@ -65,6 +70,18 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         self.view = mapView
         self.view.bringSubview(toFront: mapView)
+        
+        changeButton.setTitle("Back", for: .normal)
+        changeButton.titleLabel!.font = UIFont.systemFont(ofSize: 16)
+        changeButton.setTitleColor(UIColor.black, for: .normal)
+        changeButton.backgroundColor = UIColor.white
+        changeButton.layer.cornerRadius = 5
+        changeButton.layer.borderWidth = 1
+        changeButton.layer.borderColor = UIColor.black.cgColor
+        changeButton.addTarget(self, action: #selector(self.changeButtonPressed), for: .touchUpInside)
+        self.view.addSubview(changeButton)
+        self.view.bringSubview(toFront: changeButton)
+        
         self.locationManager.stopUpdatingLocation()
     }
     
@@ -132,7 +149,15 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         let results = json["results"]
         for result in results {
-            self.assignColorToVenue(loc: result.1["geometry"]["location"])
+            print(result)
+            
+            let loc = CLLocationCoordinate2D(latitude: CLLocationDegrees(result.1["geometry"]["location"]["lat"].float!), longitude: CLLocationDegrees(result.1["geometry"]["location"]["lng"].float!))
+            let address = result.1["vicinity"].string
+            let place_id = result.1["id"].string
+            let name = result.1["name"].string
+            let venue = VenueData(name: name!, loc: loc, address: address!, id: place_id!)
+            
+            self.assignColorToVenue(venue: venue)
         }
         self.createMarkers()
         let next_page_json : String? = json["next_page_token"].string
@@ -143,15 +168,12 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Requires: A venue id as the key
      *  Modifies: The dictionary of venue ids to colors
      *  Effects: --
+     *
+     *  TO COMPLETE UPON DATABASE IMPLEMENTATION
      */
-    func assignColorToVenue(loc: JSON) {
-        let coords = "\(loc["lat"]),\(loc["lng"])"
-        
-        // Make database query to get genre of location
-        // Make MusicManager call to get color of genre
-        if self.venuesToColors[coords] == nil {
-            self.venuesToColors[coords] = UIColor.black
-        }
+    func assignColorToVenue(venue: VenueData) {
+        venue.color = UIColor.black
+        self.venues.append(venue)
     }
     
     /*
@@ -160,13 +182,22 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Creates colored markers of Places
      */
     func createMarkers() {
-        for (venue, color) in self.venuesToColors {
-            let lat = Double(String(venue.characters.split(separator: ",")[0]))
-            let long = Double(String(venue.characters.split(separator: ",")[1]))
-            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat!, longitude: long!))
-            marker.icon = GMSMarker.markerImage(with: color)
-            self.markers.append(marker)
+        for venue in self.venues {
+            let lat = venue.location.latitude
+            let long = venue.location.longitude
+            
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
+            marker.icon = GMSMarker.markerImage(with: venue.color)
+            marker.title = venue.name
+            marker.snippet = venue.address
             marker.map = self.gmap
+            
+            let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: 10)
+            circle.fillColor = venue.color
+            circle.fillColor?.withAlphaComponent(0.5)
+            circle.map = self.gmap
+            
+            self.markers.append((marker, circle))
         }
     }
     
