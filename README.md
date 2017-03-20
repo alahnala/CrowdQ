@@ -2,10 +2,16 @@
 
 Download and open the app: 
 
+## App Setup
 1. Open Sphere.xcworkspace in Xcode on Mac. 
 2. Connect a phone via USB to Mac.
 3. Set the active scheme (next to the Build and Stop buttons) to Sphere -> Device -> < phone you connected >
 4. With the phone unlocked, hit Build on Xcode and wait for the app to open on the phone. 
+
+## Server Setup
+1. Install dependencies "$ npm install"
+2. export PORT=(pick a port number)
+3. node server.js &
 
 Our MVP will help users know where to go by displaying the genre playing at a certain venue. 
 
