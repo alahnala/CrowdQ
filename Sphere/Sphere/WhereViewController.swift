@@ -110,12 +110,12 @@ class WhereViewController : UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell : UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "CELL")! as UITableViewCell
+        let cell : UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "CELL")! as UITableViewCell
         cell.textLabel?.text = self.options[indexPath.row]
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         print("You selected cell #\(indexPath.row)!")
     }
     

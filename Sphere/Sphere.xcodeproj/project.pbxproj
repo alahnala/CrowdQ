@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B524971E7F128A005D6C46 /* UserTypeController.swift */; };
-		06B5249D1E7F25CC005D6C46 /* TestingAutocomplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5249C1E7F25CC005D6C46 /* TestingAutocomplete.swift */; };
 		06B524A01E7F3F30005D6C46 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5249E1E7F3F30005D6C46 /* MusicManager.swift */; };
 		06B524A11E7F3F30005D6C46 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5249F1E7F3F30005D6C46 /* UserData.swift */; };
 		06B524A51E7F6B60005D6C46 /* VenueData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B524A41E7F6B60005D6C46 /* VenueData.swift */; };
 		112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8C51E2EC99E0059E4DC /* AppDelegate.swift */; };
-		112CD8C81E2EC99E0059E4DC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8C71E2EC99E0059E4DC /* ViewController.swift */; };
 		112CD8CB1E2EC99E0059E4DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112CD8C91E2EC99E0059E4DC /* Main.storyboard */; };
 		112CD8CE1E2EC99E0059E4DC /* Sphere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8CC1E2EC99E0059E4DC /* Sphere.xcdatamodeld */; };
 		112CD8D01E2EC99E0059E4DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 112CD8CF1E2EC99E0059E4DC /* Assets.xcassets */; };
@@ -22,11 +20,11 @@
 		112CD8E91E2EC99E0059E4DC /* SphereUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8E81E2EC99E0059E4DC /* SphereUITests.swift */; };
 		112CD8F81E2ECB4D0059E4DC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8F71E2ECB4D0059E4DC /* MapViewController.swift */; };
 		112CD8FD1E2ED07B0059E4DC /* globe.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD8FC1E2ED07A0059E4DC /* globe.png */; };
-		112CD9001E2ED2440059E4DC /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD8FF1E2ED2440059E4DC /* FeedViewController.swift */; };
 		112CD9111E2ED84B0059E4DC /* globe-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD90E1E2ED84A0059E4DC /* globe-dim.png */; };
 		112CD9121E2ED84B0059E4DC /* paper-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD90F1E2ED84B0059E4DC /* paper-dim.png */; };
 		112CD9131E2ED84B0059E4DC /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD9101E2ED84B0059E4DC /* paper.png */; };
 		112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */; };
+		11EC41EA1E7F8A6C00908AD6 /* genres_to_colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 11EC41E91E7F8A6C00908AD6 /* genres_to_colors.json */; };
 		11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */; };
 		11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */; };
 		B319FC6558B75D3366437451 /* libPods-Sphere.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FD065D8BCAE12BA91B031E86 /* libPods-Sphere.a */; };
@@ -51,13 +49,11 @@
 
 /* Begin PBXFileReference section */
 		06B524971E7F128A005D6C46 /* UserTypeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTypeController.swift; sourceTree = "<group>"; };
-		06B5249C1E7F25CC005D6C46 /* TestingAutocomplete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAutocomplete.swift; sourceTree = "<group>"; };
 		06B5249E1E7F3F30005D6C46 /* MusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
 		06B5249F1E7F3F30005D6C46 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		06B524A41E7F6B60005D6C46 /* VenueData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueData.swift; sourceTree = "<group>"; };
 		112CD8C21E2EC99E0059E4DC /* Sphere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sphere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		112CD8C51E2EC99E0059E4DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		112CD8C71E2EC99E0059E4DC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		112CD8CA1E2EC99E0059E4DC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		112CD8CD1E2EC99E0059E4DC /* Sphere.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Sphere.xcdatamodel; sourceTree = "<group>"; };
 		112CD8CF1E2EC99E0059E4DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -71,11 +67,11 @@
 		112CD8EA1E2EC99E0059E4DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		112CD8F71E2ECB4D0059E4DC /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		112CD8FC1E2ED07A0059E4DC /* globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = globe.png; path = Assets.xcassets/images/globe.png; sourceTree = "<group>"; };
-		112CD8FF1E2ED2440059E4DC /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		112CD90E1E2ED84A0059E4DC /* globe-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "globe-dim.png"; path = "Assets.xcassets/images/globe-dim.png"; sourceTree = "<group>"; };
 		112CD90F1E2ED84B0059E4DC /* paper-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper-dim.png"; path = "Assets.xcassets/images/paper-dim.png"; sourceTree = "<group>"; };
 		112CD9101E2ED84B0059E4DC /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper.png; path = Assets.xcassets/images/paper.png; sourceTree = "<group>"; };
 		112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPI.swift; sourceTree = "<group>"; };
+		11EC41E91E7F8A6C00908AD6 /* genres_to_colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genres_to_colors.json; sourceTree = "<group>"; };
 		11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereViewController.swift; sourceTree = "<group>"; };
 		B72EE54F59D9A746A6B611A8 /* Pods-Sphere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sphere.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sphere/Pods-Sphere.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,30 +105,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06B524991E7F1B1A005D6C46 /* WhereViewController */ = {
-			isa = PBXGroup;
-			children = (
-				11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */,
-			);
-			name = WhereViewController;
-			sourceTree = "<group>";
-		};
-		06B5249A1E7F1B2F005D6C46 /* UserViewController */ = {
-			isa = PBXGroup;
-			children = (
-				06B524971E7F128A005D6C46 /* UserTypeController.swift */,
-			);
-			name = UserViewController;
-			sourceTree = "<group>";
-		};
-		06B5249B1E7F25A8005D6C46 /* TestingAutocomplete */ = {
-			isa = PBXGroup;
-			children = (
-				06B5249C1E7F25CC005D6C46 /* TestingAutocomplete.swift */,
-			);
-			name = TestingAutocomplete;
-			sourceTree = "<group>";
-		};
 		112CD8B91E2EC99D0059E4DC = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +130,10 @@
 		112CD8C41E2EC99E0059E4DC /* Sphere */ = {
 			isa = PBXGroup;
 			children = (
+				11EC41E91E7F8A6C00908AD6 /* genres_to_colors.json */,
+				06B524A41E7F6B60005D6C46 /* VenueData.swift */,
+				06B5249E1E7F3F30005D6C46 /* MusicManager.swift */,
+				06B5249F1E7F3F30005D6C46 /* UserData.swift */,
 				112CD9141E2ED85A0059E4DC /* APIs */,
 				112CD8FB1E2ED03B0059E4DC /* Images */,
 				112CD8F91E2ECB630059E4DC /* ViewControllers */,
@@ -189,26 +165,12 @@
 			path = SphereUITests;
 			sourceTree = "<group>";
 		};
-		112CD8F61E2ECB360059E4DC /* MapViewController */ = {
-			isa = PBXGroup;
-			children = (
-				112CD8F71E2ECB4D0059E4DC /* MapViewController.swift */,
-			);
-			name = MapViewController;
-			sourceTree = "<group>";
-		};
 		112CD8F91E2ECB630059E4DC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				06B5249B1E7F25A8005D6C46 /* TestingAutocomplete */,
-				112CD8FE1E2ED22E0059E4DC /* FeedViewController */,
-				112CD8F61E2ECB360059E4DC /* MapViewController */,
-				112CD8C71E2EC99E0059E4DC /* ViewController.swift */,
-				06B524A41E7F6B60005D6C46 /* VenueData.swift */,
-				06B5249E1E7F3F30005D6C46 /* MusicManager.swift */,
-				06B5249F1E7F3F30005D6C46 /* UserData.swift */,
-				06B524991E7F1B1A005D6C46 /* WhereViewController */,
-				06B5249A1E7F1B2F005D6C46 /* UserViewController */,
+				11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */,
+				112CD8F71E2ECB4D0059E4DC /* MapViewController.swift */,
+				06B524971E7F128A005D6C46 /* UserTypeController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -222,14 +184,6 @@
 				112CD8FC1E2ED07A0059E4DC /* globe.png */,
 			);
 			name = Images;
-			sourceTree = "<group>";
-		};
-		112CD8FE1E2ED22E0059E4DC /* FeedViewController */ = {
-			isa = PBXGroup;
-			children = (
-				112CD8FF1E2ED2440059E4DC /* FeedViewController.swift */,
-			);
-			name = FeedViewController;
 			sourceTree = "<group>";
 		};
 		112CD9141E2ED85A0059E4DC /* APIs */ = {
@@ -329,7 +283,7 @@
 				TargetAttributes = {
 					112CD8C11E2EC99D0059E4DC = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 5U538WKEMM;
+						DevelopmentTeam = JQM7NB255N;
 						ProvisioningStyle = Automatic;
 					};
 					112CD8D81E2EC99E0059E4DC = {
@@ -375,6 +329,7 @@
 				112CD8FD1E2ED07B0059E4DC /* globe.png in Resources */,
 				112CD9131E2ED84B0059E4DC /* paper.png in Resources */,
 				112CD9111E2ED84B0059E4DC /* globe-dim.png in Resources */,
+				11EC41EA1E7F8A6C00908AD6 /* genres_to_colors.json in Resources */,
 				112CD8D01E2EC99E0059E4DC /* Assets.xcassets in Resources */,
 				112CD8CB1E2EC99E0059E4DC /* Main.storyboard in Resources */,
 				112CD9121E2ED84B0059E4DC /* paper-dim.png in Resources */,
@@ -450,12 +405,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				112CD8C81E2EC99E0059E4DC /* ViewController.swift in Sources */,
 				112CD8CE1E2EC99E0059E4DC /* Sphere.xcdatamodeld in Sources */,
-				112CD9001E2ED2440059E4DC /* FeedViewController.swift in Sources */,
 				112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */,
 				06B524A01E7F3F30005D6C46 /* MusicManager.swift in Sources */,
-				06B5249D1E7F25CC005D6C46 /* TestingAutocomplete.swift in Sources */,
 				06B524A11E7F3F30005D6C46 /* UserData.swift in Sources */,
 				112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */,
 				06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */,
@@ -613,10 +565,10 @@
 			baseConfigurationReference = B72EE54F59D9A746A6B611A8 /* Pods-Sphere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5U538WKEMM;
+				DEVELOPMENT_TEAM = JQM7NB255N;
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.allie.Sphere;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chuckry.Sphere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -627,10 +579,10 @@
 			baseConfigurationReference = C1560F535F327D6C81B83912 /* Pods-Sphere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5U538WKEMM;
+				DEVELOPMENT_TEAM = JQM7NB255N;
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.allie.Sphere;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chuckry.Sphere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

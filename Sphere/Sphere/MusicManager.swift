@@ -14,7 +14,7 @@ class MusicManager {
     var genresToColors = [String:String]()
     
     // Pull JSON data from file
-    init() {
+    func gatherGenresToColors() {
         if let path = Bundle.main.path(forResource: "genres_to_colors", ofType: "json") {
             do {
                 let contents = try String(contentsOfFile: path)
@@ -24,6 +24,8 @@ class MusicManager {
             } catch {
                 print("Error getting genre to color mapping!")
             }
+        } else {
+            print("WE GOTTA PROBLEM")
         }
     }
     
@@ -33,9 +35,9 @@ class MusicManager {
      *  Effects: Returns the genre's corresponding color as a UIColor
      */
     func getColorFromGenre(genre: String) -> UIColor {
-        let hexVal = self.genresToColors[genre]
+        let hexVal = self.genresToColors[genre.lowercased()]
         if hexVal == nil {
-            return UIColor.black
+            return UIColor.blue
         }
         
         var rgbValue : UInt32 = 0

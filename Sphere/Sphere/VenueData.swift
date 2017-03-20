@@ -16,12 +16,14 @@ class VenueData {
     let address : String
     let id : String
     var color : UIColor
+    var genres : [String]
     
-    init(name: String, loc: CLLocationCoordinate2D, address: String, id: String) {
-        self.name = name
-        self.location = loc
-        self.address = address
-        self.id = id
+    init(name: String?, loc: CLLocationCoordinate2D?, address: String?, id: String?) {
+        self.name = name!
+        self.location = loc!
+        self.address = address!
+        self.id = id!
         self.color = UIColor.black
+        self.genres = []
     }
 }
