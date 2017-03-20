@@ -242,7 +242,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
             marker.icon = GMSMarker.markerImage(with: venue.color)
             marker.title = venue.name
-            marker.snippet = venue.genres.isEmpty ? venue.address : venue.genres[0]
+            marker.snippet = venue.genres.isEmpty ? "Pop" : venue.genres[0]
             marker.map = self.gmap
             
             let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: 10)
