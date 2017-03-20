@@ -1,0 +1,24 @@
+{
+  "name": "Sphere",
+  "version": "0.0.1-1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "assert": "^1.4.1",
+    "express": "3.0.0rc2",
+    "geolib": "^2.0.22",
+    "mathjs": "^3.10.0",
+    "mongodb": "^2.2.24",
+    "q": "^1.4.1",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0",
+    "spotify-web-api-node": "^2.3.6"
+  },
+  "engines": {
+    "node": "0.8.x",
+    "npm": "1.1.x"
+  },
+  "subdomain": "express-skeleton"
+}
