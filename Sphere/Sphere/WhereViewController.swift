@@ -23,7 +23,7 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Where"
-        self.view.backgroundColor = UIColor.gray
+        self.view.backgroundColor = UIColor.black
         
         // Set up tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WhereViewController.dismissKeyboard))
@@ -84,7 +84,11 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     
     func postVendorInformation() {
         if (self.nameTextField.text?.isEmpty)! || (self.searchController?.searchBar.text?.isEmpty)! {
-            print("All fields must be filled out!")
+            let missingFieldsAlert = UIAlertController(title: "Missing field(s)", message: "All fields must be filled out!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            missingFieldsAlert.addAction(okAction)
+            self.present(missingFieldsAlert, animated: true)
+            // print("All fields must be filled out!")
             return
         } else {
             print("Got information properly!")
