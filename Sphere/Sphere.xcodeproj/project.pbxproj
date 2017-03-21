@@ -303,7 +303,7 @@
 				TargetAttributes = {
 					112CD8C11E2EC99D0059E4DC = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 5U538WKEMM;
+						DevelopmentTeam = JQM7NB255N;
 						ProvisioningStyle = Automatic;
 					};
 					112CD8D81E2EC99E0059E4DC = {
@@ -589,10 +589,10 @@
 			baseConfigurationReference = B72EE54F59D9A746A6B611A8 /* Pods-Sphere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5U538WKEMM;
+				DEVELOPMENT_TEAM = JQM7NB255N;
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.allie.Sphere;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chuckry.Sphere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -603,10 +603,10 @@
 			baseConfigurationReference = C1560F535F327D6C81B83912 /* Pods-Sphere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 5U538WKEMM;
+				DEVELOPMENT_TEAM = JQM7NB255N;
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.allie.Sphere;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chuckry.Sphere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

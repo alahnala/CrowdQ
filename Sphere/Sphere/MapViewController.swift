@@ -118,7 +118,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         let loc = manager.location!.coordinate
         UserData.sharedInstance.currentLocation = loc
         
-        print("Got location!")
         self.gmapView.gmapView.delegate = self
         self.gmapView.gmapView.indoorDisplay.delegate = self
         self.gmapView.returnToUserTypeButton.addTarget(self, action: #selector(self.returnToUserTypeButtonPressed), for: .touchUpInside)
@@ -203,7 +202,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  TO COMPLETE UPON DATABASE IMPLEMENTATION
      */
     func assignColorToVenue(venue: VenueData) {
-        venue.color = UIColor.blue
+        venue.color = UIColor.white
         let loc = "\(venue.location.latitude),\(venue.location.longitude)"
         for (dataLoc, genres) in self.nearbyLocsToGenres {
             let nearbyLat = Double(loc.components(separatedBy: ",")[0])!
@@ -220,7 +219,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     }
     
     // when user tap the info window of store marker, show the product list
-    func mapView(_ mapView: GMSMapView!, didTapInfoWindowOf marker: GMSMarker!) {
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         print("tapinfo works")
         let venueViewController = VenueViewController(marker: marker)
         //venueViewController.marker = marker
