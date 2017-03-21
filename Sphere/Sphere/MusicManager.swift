@@ -37,7 +37,7 @@ class MusicManager {
     func getColorFromGenre(genre: String) -> UIColor {
         let hexVal = self.genresToColors[genre.lowercased()]
         if hexVal == nil {
-            return UIColor.blue
+            return UIColor.white
         }
         
         var rgbValue : UInt32 = 0
