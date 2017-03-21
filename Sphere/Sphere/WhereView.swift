@@ -18,7 +18,7 @@ class WhereView : UIView {
     
     init() {
         super.init(frame: UIScreen.main.bounds)
-        self.backgroundColor = UIColor.gray
+        self.backgroundColor = UIColor.black
         self.backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
         self.backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
         self.backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)

@@ -58,8 +58,17 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     }
     
     func postVendorInformation() {
+<<<<<<< HEAD
         if (self.whereView.nameTextField.text?.isEmpty)! || (self.searchController?.searchBar.text?.isEmpty)! {
             print("All fields must be filled out!")
+=======
+        if (self.nameTextField.text?.isEmpty)! || (self.searchController?.searchBar.text?.isEmpty)! {
+            let missingFieldsAlert = UIAlertController(title: "Missing field(s)", message: "All fields must be filled out!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            missingFieldsAlert.addAction(okAction)
+            self.present(missingFieldsAlert, animated: true)
+            // print("All fields must be filled out!")
+>>>>>>> master
             return
         }
         information["name"] = self.whereView.nameTextField.text!
