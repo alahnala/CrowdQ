@@ -16,6 +16,9 @@ class WhereView : UIView {
     let submitButton = UIButton(type: .system)
     let nameTextField = UITextField()
     
+    /*
+     *  Create all necessary buttons and text fields
+     */
     init() {
         super.init(frame: UIScreen.main.bounds)
         self.backgroundColor = UIColor.black
@@ -40,6 +43,9 @@ class WhereView : UIView {
         self.nameTextField.returnKeyType = UIReturnKeyType.done
     }
 
+    /*
+     *  Add initialized views as subviews
+     */
     func initializeAllViews() {
         self.addSubview(backButton)
         self.addSubview(submitButton)

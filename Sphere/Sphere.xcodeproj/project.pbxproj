@@ -28,6 +28,7 @@
 		11C4FC8C1E8196B8004F299F /* WhereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC8B1E8196B8004F299F /* WhereView.swift */; };
 		11C4FC8E1E8196DC004F299F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC8D1E8196DC004F299F /* MapView.swift */; };
 		11C4FC901E8196FE004F299F /* UserTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC8F1E8196FE004F299F /* UserTypeView.swift */; };
+		11C4FC921E81C515004F299F /* VenueView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC911E81C515004F299F /* VenueView.swift */; };
 		11EC41EA1E7F8A6C00908AD6 /* genres_to_colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 11EC41E91E7F8A6C00908AD6 /* genres_to_colors.json */; };
 		11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */; };
 		11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */; };
@@ -79,6 +80,7 @@
 		11C4FC8B1E8196B8004F299F /* WhereView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereView.swift; sourceTree = "<group>"; };
 		11C4FC8D1E8196DC004F299F /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		11C4FC8F1E8196FE004F299F /* UserTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTypeView.swift; sourceTree = "<group>"; };
+		11C4FC911E81C515004F299F /* VenueView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueView.swift; sourceTree = "<group>"; };
 		11EC41E91E7F8A6C00908AD6 /* genres_to_colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genres_to_colors.json; sourceTree = "<group>"; };
 		11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				11C4FC8B1E8196B8004F299F /* WhereView.swift */,
 				11C4FC8D1E8196DC004F299F /* MapView.swift */,
 				11C4FC8F1E8196FE004F299F /* UserTypeView.swift */,
+				11C4FC911E81C515004F299F /* VenueView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */,
 				11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */,
 				11C4FC8C1E8196B8004F299F /* WhereView.swift in Sources */,
+				11C4FC921E81C515004F299F /* VenueView.swift in Sources */,
 				06B524A51E7F6B60005D6C46 /* VenueData.swift in Sources */,
 				11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */,
 				112CD8F81E2ECB4D0059E4DC /* MapViewController.swift in Sources */,

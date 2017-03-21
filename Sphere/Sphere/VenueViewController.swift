@@ -11,52 +11,38 @@ import Foundation
 import GoogleMaps
 
 class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
-    let backButton = UIButton(type: .system)
+    
+    var venueView : VenueView
     var marker : GMSMarker
     
-    init(marker: GMSMarker)
-    {
+    /*
+     *  Create VenueView Page and addTarget to its subViews
+     */
+    init(marker: GMSMarker) {
         self.marker = marker
+        self.venueView = VenueView(marker: self.marker)
         super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.title = "Venue"
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Venue"
-        self.view.backgroundColor = UIColor.white
-        
-        
-        //add backbutton
-        backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
-        backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
-        backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
-        backButton.setTitle("Back", for: .normal)
-        backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
-        backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
-        self.view.addSubview(backButton)
-        
-        displayText()
+        self.venueView.initializeAllViews()
+        self.venueView.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
+        self.view.addSubview(venueView)
     }
     
-    func displayText() {
-        let textBox = UITextField(frame: CGRect(x: 250, y: 250, width: 200, height: 40.00))
-        self.view.addSubview(textBox)
-        textBox.backgroundColor = UIColor.white
-        
-        textBox.text = marker.title
-        
-        textBox.borderStyle = UITextBorderStyle.line
-    }
-    
+    /*
+     *  Switch back to MapViewController
+     */
     func backButtonPressed() {
         print("Back Button pressed!")
-        //change for better naming?
         let mapTypeController = MapViewController()
         self.present(mapTypeController, animated: true, completion: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func didReceiveMemoryWarning() {

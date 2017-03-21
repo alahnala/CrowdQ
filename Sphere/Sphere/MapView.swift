@@ -41,18 +41,7 @@ class MapView : UIView {
         marker.position = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
         marker.map = self.gmapView
         
-        self.initializeAllViews()
         return self.gmapView
-    }
-    
-    /*
-     *  Sets all views as subviews of this class
-     */
-    func initializeAllViews() {
-        self.addSubview(returnToUserTypeButton)
-        self.addSubview(gmapView)
-        self.bringSubview(toFront: gmapView)
-        self.bringSubview(toFront: returnToUserTypeButton)
     }
     
     /*

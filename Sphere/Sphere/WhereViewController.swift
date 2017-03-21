@@ -65,6 +65,8 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
         information["name"] = self.whereView.nameTextField.text!
         print(information)
         
+        RestManager.sharedInstance.registerVendor(userId: UserData.sharedInstance.userId, name: "Chob Bob", lat: Double(information["lat"]!)!, lng: Double(information["lng"]!)!, address: information["address"]!, venue: information["venueName"]!)
+        
         let mapViewController = MapViewController()
         self.present(mapViewController, animated: true, completion: nil)
     }
@@ -134,7 +136,7 @@ extension WhereViewController: GMSAutocompleteResultsViewControllerDelegate {
         information["venueName"] = place.name
         information["lat"] = String(place.coordinate.latitude)
         information["lng"] = String(place.coordinate.longitude)
-//        information["address"] = place.formattedAddress!
+        information["address"] = place.formattedAddress!
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,

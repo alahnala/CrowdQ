@@ -12,10 +12,10 @@ import GoogleMaps
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
-    let locationManager = CLLocationManager()
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
+    var locationManager = CLLocationManager()
     var PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
-    let gmapView = MapView()
+    var gmapView = MapView()
 
     var databaseVenues : JSON = []
     var nearbyLocsToGenres = [String:[String]]()
@@ -55,12 +55,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         // make the request
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
-            
             if error != nil {
                 print("ERROR: \(error)")
                 return
             }
-            
             let json = JSON(data: data!)
             for j in json.array! {
                 let loc = "\(j["lat"]),\(j["lng"])"
@@ -75,6 +73,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
                     }
                 }
             }
+            
             self.setupLocation()
             if !self.nearbyLocsToGenres.isEmpty {
                 return
@@ -89,7 +88,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Moves user back to initial page
      */
     func returnToUserTypeButtonPressed() {
-        print("Change button pressed!")
         let userTypeController = UserTypeController()
         self.present(userTypeController, animated: true, completion: nil)
     }
@@ -100,33 +98,40 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Updates location using iOS hardware
      */
     func setupLocation() {
-        // Pop-up asking user to authorize location services
-        self.locationManager.requestAlwaysAuthorization()
-        
-        // Give us permission to use location in-app
-        self.locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
+        DispatchQueue.main.async {
+            
+            self.locationManager = CLLocationManager()
             self.locationManager.delegate = self
-            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            self.locationManager.startUpdatingLocation()
+            
+            // Pop-up asking user to authorize location services
+            self.locationManager.requestAlwaysAuthorization()
+        
+            // Give us permission to use location in-app
+            self.locationManager.requestWhenInUseAuthorization()
+            if CLLocationManager.locationServicesEnabled() {
+                self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                self.locationManager.startUpdatingLocation()
+            }
         }
     }
     
     // When device finds GPS coordinates, render the Map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.locationManager.stopUpdatingLocation()
         let loc = manager.location!.coordinate
         UserData.sharedInstance.currentLocation = loc
         
+        self.gmapView = MapView()
         self.gmapView.returnToUserTypeButton.addTarget(self, action: #selector(self.returnToUserTypeButtonPressed), for: .touchUpInside)
         self.gmapView.gmapView = self.gmapView.renderGoogleMap(loc: loc)
         self.gmapView.gmapView.delegate = self
         self.gmapView.gmapView.indoorDisplay.delegate = self
         self.view = self.gmapView.gmapView
+        self.view.addSubview(self.gmapView.returnToUserTypeButton)
+        self.view.bringSubview(toFront: self.gmapView.returnToUserTypeButton)
+    
         self.makePlacesRequest()
-        
-        self.locationManager.stopUpdatingLocation()
-    }
+    }   
     
     /*
      *  Requires: --
@@ -199,8 +204,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Requires: A venue id as the key
      *  Modifies: The dictionary of venue ids to colors
      *  Effects: --
-     *
-     *  TO COMPLETE UPON DATABASE IMPLEMENTATION
      */
     func assignColorToVenue(venue: VenueData) {
         venue.color = UIColor.white
@@ -219,19 +222,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         }
     }
     
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
-    }
-    
     // when user tap the info window of store marker, show the product list
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        print("tapinfo works")
         let venueViewController = VenueViewController(marker: marker)
-        //venueViewController.marker = marker
         self.present(venueViewController, animated: true, completion: nil)
-        //let storeMarker = marker as StoreMarker
-        //performSegueWithIdentifier("productMenu", sender: storeMarker.store)
-        
     }
     
     override func didReceiveMemoryWarning() {
