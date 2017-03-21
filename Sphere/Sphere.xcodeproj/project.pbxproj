@@ -24,6 +24,9 @@
 		112CD9121E2ED84B0059E4DC /* paper-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD90F1E2ED84B0059E4DC /* paper-dim.png */; };
 		112CD9131E2ED84B0059E4DC /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD9101E2ED84B0059E4DC /* paper.png */; };
 		112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */; };
+		11C4FC8C1E8196B8004F299F /* WhereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC8B1E8196B8004F299F /* WhereView.swift */; };
+		11C4FC8E1E8196DC004F299F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC8D1E8196DC004F299F /* MapView.swift */; };
+		11C4FC901E8196FE004F299F /* UserTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC8F1E8196FE004F299F /* UserTypeView.swift */; };
 		11EC41EA1E7F8A6C00908AD6 /* genres_to_colors.json in Resources */ = {isa = PBXBuildFile; fileRef = 11EC41E91E7F8A6C00908AD6 /* genres_to_colors.json */; };
 		11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */; };
 		11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */; };
@@ -71,6 +74,9 @@
 		112CD90F1E2ED84B0059E4DC /* paper-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper-dim.png"; path = "Assets.xcassets/images/paper-dim.png"; sourceTree = "<group>"; };
 		112CD9101E2ED84B0059E4DC /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper.png; path = Assets.xcassets/images/paper.png; sourceTree = "<group>"; };
 		112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPI.swift; sourceTree = "<group>"; };
+		11C4FC8B1E8196B8004F299F /* WhereView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereView.swift; sourceTree = "<group>"; };
+		11C4FC8D1E8196DC004F299F /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		11C4FC8F1E8196FE004F299F /* UserTypeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTypeView.swift; sourceTree = "<group>"; };
 		11EC41E91E7F8A6C00908AD6 /* genres_to_colors.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = genres_to_colors.json; sourceTree = "<group>"; };
 		11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +142,7 @@
 				06B5249F1E7F3F30005D6C46 /* UserData.swift */,
 				112CD9141E2ED85A0059E4DC /* APIs */,
 				112CD8FB1E2ED03B0059E4DC /* Images */,
+				11C4FC8A1E819672004F299F /* Views */,
 				112CD8F91E2ECB630059E4DC /* ViewControllers */,
 				112CD8C51E2EC99E0059E4DC /* AppDelegate.swift */,
 				112CD8C91E2EC99E0059E4DC /* Main.storyboard */,
@@ -193,6 +200,16 @@
 				11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */,
 			);
 			name = APIs;
+			sourceTree = "<group>";
+		};
+		11C4FC8A1E819672004F299F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				11C4FC8B1E8196B8004F299F /* WhereView.swift */,
+				11C4FC8D1E8196DC004F299F /* MapView.swift */,
+				11C4FC8F1E8196FE004F299F /* UserTypeView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		2A27EA55F7B9B39304BBC7AD /* Pods */ = {
@@ -406,12 +423,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				112CD8CE1E2EC99E0059E4DC /* Sphere.xcdatamodeld in Sources */,
+				11C4FC8E1E8196DC004F299F /* MapView.swift in Sources */,
 				112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */,
 				06B524A01E7F3F30005D6C46 /* MusicManager.swift in Sources */,
+				11C4FC901E8196FE004F299F /* UserTypeView.swift in Sources */,
 				06B524A11E7F3F30005D6C46 /* UserData.swift in Sources */,
 				112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */,
 				06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */,
 				11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */,
+				11C4FC8C1E8196B8004F299F /* WhereView.swift in Sources */,
 				06B524A51E7F6B60005D6C46 /* VenueData.swift in Sources */,
 				11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */,
 				112CD8F81E2ECB4D0059E4DC /* MapViewController.swift in Sources */,
