@@ -118,10 +118,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         let loc = manager.location!.coordinate
         UserData.sharedInstance.currentLocation = loc
         
+        self.gmapView.returnToUserTypeButton.addTarget(self, action: #selector(self.returnToUserTypeButtonPressed), for: .touchUpInside)
+        self.gmapView.gmapView = self.gmapView.renderGoogleMap(loc: loc)
         self.gmapView.gmapView.delegate = self
         self.gmapView.gmapView.indoorDisplay.delegate = self
-        self.gmapView.returnToUserTypeButton.addTarget(self, action: #selector(self.returnToUserTypeButtonPressed), for: .touchUpInside)
-        self.view = self.gmapView.renderGoogleMap(loc: loc)
+        self.view = self.gmapView.gmapView
         self.makePlacesRequest()
         
         self.locationManager.stopUpdatingLocation()
@@ -216,6 +217,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
                 break
             }
         }
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
     }
     
     // when user tap the info window of store marker, show the product list
