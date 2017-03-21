@@ -12,7 +12,7 @@ import GoogleMaps
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
-    let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+    var PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
     let THRESHOLD = 30
     
     let locationManager = CLLocationManager()
@@ -111,6 +111,8 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         UserData.sharedInstance.currentLocation = loc
         
         let mapView = renderGoogleMap(loc: loc)
+        //attempt segue
+        
         self.makePlacesRequest()
         
         self.view = mapView
@@ -235,6 +237,8 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: Creates colored markers of Places
      */
     func createMarkers() {
+        //mapView_.delegate = self;
+
         for venue in self.venues {
             let lat = venue.location.latitude
             let long = venue.location.longitude
@@ -249,10 +253,25 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             circle.fillColor = venue.color
             circle.fillColor?.withAlphaComponent(0.5)
             circle.map = self.gmap
+            //add target to markers
             
             self.markers.append((marker, circle))
         }
     }
+    
+    // when user tap the info window of store marker, show the product list
+    func mapView(_ mapView: GMSMapView!, didTapInfoWindowOf marker: GMSMarker!) {
+        print("tapinfo works")
+        let venueViewController = VenueViewController(marker: marker)
+        //venueViewController.marker = marker
+        self.present(venueViewController, animated: true, completion: nil)
+        
+        //let storeMarker = marker as StoreMarker
+        //performSegueWithIdentifier("productMenu", sender: storeMarker.store)
+        
+    }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
