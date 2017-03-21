@@ -17,13 +17,14 @@ class UserTypeController: UIViewController {
     
     
     let explorer = UIButton()
-    let userTypeView = UserTypeView()
+    var userTypeView = UserTypeView()
     var userType = ""
     
     override func viewDidLoad() {
         DispatchQueue.main.async {
             super.viewDidLoad()
             self.title = "User"
+            self.userTypeView = UserTypeView()
             self.userTypeView.initializeAllViews()
             self.userTypeView.vendorButton.addTarget(self, action: #selector(self.vendorButtonPressed), for: .touchUpInside)
             self.userTypeView.explorerButton.addTarget(self, action: #selector(self.explorerButtonPressed), for: .touchUpInside)
