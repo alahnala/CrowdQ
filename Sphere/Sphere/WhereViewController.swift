@@ -12,9 +12,7 @@ import GooglePlaces
 
 class WhereViewController : UIViewController, UITextFieldDelegate {
     
-    let backButton = UIButton(type: .system)
-    let submitButton = UIButton(type: .system)
-    let nameTextField = UITextField()
+    let whereView = WhereView()
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
     var resultView: UITextView?
@@ -23,37 +21,14 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Where"
-        self.view.backgroundColor = UIColor.black
+        self.whereView.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
+        self.whereView.submitButton.addTarget(self, action: #selector(self.postVendorInformation), for: .touchUpInside)
+        self.whereView.initializeAllViews()
+        self.view = self.whereView
         
         // Set up tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WhereViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
-        backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
-        backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
-        backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
-        backButton.setTitle("Back", for: .normal)
-        backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
-        backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
-        self.view.addSubview(backButton)
-        
-        submitButton.frame = CGRect(x: 200, y: 200, width: 50, height: 50)
-        submitButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
-        submitButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
-        submitButton.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height - 100)
-        submitButton.setTitle("Submit", for: .normal)
-        submitButton.addTarget(self, action: #selector(self.postVendorInformation), for: .touchUpInside)
-        self.view.addSubview(submitButton)
-        
-        nameTextField.placeholder = "Enter your name"
-        nameTextField.frame = CGRect(x: 0, y: 150, width: 300, height: 60)
-        nameTextField.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 3)
-        nameTextField.textAlignment = NSTextAlignment.center
-        nameTextField.backgroundColor = .white
-        nameTextField.layer.cornerRadius = 5
-        nameTextField.returnKeyType = UIReturnKeyType.done
-        nameTextField.delegate = self
-        self.view.addSubview(nameTextField)
         
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -83,18 +58,15 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     }
     
     func postVendorInformation() {
-        if (self.nameTextField.text?.isEmpty)! || (self.searchController?.searchBar.text?.isEmpty)! {
-            let missingFieldsAlert = UIAlertController(title: "Missing field(s)", message: "All fields must be filled out!", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default)
-            missingFieldsAlert.addAction(okAction)
-            self.present(missingFieldsAlert, animated: true)
-            // print("All fields must be filled out!")
+        if (self.whereView.nameTextField.text?.isEmpty)! || (self.searchController?.searchBar.text?.isEmpty)! {
+            print("All fields must be filled out!")
             return
-        } else {
-            print("Got information properly!")
-            information["name"] = nameTextField.text!
-            print(information)
         }
+        information["name"] = self.whereView.nameTextField.text!
+        print(information)
+        
+        let mapViewController = MapViewController()
+        self.present(mapViewController, animated: true, completion: nil)
     }
     
     /* --------- Making POST request to the server ---------

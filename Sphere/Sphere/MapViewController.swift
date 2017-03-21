@@ -12,18 +12,15 @@ import GoogleMaps
 
 class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
-    let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
-    let THRESHOLD = 30
-    
     let locationManager = CLLocationManager()
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
-    let changeButton = UIButton(frame: CGRect(x: 15, y: 20, width: 100, height: 50))
+    let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+    let gmapView = MapView()
 
     var databaseVenues : JSON = []
     var nearbyLocsToGenres = [String:[String]]()
     var venues = [VenueData]()
     var markers = [(GMSMarker, GMSCircle)]()
-    var gmap = GMSMapView()
     var markersOnMap = true
     
     override func viewDidLoad() {
@@ -33,6 +30,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         self.getVenueData()
     }
     
+    /*
+     *  Requires: --
+     *  Modifies: nearbyLocsToGenres Dictionary
+     *  Effects: --
+     */
     func getVenueData() {
         let todoEndpoint: String = "https://sgodbold.com:3000/venues?lat=42.29117&lng=-83.71572&radius=10000"
         guard let url = URL(string: todoEndpoint) else {
@@ -80,7 +82,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: Current view controller
      *  Effects: Moves user back to initial page
      */
-    func changeButtonPressed() {
+    func returnToUserTypeButtonPressed() {
         print("Change button pressed!")
         let userTypeController = UserTypeController()
         self.present(userTypeController, animated: true, completion: nil)
@@ -110,43 +112,25 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         let loc = manager.location!.coordinate
         UserData.sharedInstance.currentLocation = loc
         
-        let mapView = renderGoogleMap(loc: loc)
+        print("Got location!")
+        self.gmapView.gmapView.delegate = self
+        self.gmapView.gmapView.indoorDisplay.delegate = self
+        self.gmapView.returnToUserTypeButton.addTarget(self, action: #selector(self.returnToUserTypeButtonPressed), for: .touchUpInside)
+        self.view = self.gmapView.renderGoogleMap(loc: loc)
         self.makePlacesRequest()
-        
-        self.view = mapView
-        self.view.bringSubview(toFront: mapView)
-        
-        changeButton.setTitle("Back", for: .normal)
-        changeButton.titleLabel!.font = UIFont.systemFont(ofSize: 16)
-        changeButton.setTitleColor(UIColor.black, for: .normal)
-        changeButton.backgroundColor = UIColor.white
-        changeButton.layer.cornerRadius = 5
-        changeButton.layer.borderWidth = 1
-        changeButton.layer.borderColor = UIColor.black.cgColor
-        changeButton.addTarget(self, action: #selector(self.changeButtonPressed), for: .touchUpInside)
-        self.view.addSubview(changeButton)
-        self.view.bringSubview(toFront: changeButton)
         
         self.locationManager.stopUpdatingLocation()
     }
     
     /*
-     *  Requires: Current location and names for current title
-     *  Modifies: None
-     *  Effects: Creates a Google Map View around the user's current location
+     *  Requires: --
+     *  Modifies: Array of Map Markers
+     *  Effects: Creates colored markers of Places
      */
-    func renderGoogleMap(loc: CLLocationCoordinate2D) -> GMSMapView {
-        let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 16.0)
-        self.gmap = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        self.gmap.isMyLocationEnabled = true
-        self.gmap.delegate = self
-        self.gmap.indoorDisplay.delegate = self
-        self.gmap.settings.myLocationButton = true
-    
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
-        marker.map = self.gmap
-        return gmap
+    func createVenueMarkers() {
+        for venue in self.venues {
+            self.markers.append(self.gmapView.createMarker(venue: venue))
+        }
     }
     
     /*
@@ -200,7 +184,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             
             self.assignColorToVenue(venue: venue)
         }
-        self.createMarkers()
+        self.createVenueMarkers()
         let next_page_json : String? = json["next_page_token"].string
         return next_page_json
     }
@@ -226,31 +210,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
                 venue.color = MusicManager.sharedInstance.getColorFromGenre(genre: genres[0])
                 break
             }
-        }
-    }
-    
-    /*
-     *  Requires: --
-     *  Modifies: Array of Map Markers
-     *  Effects: Creates colored markers of Places
-     */
-    func createMarkers() {
-        for venue in self.venues {
-            let lat = venue.location.latitude
-            let long = venue.location.longitude
-            
-            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
-            marker.icon = GMSMarker.markerImage(with: venue.color)
-            marker.title = venue.name
-            marker.snippet = venue.genres.isEmpty ? "Pop" : venue.genres[0]
-            marker.map = self.gmap
-            
-            let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: 10)
-            circle.fillColor = venue.color
-            circle.fillColor?.withAlphaComponent(0.5)
-            circle.map = self.gmap
-            
-            self.markers.append((marker, circle))
         }
     }
     
