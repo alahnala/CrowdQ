@@ -14,7 +14,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
     let locationManager = CLLocationManager()
     let availablePlaceTypes = ["restaurant", "bar", "night_club", "cafe"]
-    let PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
+    var PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
     let gmapView = MapView()
 
     var databaseVenues : JSON = []
@@ -55,6 +55,12 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         // make the request
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+            
+            if error != nil {
+                print("ERROR: \(error)")
+                return
+            }
+            
             let json = JSON(data: data!)
             for j in json.array! {
                 let loc = "\(j["lat"]),\(j["lng"])"
@@ -211,6 +217,17 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
                 break
             }
         }
+    }
+    
+    // when user tap the info window of store marker, show the product list
+    func mapView(_ mapView: GMSMapView!, didTapInfoWindowOf marker: GMSMarker!) {
+        print("tapinfo works")
+        let venueViewController = VenueViewController(marker: marker)
+        //venueViewController.marker = marker
+        self.present(venueViewController, animated: true, completion: nil)
+        //let storeMarker = marker as StoreMarker
+        //performSegueWithIdentifier("productMenu", sender: storeMarker.store)
+        
     }
     
     override func didReceiveMemoryWarning() {

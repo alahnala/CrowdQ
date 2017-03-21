@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		065FFCD01E819C210049D7BC /* VenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 065FFCCF1E819C210049D7BC /* VenueViewController.swift */; };
 		06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B524971E7F128A005D6C46 /* UserTypeController.swift */; };
 		06B524A01E7F3F30005D6C46 /* MusicManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5249E1E7F3F30005D6C46 /* MusicManager.swift */; };
 		06B524A11E7F3F30005D6C46 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06B5249F1E7F3F30005D6C46 /* UserData.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		065FFCCF1E819C210049D7BC /* VenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueViewController.swift; sourceTree = "<group>"; };
 		06B524971E7F128A005D6C46 /* UserTypeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTypeController.swift; sourceTree = "<group>"; };
 		06B5249E1E7F3F30005D6C46 /* MusicManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicManager.swift; sourceTree = "<group>"; };
 		06B5249F1E7F3F30005D6C46 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 				11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */,
 				112CD8F71E2ECB4D0059E4DC /* MapViewController.swift */,
 				06B524971E7F128A005D6C46 /* UserTypeController.swift */,
+				065FFCCF1E819C210049D7BC /* VenueViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -300,7 +303,7 @@
 				TargetAttributes = {
 					112CD8C11E2EC99D0059E4DC = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = JQM7NB255N;
+						DevelopmentTeam = 5U538WKEMM;
 						ProvisioningStyle = Automatic;
 					};
 					112CD8D81E2EC99E0059E4DC = {
@@ -422,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				065FFCD01E819C210049D7BC /* VenueViewController.swift in Sources */,
 				112CD8CE1E2EC99E0059E4DC /* Sphere.xcdatamodeld in Sources */,
 				11C4FC8E1E8196DC004F299F /* MapView.swift in Sources */,
 				112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */,
@@ -585,10 +589,10 @@
 			baseConfigurationReference = B72EE54F59D9A746A6B611A8 /* Pods-Sphere.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = JQM7NB255N;
+				DEVELOPMENT_TEAM = 5U538WKEMM;
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chuckry.Sphere;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.allie.Sphere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -599,10 +603,10 @@
 			baseConfigurationReference = C1560F535F327D6C81B83912 /* Pods-Sphere.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = JQM7NB255N;
+				DEVELOPMENT_TEAM = 5U538WKEMM;
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.chuckry.Sphere;
+				PRODUCT_BUNDLE_IDENTIFIER = edu.umich.allie.Sphere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
