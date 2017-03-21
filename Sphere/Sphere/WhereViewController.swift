@@ -10,63 +10,64 @@ import UIKit
 import Foundation
 import GooglePlaces
 
-class WhereViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class WhereViewController : UIViewController, UITextFieldDelegate {
     
-    let textBox = UITextField()
-    let submitButton = UIButton(type: .system)
     let backButton = UIButton(type: .system)
-    @IBOutlet
-    var tableView : UITableView! = UITableView()
-    var options = [String]()
+    let submitButton = UIButton(type: .system)
+    let nameTextField = UITextField()
+    var resultsViewController: GMSAutocompleteResultsViewController?
+    var searchController: UISearchController?
+    var resultView: UITextView?
+    var information: [String:String] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Where"
         self.view.backgroundColor = UIColor.gray
         
-        // Set up the text box
-        textBox.frame = CGRect(x: 20, y: 100, width: self.view.bounds.width - 20, height: 40)
-        textBox.center.x = self.view.center.x
-        textBox.textAlignment = .justified
-        textBox.backgroundColor = UIColor.white
-        textBox.borderStyle = .roundedRect
-        textBox.placeholder = "Enter Full Address Here"
-        textBox.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        self.view.addSubview(textBox)
-        
-        tableView.frame = CGRect(x: 20, y: 150, width: self.view.bounds.width - 20, height: 200)
-        tableView.center.x = self.view.center.x
-        tableView.backgroundColor = UIColor.white
-        tableView.isHidden = true
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.view.addSubview(tableView)
-        
-        //set up tap
+        // Set up tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WhereViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        // Set up the submit button
-        submitButton.frame = CGRect(x: 0, y: 340, width: self.view.bounds.width, height: 100)
-        submitButton.setTitle("Next", for: .normal)
-        submitButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
-        submitButton.addTarget(self, action: #selector(self.submitButtonPressed), for: .touchUpInside)
-        self.view.addSubview(submitButton)
-        
         backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
+        backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
+        backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
         backButton.setTitle("Back", for: .normal)
         backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
         self.view.addSubview(backButton)
-    }
-    
-    
-    // Called when the submitButton's pressed
-    func submitButtonPressed() {
-        print("Submit Button pressed! You typed: \(textBox.text!)")
-        UserData.sharedInstance.userVenueLocation = textBox.text!
-        let mapViewController = MapViewController()
-        self.present(mapViewController, animated: true, completion: nil)
+        
+        submitButton.frame = CGRect(x: 200, y: 200, width: 50, height: 50)
+        submitButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
+        submitButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
+        submitButton.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height - 100)
+        submitButton.setTitle("Submit", for: .normal)
+        submitButton.addTarget(self, action: #selector(self.postVendorInformation), for: .touchUpInside)
+        self.view.addSubview(submitButton)
+        
+        nameTextField.placeholder = "Enter your name"
+        nameTextField.frame = CGRect(x: 0, y: 150, width: 300, height: 60)
+        nameTextField.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 3)
+        nameTextField.textAlignment = NSTextAlignment.center
+        nameTextField.backgroundColor = .white
+        nameTextField.layer.cornerRadius = 5
+        nameTextField.returnKeyType = UIReturnKeyType.done
+        nameTextField.delegate = self
+        self.view.addSubview(nameTextField)
+        
+        resultsViewController = GMSAutocompleteResultsViewController()
+        resultsViewController?.delegate = self
+        
+        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController?.searchResultsUpdater = resultsViewController
+        searchController?.searchBar.sizeToFit()
+        searchController?.hidesNavigationBarDuringPresentation = false
+        let subView = UIView(frame: CGRect(x: 0, y: 65.0, width: 350.0, height: 100))
+        subView.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4)
+        subView.addSubview((searchController?.searchBar)!)
+        self.view.addSubview(subView)
+        
+        definesPresentationContext = true
     }
     
     func backButtonPressed() {
@@ -75,65 +76,69 @@ class WhereViewController : UIViewController, UITableViewDelegate, UITableViewDa
         self.present(userTypeController, animated: true, completion: nil)
     }
     
-    func textFieldDidChange(_ textField: UITextField) {
-        return
-        if !(textField.text?.isEmpty)! {
-            tableView.isHidden = false
-        }
-        placeAutocomplete(text: textField.text)
-    }
-    
-    func placeAutocomplete(text: String?) {
-        let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
-        let placesClient = GMSPlacesClient()
-        
-        placesClient.autocompleteQuery(text!, bounds: nil, filter: filter, callback: {
-            (results, error) -> Void in
-            if let error = error {
-                print("Autocomplete Error: \(error)")
-                return
-            }
-            if let results = results {
-                for result in results {
-                    self.options.append((result.attributedSecondaryText?.string)!)
-                    print("PRIMARY: \(result.attributedPrimaryText)")
-                    print("SECONDARY: \(result.attributedSecondaryText)")
-                }
-            }
-            
-        })
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
-        return self.options.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "CELL")! as UITableViewCell
-        cell.textLabel?.text = self.options[indexPath.row]
-        return cell
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
-        print("You selected cell #\(indexPath.row)!")
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
     
+    func postVendorInformation() {
+        if (self.nameTextField.text?.isEmpty)! || (self.searchController?.searchBar.text?.isEmpty)! {
+            print("All fields must be filled out!")
+            return
+        } else {
+            print("Got information properly!")
+            information["name"] = nameTextField.text!
+            print(information)
+        }
+    }
     
-    // return name and coordinates
+    func getVendorGenre() {
+        
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+// Handle the user's selection.
+extension WhereViewController: GMSAutocompleteResultsViewControllerDelegate {
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didAutocompleteWith place: GMSPlace) {
+        searchController?.isActive = false
+        // Do something with the selected place.
+        print("Place name: \(place.name)")
+        print("Place address: \(place.formattedAddress)")
+        print("Place attributions: \(place.attributions)")
+        searchController?.searchBar.text = place.name
+        
+        information["venueName"] = place.name
+        information["lat"] = String(place.coordinate.latitude)
+        information["lng"] = String(place.coordinate.longitude)
+//        information["address"] = place.formattedAddress!
+    }
+    
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didFailAutocompleteWithError error: Error){
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
 }
 
 

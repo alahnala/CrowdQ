@@ -20,7 +20,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     let changeButton = UIButton(frame: CGRect(x: 15, y: 20, width: 100, height: 50))
 
     var databaseVenues : JSON = []
-    var locToGenres = [String:[String]]()
+    var nearbyLocsToGenres = [String:[String]]()
     var venues = [VenueData]()
     var markers = [(GMSMarker, GMSCircle)]()
     var gmap = GMSMapView()
@@ -57,18 +57,18 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             for j in json.array! {
                 let loc = "\(j["lat"]),\(j["lng"])"
                 
-                if self.locToGenres[loc] == nil {
-                    self.locToGenres[loc] = [String]()
+                if self.nearbyLocsToGenres[loc] == nil {
+                    self.nearbyLocsToGenres[loc] = [String]()
                 }
                 
-                for g in j["genres"].array! {
-                    if !(self.locToGenres[loc]?.contains(g.string!))! {
-                        self.locToGenres[loc]!.append(g.string!)
+                for g in j["musicTaste"].array! {
+                    if !(self.nearbyLocsToGenres[loc]?.contains(g.string!))! {
+                        self.nearbyLocsToGenres[loc]!.append(g.string!)
                     }
                 }
             }
             self.setupLocation()
-            if !self.locToGenres.isEmpty {
+            if !self.nearbyLocsToGenres.isEmpty {
                 return
             }
         })
@@ -215,7 +215,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     func assignColorToVenue(venue: VenueData) {
         venue.color = UIColor.blue
         let loc = "\(venue.location.latitude),\(venue.location.longitude)"
-        for (dataLoc, genres) in self.locToGenres {
+        for (dataLoc, genres) in self.nearbyLocsToGenres {
             let nearbyLat = Double(loc.components(separatedBy: ",")[0])!
             let nearbyLong = Double(loc.components(separatedBy: ",")[1])!
             let dataLat = Double(dataLoc.components(separatedBy: ",")[0])!

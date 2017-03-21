@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Sphere/genres_to_colors.json">
-   </FileRef>
-   <FileRef
       location = "group:Sphere.xcodeproj">
    </FileRef>
    <FileRef
