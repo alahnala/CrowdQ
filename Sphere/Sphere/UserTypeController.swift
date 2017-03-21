@@ -15,43 +15,18 @@ import UIKit
 
 class UserTypeController: UIViewController {
     
-    let vendor = UIButton()
+    
     let explorer = UIButton()
-    let label = UILabel()
+    let userTypeView = UserTypeView()
     var userType = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.title = "User"
-        
-        label.frame = CGRect(x: 0, y: 0, width: 200, height: 75)
-        label.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
-        label.center = CGPoint(x: 187.5, y: 100)
-        label.textAlignment = .center
-        label.text = "I am a ..."
-        label.font = label.font.withSize(45)
-        self.view.addSubview(label)
-        
-        // Set up the vendor button
-        vendor.setTitle("Vendor", for: .normal)
-        vendor.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
-        vendor.titleLabel!.font = UIFont.systemFont(ofSize: 26)
-        vendor.bounds = CGRect(x: 0, y: 0, width: 300, height: 100)
-        vendor.center = CGPoint(x: 187.5, y: 250)
-        vendor.layer.cornerRadius = 10
-        vendor.addTarget(self, action: #selector(self.vendorButtonPressed), for: .touchUpInside)
-        self.view.addSubview(vendor)
-        
-        // Set up the explorer button
-        explorer.setTitle("Explorer", for: .normal)
-        explorer.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
-        explorer.titleLabel!.font = UIFont.systemFont(ofSize: 26)
-        explorer.bounds = CGRect(x: 0, y: 0, width: 300, height: 100)
-        explorer.center = CGPoint(x: 187.5, y: 400)
-        explorer.layer.cornerRadius = 10
-        explorer.addTarget(self, action: #selector(self.explorerButtonPressed), for: .touchUpInside)
-        self.view.addSubview(explorer)
+        self.userTypeView.initializeAllViews()
+        self.userTypeView.vendorButton.addTarget(self, action: #selector(self.vendorButtonPressed), for: .touchUpInside)
+        self.userTypeView.explorerButton.addTarget(self, action: #selector(self.explorerButtonPressed), for: .touchUpInside)
+        self.view.addSubview(userTypeView)
 
     }
     
