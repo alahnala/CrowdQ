@@ -23,26 +23,44 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
         self.venueView = VenueView(marker: self.marker)
         super.init(nibName: nil, bundle: nil)
         self.title = "Venue"
+        self.view.addSubview(self.venueView)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
+        print("zzz: made it here")
         super.viewDidLoad()
-        self.venueView.initializeAllViews()
+        print("zzz: view did load")
         self.venueView.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
-        self.view.addSubview(venueView)
+        self.venueView.checkinButton.addTarget(self, action: #selector(self.checkinButtonPressed), for: .touchUpInside)
     }
     
-    /*
-     *  Switch back to MapViewController
-     */
     func backButtonPressed() {
         print("Back Button pressed!")
         let mapTypeController = MapViewController()
         self.present(mapTypeController, animated: true, completion: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
+    // Called when venue button pressed
+    func checkinButtonPressed() {
+        // Send JSON info to server
+        print("Check-In Pressed")
+        
+        self.venueView.checkinButton.isHidden = true
+        //checked in
+        self.venueView.checked.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+        self.venueView.checked.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        self.venueView.checked.center = CGPoint(x: 187.5, y: 500)
+        self.venueView.checked.textAlignment = .center
+        self.venueView.checked.text = "Checked in!"
+        
+        self.venueView.checked.font = self.venueView.label.font.withSize(40)
+        
+        self.venueView.showGenre()
     }
     
     override func didReceiveMemoryWarning() {

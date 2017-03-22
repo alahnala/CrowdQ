@@ -11,42 +11,96 @@ import UIKit
 import GoogleMaps
 
 class VenueView : UIView {
-    
+
+    var marker = GMSMarker() 
     let backButton = UIButton(type: .system)
-    let textField = UITextField()
+    let checkinButton = UIButton()
+    let label = UILabel()
+    let checked = UILabel()
+    let theMoodsAreLabel = UILabel()
+    let genreLabel = UILabel()
     
-    /*
-     *  Create all necessary buttons and text fields
-     */
+    // TODO: Allow user to submit genres
     init(marker: GMSMarker) {
+        self.marker = marker
         super.init(frame: UIScreen.main.bounds)
-        self.backgroundColor = UIColor.white
         
-        // Add backbutton
-        self.backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
-        self.backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
-        self.backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
-        self.backButton.setTitle("Back", for: .normal)
-        self.backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
+        // back button
+        backButton.frame = CGRect(x: 8, y: 8, width: 50, height: 50)
+        backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
+        backButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
+        backButton.setTitle("Back", for: .normal)
+        backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         
-        self.textField.frame = CGRect(x: 250, y: 250, width: 200, height: 40.00)
-        self.textField.backgroundColor = UIColor.black
-        self.textField.textColor = UIColor.white
-        self.textField.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2)
-        self.textField.text = marker.title
-        self.textField.textAlignment = .center
-        self.textField.borderStyle = UITextBorderStyle.line
+        // check in button
+        checkinButton.setTitle("Check-In", for: .normal)
+        checkinButton.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        checkinButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
+        checkinButton.bounds = CGRect(x: 0, y: 0, width: 300, height: 100)
+        checkinButton.center = CGPoint(x: 187.5, y: 250)
+        checkinButton.layer.cornerRadius = 10
+        
+        
+        displayVenueName()
+        initializeAllViews()
+    }
+    
+    func displayVenueName() {
+        print("Displaying Venue Name")
+        label.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+        //label.backgroundColor = UIColor.white
+        label.center = CGPoint(x: 187.5, y: 100)
+        label.textAlignment = .center
+        label.text = marker.title
+        label.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        label.font = label.font.withSize(32)
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        print("\(label.text)")
+    }
+    
+    
+    // TODO: Call backend rather than use default array
+    func showGenre() {
+        let genres = ["Pop", "Rock", "Family Friendly"]
+        
+        // "The Moods for <Venue> are ... "
+        theMoodsAreLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+        theMoodsAreLabel.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        theMoodsAreLabel.center = CGPoint(x: 187.5, y: 200)
+        theMoodsAreLabel.textAlignment = .center
+        theMoodsAreLabel.text = "The moods for \(marker.title!) are listed as"
+        theMoodsAreLabel.font = label.font.withSize(20)
+        theMoodsAreLabel.lineBreakMode = .byWordWrapping
+        theMoodsAreLabel.numberOfLines = 0
+        
+        genreLabel.text = genres.joined(separator: ", ")
+        
+        genreLabel.frame = CGRect(x: 0, y: 200, width: 300, height: 100)
+        genreLabel.center = CGPoint(x: 187.5, y: 350)
+        genreLabel.font = label.font.withSize(32)
+        genreLabel.textAlignment = .center
+        genreLabel.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        genreLabel.lineBreakMode = .byWordWrapping
+        genreLabel.numberOfLines = 0
     }
     
     /*
      *  Add initialized views as subviews
      */
     func initializeAllViews() {
-        self.addSubview(self.backButton)
-        self.addSubview(self.textField)
+        self.addSubview(backButton)
+        self.addSubview(checkinButton)
+        self.addSubview(label)
+        self.addSubview(checked)
+        self.addSubview(theMoodsAreLabel)
+        self.addSubview(genreLabel)
+        self.bringSubview(toFront: label)
+        print("zzz: initialize called")
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+        //super.init(coder: aDecoder)
     }
 }
