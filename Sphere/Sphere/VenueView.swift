@@ -11,7 +11,7 @@ import UIKit
 import GoogleMaps
 
 class VenueView : UIView {
-    var marker = GMSMarker() 
+    var marker = GMSMarker()
     let backButton = UIButton(type: .system)
     let checkinButton = UIButton()
     let label = UILabel()
@@ -21,8 +21,8 @@ class VenueView : UIView {
     let theMoodsAreLabel = UILabel()
     let genreLabel = UILabel()
     
-    init(marker: GMSMarker)
-    {
+    // TODO: Allow user to submit genres
+    init(marker: GMSMarker) {
         self.marker = marker
         super.init(frame: UIScreen.main.bounds)
         
@@ -45,9 +45,11 @@ class VenueView : UIView {
         initializeAllViews()
     }
     
-    // venue name
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func displayVenueName() {
-        //title
         print("Displaying Venue Name")
         label.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
         //label.backgroundColor = UIColor.white
@@ -61,10 +63,9 @@ class VenueView : UIView {
         print("\(label.text)")
     }
     
-    
+    //call backend to get genre
+    // TODO: Call backend rather than use default array
     func showGenre() {
-        
-        //call backend to get genre
         let genres = ["Pop", "Rock", "Family Friendly"]
         
         // "The Moods for <Venue> are ... "
@@ -88,6 +89,10 @@ class VenueView : UIView {
         genreLabel.numberOfLines = 0
     }
     
+    
+    /*
+     *  Add initialized views as subviews
+     */
     func initializeAllViews() {
         self.addSubview(backButton)
         self.addSubview(checkinButton)
@@ -95,14 +100,11 @@ class VenueView : UIView {
         self.addSubview(checked)
         self.addSubview(theMoodsAreLabel)
         self.addSubview(genreLabel)
-        //self.bringSubview(toFront: label)
+        
         self.addSubview(confirmMood)
         self.addSubview(suggestMood)
+        //self.bringSubview(toFront: label)
         print("zzz: initialize called")
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        //super.init(coder: aDecoder)
-    }
 }

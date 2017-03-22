@@ -32,7 +32,6 @@ class MapView : UIView {
      *  Effects: Creates a Google Map View around the user's current location
      */
     func renderGoogleMap(loc: CLLocationCoordinate2D) -> GMSMapView {
-        print("Should be giving location!")
         let camera = GMSCameraPosition.camera(withLatitude: loc.latitude, longitude: loc.longitude, zoom: 16.0)
         self.gmapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         self.gmapView.isMyLocationEnabled = true
@@ -42,18 +41,7 @@ class MapView : UIView {
         marker.position = CLLocationCoordinate2D(latitude: loc.latitude, longitude: loc.longitude)
         marker.map = self.gmapView
         
-        self.initializeAllViews()
         return self.gmapView
-    }
-    
-    /*
-     *  Sets all views as subviews of this class
-     */
-    func initializeAllViews() {
-        self.addSubview(returnToUserTypeButton)
-        self.addSubview(gmapView)
-        self.bringSubview(toFront: gmapView)
-        self.bringSubview(toFront: returnToUserTypeButton)
     }
     
     /*

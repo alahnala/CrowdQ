@@ -15,6 +15,9 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
     var marker : GMSMarker
     var venueView : VenueView
     
+    /*
+     *  Create VenueView Page and addTarget to its subViews
+     */
     init(marker: GMSMarker) {
         self.marker = marker
         self.venueView = VenueView(marker: self.marker)
@@ -82,7 +85,7 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
         self.venueView.checked.center = CGPoint(x: 187.5, y: 500)
         self.venueView.checked.textAlignment = .center
         self.venueView.checked.text = "Checked in!"
-    
+        
         self.venueView.checked.font = self.venueView.label.font.withSize(40)
     }
     
@@ -94,10 +97,13 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
         self.venueView.theMoodsAreLabel.isHidden = true
         
         //Renders text box
+        
+        self.venueView.checked.font = self.venueView.label.font.withSize(40)
+        
+        self.venueView.showGenre()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
-

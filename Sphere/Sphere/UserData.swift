@@ -12,6 +12,7 @@ import UIKit
 
 class UserData {
     static let sharedInstance = UserData()
+    var userId : String = ""
     var userIsExplorer : Bool = true
     var userVenueLocation : String = ""
     var currentLocation = CLLocationCoordinate2D()
