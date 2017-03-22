@@ -23,7 +23,7 @@ class VenueData {
         self.location = loc!
         self.address = address!
         self.id = id!
-        self.color = UIColor.black
+        self.color = UIColor.white
         self.genres = []
     }
 }
