@@ -60,16 +60,17 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
                 return
             }
             let json = JSON(data: data!)
+            
             for j in json.array! {
-                let loc = "\(j["lat"]),\(j["lng"])"
+                let locAddress = j["address"].string!
                 
-                if self.nearbyLocsToGenres[loc] == nil {
-                    self.nearbyLocsToGenres[loc] = [String]()
+                if self.nearbyLocsToGenres[locAddress] == nil {
+                    self.nearbyLocsToGenres[locAddress] = [String]()
                 }
                 
                 for g in j["musicTaste"].array! {
-                    if !(self.nearbyLocsToGenres[loc]?.contains(g.string!))! {
-                        self.nearbyLocsToGenres[loc]!.append(g.string!)
+                    if !(self.nearbyLocsToGenres[locAddress]?.contains(g.string!))! {
+                        self.nearbyLocsToGenres[locAddress]!.append(g.string!)
                     }
                 }
             }
@@ -207,14 +208,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      */
     func assignColorToVenue(venue: VenueData) {
         venue.color = UIColor.white
-        let loc = "\(venue.location.latitude),\(venue.location.longitude)"
-        for (dataLoc, genres) in self.nearbyLocsToGenres {
-            let nearbyLat = Double(loc.components(separatedBy: ",")[0])!
-            let nearbyLong = Double(loc.components(separatedBy: ",")[1])!
-            let dataLat = Double(dataLoc.components(separatedBy: ",")[0])!
-            let dataLong = Double(dataLoc.components(separatedBy: ",")[1])!
-            
-            if abs(nearbyLat - dataLat) < 0.0001 && abs(nearbyLong - dataLong) < 0.0001 {
+        let currVenueAddr = venue.address
+        for (addr, genres) in self.nearbyLocsToGenres {
+            if currVenueAddr == addr {
+                print(addr)
                 venue.genres = genres
                 venue.color = MusicManager.sharedInstance.getColorFromGenre(genre: genres[0])
                 break

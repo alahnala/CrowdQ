@@ -62,8 +62,6 @@ class VenueView : UIView {
     
     // TODO: Call backend rather than use default array
     func showGenre() {
-        let genres = ["Pop", "Rock", "Family Friendly"]
-        
         // "The Moods for <Venue> are ... "
         theMoodsAreLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
         theMoodsAreLabel.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
@@ -74,8 +72,7 @@ class VenueView : UIView {
         theMoodsAreLabel.lineBreakMode = .byWordWrapping
         theMoodsAreLabel.numberOfLines = 0
         
-        genreLabel.text = genres.joined(separator: ", ")
-        
+        genreLabel.text = self.marker.snippet
         genreLabel.frame = CGRect(x: 0, y: 200, width: 300, height: 100)
         genreLabel.center = CGPoint(x: 187.5, y: 350)
         genreLabel.font = label.font.withSize(32)

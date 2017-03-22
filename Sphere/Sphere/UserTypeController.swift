@@ -14,8 +14,6 @@ import Foundation
 import UIKit
 
 class UserTypeController: UIViewController {
-    
-    
     let explorer = UIButton()
     var userTypeView = UserTypeView()
     var userType = ""
@@ -59,7 +57,11 @@ class UserTypeController: UIViewController {
     // Output: Success/Failure
     func sendExplorerInfo() {
         let jsonPostString = ""
-        RestManager.sharedInstance.registerExplorer(userId: UserData.sharedInstance.userId, name: "Bob Chob")
+        
+        if !UserData.sharedInstance.sentInfo {
+            RestManager.sharedInstance.registerExplorer(userId: UserData.sharedInstance.userId, name: "Donkey Man")
+            UserData.sharedInstance.sentInfo = true
+        }
 
         // create post request to connect
 //        let serverURL = "https://sgodbold.com:3000/registerExplorer"
@@ -84,7 +86,7 @@ class UserTypeController: UIViewController {
 //        }
 //        task.resume()
         
-        // if response returned from server 
+        // if response returned from server
         let mapViewController = MapViewController()
         self.present(mapViewController, animated: true, completion: nil)
     }
