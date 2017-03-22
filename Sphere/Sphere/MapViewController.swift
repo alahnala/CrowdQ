@@ -118,7 +118,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
     // When device finds GPS coordinates, render the Map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.locationManager.stopUpdatingLocation()
+        
         let loc = manager.location!.coordinate
         UserData.sharedInstance.currentLocation = loc
         
@@ -132,6 +132,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         self.view.bringSubview(toFront: self.gmapView.returnToUserTypeButton)
     
         self.makePlacesRequest()
+        self.locationManager.stopUpdatingLocation()
     }   
     
     /*
@@ -208,9 +209,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      */
     func assignColorToVenue(venue: VenueData) {
         venue.color = UIColor.white
-        let currVenueAddr = venue.address
+        let currVenueAddr = venue.address.components(separatedBy: " ")[0...1].joined(separator: " ")
         for (addr, genres) in self.nearbyLocsToGenres {
-            if currVenueAddr == addr {
+            let formAddr = addr.components(separatedBy: " ")[0...1].joined(separator: " ")
+            print(currVenueAddr, formAddr)
+            if currVenueAddr == formAddr {
                 print(addr)
                 venue.genres = genres
                 venue.color = MusicManager.sharedInstance.getColorFromGenre(genre: genres[0])

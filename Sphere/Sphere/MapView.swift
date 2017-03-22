@@ -56,7 +56,7 @@ class MapView : UIView {
         let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
         marker.icon = GMSMarker.markerImage(with: venue.color)
         marker.title = venue.name
-        marker.snippet = venue.genres.isEmpty ? "Pop, Rock, Family Friendly" : Array(venue.genres[0...3]).joined(separator: ", ")
+        marker.snippet = venue.genres.isEmpty ? "Pop, Rock, Family Friendly" : Array(venue.genres[0...2]).joined(separator: ", ")
         marker.map = self.gmapView
         
         let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: 10)
