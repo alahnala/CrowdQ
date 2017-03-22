@@ -16,6 +16,8 @@ class VenueView : UIView {
     let checkinButton = UIButton()
     let label = UILabel()
     let checked = UILabel()
+    let confirmMood = UIButton()
+    let suggestMood = UIButton()
     let theMoodsAreLabel = UILabel()
     let genreLabel = UILabel()
     
@@ -32,13 +34,12 @@ class VenueView : UIView {
         backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         
         // check in button
-        checkinButton.setTitle("Check-In", for: .normal)
-        checkinButton.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        checkinButton.setTitle("Check In", for: .normal)
+        checkinButton.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1)
         checkinButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
         checkinButton.bounds = CGRect(x: 0, y: 0, width: 300, height: 100)
         checkinButton.center = CGPoint(x: 187.5, y: 250)
         checkinButton.layer.cornerRadius = 10
-        
         
         displayVenueName()
         initializeAllViews()
@@ -53,7 +54,7 @@ class VenueView : UIView {
         label.center = CGPoint(x: 187.5, y: 100)
         label.textAlignment = .center
         label.text = marker.title
-        label.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        label.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1.0)
         label.font = label.font.withSize(32)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
@@ -68,7 +69,7 @@ class VenueView : UIView {
         
         // "The Moods for <Venue> are ... "
         theMoodsAreLabel.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
-        theMoodsAreLabel.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        theMoodsAreLabel.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1)
         theMoodsAreLabel.center = CGPoint(x: 187.5, y: 200)
         theMoodsAreLabel.textAlignment = .center
         theMoodsAreLabel.text = "The moods for \(marker.title!) are listed as"
@@ -79,10 +80,10 @@ class VenueView : UIView {
         genreLabel.text = genres.joined(separator: ", ")
         
         genreLabel.frame = CGRect(x: 0, y: 200, width: 300, height: 100)
-        genreLabel.center = CGPoint(x: 187.5, y: 350)
+        genreLabel.center = CGPoint(x: 187.5, y: 275)
         genreLabel.font = label.font.withSize(32)
         genreLabel.textAlignment = .center
-        genreLabel.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        genreLabel.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1)
         genreLabel.lineBreakMode = .byWordWrapping
         genreLabel.numberOfLines = 0
     }
@@ -94,7 +95,9 @@ class VenueView : UIView {
         self.addSubview(checked)
         self.addSubview(theMoodsAreLabel)
         self.addSubview(genreLabel)
-        self.bringSubview(toFront: label)
+        //self.bringSubview(toFront: label)
+        self.addSubview(confirmMood)
+        self.addSubview(suggestMood)
         print("zzz: initialize called")
     }
     
