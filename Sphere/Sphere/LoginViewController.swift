@@ -14,6 +14,8 @@ class LoginViewController: UIViewController {
     let ClientID = "a21eb5ea7b434b80acd97c263cdd6726"
     let RedirectURL = URL(string: "sphere-login://callback")
     let NotificationName = "SafariViewControllerDidCompleteLogin"
+    let homeTitle = UILabel()
+    let homeDescription = UILabel()
     // let loginButton = UIButton()
     
     var spotifyLoginButton : UIButton?
@@ -29,14 +31,37 @@ class LoginViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "background")
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+
+    
+        homeTitle.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 75)
+        homeTitle.textColor = UIColor.white
+        homeTitle.center = CGPoint(x: 187.5, y: 250)
+        homeTitle.textAlignment = .center
+        homeTitle.text = "Sphere"
+        homeTitle.font = homeTitle.font.withSize(52)
+        
+        homeDescription.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 75)
+        homeDescription.textColor = UIColor.white
+        homeDescription.center = CGPoint(x: 187.5, y: 300)
+        homeDescription.textAlignment = .center
+        homeDescription.text = "Let music guide your exploration"
+        homeDescription.font = homeDescription.font.withSize(18)
+        
+        self.view.addSubview(homeTitle)
+        self.view.addSubview(homeDescription)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.loginWasHandled(_:)), name: NSNotification.Name(rawValue: self.NotificationName), object: nil)
         
         let centerX = (self.view.frame.size.width / 2)
         let centerY = (self.view.frame.size.height / 2)
         
-        self.spotifyLoginButton = UIButton.init(frame: CGRect(x: centerX - 125, y: centerY - 22.5, width: 250, height: 45))
+        self.spotifyLoginButton = UIButton.init(frame: CGRect(x: centerX - 125, y: centerY + 27.5, width: 250, height: 45))
         self.spotifyLoginButton?.layer.cornerRadius = 15
-        self.spotifyLoginButton?.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
+        self.spotifyLoginButton?.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1)
         self.spotifyLoginButton?.setTitle("Log in with Spotify", for: .normal)
 //        self.spotifyLoginButton!.setImage(UIImage(named: "SpotifyLogin"), for: UIControlState())
         
