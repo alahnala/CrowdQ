@@ -31,28 +31,20 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
     }
     
     override func viewDidLoad() {
-        print("zzz: made it here")
         super.viewDidLoad()
-        print("zzz: view did load")
         self.venueView.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
         self.venueView.checkinButton.addTarget(self, action: #selector(self.checkinButtonPressed), for: .touchUpInside)
     }
     
     func backButtonPressed() {
-        print("Back Button pressed!")
-        //change for better naming?
         let mapTypeController = MapViewController()
         self.present(mapTypeController, animated: true, completion: nil)
     }
     
-    // Called when venue button pressed
     func checkinButtonPressed() {
-        // Send JSON info to server
-        print("Check-In Pressed")
         
         self.venueView.checkinButton.isHidden = true
-        //checked in
-        
+
         // validate mood button
         self.venueView.confirmMood.setTitle("Accurate!", for: .normal)
         self.venueView.confirmMood.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1)
@@ -99,7 +91,6 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
         //Renders text box
         
         self.venueView.checked.font = self.venueView.label.font.withSize(40)
-        
         self.venueView.showGenre()
     }
     

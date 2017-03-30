@@ -50,9 +50,7 @@ class VenueView : UIView {
     }
     
     func displayVenueName() {
-        print("Displaying Venue Name")
         label.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
-        //label.backgroundColor = UIColor.white
         label.center = CGPoint(x: 187.5, y: 100)
         label.textAlignment = .center
         label.text = marker.title
@@ -60,7 +58,6 @@ class VenueView : UIView {
         label.font = label.font.withSize(32)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
-        print("\(label.text)")
     }
     
     //call backend to get genre
@@ -101,7 +98,6 @@ class VenueView : UIView {
         self.addSubview(confirmMood)
         self.addSubview(suggestMood)
         //self.bringSubview(toFront: label)
-        print("zzz: initialize called")
     }
     
 }

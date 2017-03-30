@@ -25,7 +25,7 @@ class MusicManager {
                 print("Error getting genre to color mapping!")
             }
         } else {
-            print("WE GOTTA PROBLEM")
+            print("Unable to find genre to color file!")
         }
     }
     

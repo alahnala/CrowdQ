@@ -82,7 +82,6 @@ class LoginViewController: UIViewController {
     }
     
     func loginWasHandled(_ notification: Notification) {
-        print("zzz: loginWasHandled\n")
         if let session = notification.object as? SPTSession {
             self.spotifySession? = session
             userVerify(uname: session.canonicalUsername)
@@ -97,7 +96,7 @@ class LoginViewController: UIViewController {
     }
     
     func userVerify(uname: String) {
-        let todoEndpoint: String = "https://sgodbold.com:5000/userVerify?userId=" + uname
+        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/userVerify?userId=" + uname
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -109,13 +108,19 @@ class LoginViewController: UIViewController {
         let session = URLSession.shared
         
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+            
+            if error != nil {
+                print("User Verification failed with error: \(error)")
+                return
+            }
+            
             let responseData = String(data: data!, encoding: String.Encoding.utf8)
             if responseData == "usernoexist" {
-                print("zzz: USER DOES NOT EXIST. CREATE NEW ONE")
+                print("USER DOES NOT EXIST. CREATE NEW ONE")
                 let userTypeController = UserTypeController()
                 self.present(userTypeController, animated: true, completion: nil)
             } else {
-                print("zzz: USER EXISTS. WE NEED TO KNOW WHAT TYPE OF USER THEY ARE")
+                print("USER EXISTS. WE NEED TO KNOW WHAT TYPE OF USER THEY ARE")
                 if responseData == "vendor" {
                     UserData.sharedInstance.userIsExplorer = false
                 } else {
@@ -124,9 +129,6 @@ class LoginViewController: UIViewController {
                 let mapViewController = MapViewController()
                 self.present(mapViewController, animated: true, completion: nil)
             }
-            print("zzz: \(responseData!)")
-            print("zzz: \(response!)")
-            print("zzz: \(error)")
         })
         
         task.resume()

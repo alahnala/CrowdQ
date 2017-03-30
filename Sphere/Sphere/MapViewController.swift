@@ -17,8 +17,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     var PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
     var gmapView = MapView()
 
-    var databaseVenues : JSON = []
-    var nearbyLocsToGenres = [String:[String]]()
+    var databaseVenuesToGenres = [VenueData:[String]]()
     var venues = [VenueData]()
     var markers = [(GMSMarker, GMSCircle)]()
     var markersOnMap = true
@@ -32,11 +31,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
     /*
      *  Requires: --
-     *  Modifies: nearbyLocsToGenres Dictionary
+     *  Modifies: databaseVenuesToGenres Dictionary
      *  Effects: --
      */
     func getVenueData() {
-        let todoEndpoint: String = "https://sgodbold.com:3000/venues?lat=42.29117&lng=-83.71572&radius=10000"
+        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/venues?lat=42.29117&lng=-83.71572&radius=10000"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -62,21 +61,25 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             let json = JSON(data: data!)
             
             for j in json.array! {
-                let locAddress = j["address"].string!
+                let coords = CLLocationCoordinate2D(latitude: Double(j["lat"].double!), longitude: Double(j["lng"].double!))
+                let placeID = j["placeID"] == JSON.null ? "" : j["placeID"].string
+                let registeredVenue = VenueData(name: j["name"].string, loc: coords, address: j["address"].string, id: placeID)
+                registeredVenue.printInfo()
                 
-                if self.nearbyLocsToGenres[locAddress] == nil {
-                    self.nearbyLocsToGenres[locAddress] = [String]()
+                
+                if self.databaseVenuesToGenres[registeredVenue] == nil {
+                    self.databaseVenuesToGenres[registeredVenue] = [String]()
                 }
                 
                 for g in j["musicTaste"].array! {
-                    if !(self.nearbyLocsToGenres[locAddress]?.contains(g.string!))! {
-                        self.nearbyLocsToGenres[locAddress]!.append(g.string!)
+                    if !(self.databaseVenuesToGenres[registeredVenue]?.contains(g.string!))! {
+                        self.databaseVenuesToGenres[registeredVenue]!.append(g.string!)
                     }
                 }
             }
             
             self.setupLocation()
-            if !self.nearbyLocsToGenres.isEmpty {
+            if !self.databaseVenuesToGenres.isEmpty {
                 return
             }
         })
@@ -100,7 +103,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      */
     func setupLocation() {
         DispatchQueue.main.async {
-            
             self.locationManager = CLLocationManager()
             self.locationManager.delegate = self
             
@@ -133,17 +135,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
         self.makePlacesRequest()
         self.locationManager.stopUpdatingLocation()
-    }   
-    
-    /*
-     *  Requires: --
-     *  Modifies: Array of Map Markers
-     *  Effects: Creates colored markers of Places
-     */
-    func createVenueMarkers() {
-        for venue in self.venues {
-            self.markers.append(self.gmapView.createMarker(venue: venue))
-        }
     }
     
     /*
@@ -151,12 +142,12 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: venuesToColors dictionary
      #  Effects: Creates colored markers to match each incoming location
      */
-    func makePlacesRequest() {
+    func makePlacesRequest(pt: String = "") {
         let venueTypes = self.availablePlaceTypes.joined(separator: "|")
         let loc = (self.locationManager.location?.coordinate)!
-        let places_key = GoogleAPI.sharedInstance.getCurrentKey()
+        let placesKey = GoogleAPI.sharedInstance.getCurrentKey()
         
-        let params = "key=\(places_key)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)"
+        let params = "key=\(placesKey)&location=\(loc.latitude),\(loc.longitude)&rankby=distance&types=\(venueTypes)\(pt)"
         let requestURL = URL(string: (PLACES_URL + params.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!))
         let request = URLRequest(url: requestURL!)
 
@@ -188,39 +179,42 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         let results = json["results"]
         for result in results {
-            let loc = CLLocationCoordinate2D(latitude: CLLocationDegrees(result.1["geometry"]["location"]["lat"].float!), longitude: CLLocationDegrees(result.1["geometry"]["location"]["lng"].float!))
-            let address = result.1["vicinity"].string
-            let place_id = result.1["id"].string
-            let name = result.1["name"].string
-            let venue = VenueData(name: name!, loc: loc, address: address!, id: place_id!)
-            self.venues.append(venue)
             
-            self.assignColorToVenue(venue: venue)
+            let loc = CLLocationCoordinate2D(latitude: CLLocationDegrees(result.1["geometry"]["location"]["lat"].double!), longitude: CLLocationDegrees(result.1["geometry"]["location"]["lng"].double!))
+            let address = result.1["vicinity"].string
+            let placeID = result.1["placeID"] == JSON.null ? "" : result.1["placeID"].string
+            let name = result.1["name"].string
+            let venue = VenueData(name: name!, loc: loc, address: address!, id: placeID!)
+            self.venues.append(venue)
+            self.createVenueMarkers(venue: venue)
         }
-        self.createVenueMarkers()
         let next_page_json : String? = json["next_page_token"].string
         return next_page_json
     }
     
     /*
-     *  Requires: A venue id as the key
+     *  Requires: --
+     *  Modifies: Map Marker
+     *  Effects: Creates colored markers of Places
+     */
+    func createVenueMarkers(venue: VenueData) {
+        let v = self.assignColorToVenue(venue: venue)
+        self.markers.append(self.gmapView.createMarker(venue: v, genres: self.databaseVenuesToGenres[v]))
+    }
+    
+    /*
+     *  Requires: A VenueData as a key
      *  Modifies: The dictionary of venue ids to colors
      *  Effects: --
      */
-    func assignColorToVenue(venue: VenueData) {
-        venue.color = UIColor.white
-        let currVenueAddr = venue.address.components(separatedBy: " ")[0...1].joined(separator: " ")
-        for (addr, genres) in self.nearbyLocsToGenres {
-            let formAddr = addr.components(separatedBy: " ")[0...1].joined(separator: " ")
-            print(currVenueAddr, formAddr)
-            if currVenueAddr == formAddr {
-                print(addr)
-                venue.genres = genres
-                venue.color = MusicManager.sharedInstance.getColorFromGenre(genre: genres[0])
-                break
-            }
+    func assignColorToVenue(venue: VenueData) -> VenueData {
+        if self.databaseVenuesToGenres[venue] != nil {
+            let genres = databaseVenuesToGenres[venue]
+            venue.color = MusicManager.sharedInstance.getColorFromGenre(genre: genres![0])
         }
+        return venue
     }
+    
     
     // when user tap the info window of store marker, show the product list
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {

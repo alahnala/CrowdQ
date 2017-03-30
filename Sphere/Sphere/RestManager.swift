@@ -30,7 +30,7 @@ class RestManager {
     }
 
     func registerExplorer(userId: String, name: String) {
-        let todoEndpoint: String = "https://sgodbold.com:5000/createExplorer"
+        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/createExplorer"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -53,15 +53,19 @@ class RestManager {
         
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             let responseData = String(data: data!, encoding: String.Encoding.utf8)
-            print("zzz: \(responseData)")
-            print("zzz: \(response)")
-            print("zzz: \(error)")
+            
+            if error != nil {
+                print("Error registering explorer: \(error)")
+                return
+            }
+            
+            print("Registered Explorer: \(responseData)")
         })
         task.resume()
     }
     
     func registerVendor(userId: String, name: String, lat: Double, lng: Double, address: String, venue: String) {
-        let todoEndpoint: String = "https://sgodbold.com:5000/createVendor"
+        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/createVendor"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -77,6 +81,7 @@ class RestManager {
         json.setValue(lng, forKey: "lng")
         json.setValue(address, forKey: "address")
         json.setValue(venue, forKey: "venueName")
+        json.setValue(venue, forKey: "placeID")
         
         let data = try! JSONSerialization.data(withJSONObject: json, options: [])
         urlRequest.httpBody = data
@@ -88,9 +93,13 @@ class RestManager {
         
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
             let responseData = String(data: data!, encoding: String.Encoding.utf8)
-            print("zzz: \(responseData)")
-            print("zzz: \(response)")
-            print("zzz: \(error)")
+            
+            if error != nil {
+                print("Error registering vendor: \(error)")
+                return
+            }
+            
+            print("Registered Vendor: \(responseData)")
         })
         task.resume()
         

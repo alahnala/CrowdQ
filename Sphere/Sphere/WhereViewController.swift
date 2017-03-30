@@ -46,12 +46,11 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     }
     
     func backButtonPressed() {
-        print("Back Button pressed!")
         let userTypeController = UserTypeController()
         self.present(userTypeController, animated: true, completion: nil)
     }
     
-    //Calls this function when the tap is recognized.
+    // Calls this function when the tap is recognized.
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
@@ -59,11 +58,10 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     
     func postVendorInformation() {
         if (self.whereView.nameTextField.text?.isEmpty)! || (self.searchController?.searchBar.text?.isEmpty)! {
-            print("All fields must be filled out!")
+            print("Error: All fields must be filled out!")
             return
         }
         information["name"] = self.whereView.nameTextField.text!
-        print(information)
         
         RestManager.sharedInstance.registerVendor(userId: UserData.sharedInstance.userId, name: information["name"]!, lat: Double(information["lat"]!)!, lng: Double(information["lng"]!)!, address: information["address"]!, venue: information["venueName"]!)
         
@@ -105,11 +103,6 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
      }
      
      */
-
-    
-    func getVendorGenre() {
-        
-    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -127,16 +120,13 @@ extension WhereViewController: GMSAutocompleteResultsViewControllerDelegate {
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
         searchController?.isActive = false
-        // Do something with the selected place.
-        print("Place name: \(place.name)")
-        print("Place address: \(place.formattedAddress)")
-        print("Place attributions: \(place.attributions)")
         searchController?.searchBar.text = place.name
         
         information["venueName"] = place.name
         information["lat"] = String(place.coordinate.latitude)
         information["lng"] = String(place.coordinate.longitude)
         information["address"] = place.formattedAddress!
+        information["placeID"] = place.placeID
     }
     
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
