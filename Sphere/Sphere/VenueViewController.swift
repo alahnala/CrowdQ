@@ -96,12 +96,10 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
         self.venueView.confirmMood.isHidden = true
         self.venueView.suggestMood.isHidden = true
         
-        // Render genre search box 
-        
-        
-//        let suggestGenreViewController:SuggestGenreViewController = SuggestGenreViewController(nibName: nil, bundle: nil)
-//        self.present(suggestGenreViewController, animated: true, completion: nil)
-//
+        // Go to suggestion page
+        let suggestGenreViewController = SuggestGenreViewController()
+        self.present(suggestGenreViewController, animated: true, completion: nil)
+
     }
     
     override func didReceiveMemoryWarning() {
