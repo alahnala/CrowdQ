@@ -82,16 +82,17 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
     }
     
     func suggestMoodPressed() {
-        //Hide all unnecessary text & buttons
-        self.venueView.confirmMood.isHidden = true
-        self.venueView.suggestMood.isHidden = true
-        self.venueView.genreLabel.isHidden = true
-        self.venueView.theMoodsAreLabel.isHidden = true
-        
-        //Renders text box
+        print("Suggest another mood pressed")
         
         self.venueView.checked.font = self.venueView.label.font.withSize(40)
         self.venueView.showGenre()
+
+        self.venueView.confirmMood.isHidden = true
+        self.venueView.suggestMood.isHidden = true
+        
+        // Go to suggestion page
+        let suggestGenreViewController = SuggestGenreViewController()
+        self.present(suggestGenreViewController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
