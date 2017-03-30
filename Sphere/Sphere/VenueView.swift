@@ -21,6 +21,12 @@ class VenueView : UIView {
     let theMoodsAreLabel = UILabel()
     let genreLabel = UILabel()
     
+    let textField = UITextField()
+    let tableView = UITableView()
+    
+    let autoCompletePossibilities = ["Pop", "Rock", "Family Friendly"]
+    var autoComplete = [String]()
+    
     // TODO: Allow user to submit genres
     init(marker: GMSMarker) {
         self.marker = marker
@@ -40,6 +46,11 @@ class VenueView : UIView {
         checkinButton.bounds = CGRect(x: 0, y: 0, width: 300, height: 100)
         checkinButton.center = CGPoint(x: 187.5, y: 250)
         checkinButton.layer.cornerRadius = 10
+        
+        // genre suggestion field 
+        textField.backgroundColor = UIColor.white
+        textField.center = CGPoint(x: 187.5, y: 650)
+        textField.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         
         displayVenueName()
         initializeAllViews()
@@ -101,6 +112,8 @@ class VenueView : UIView {
         self.addSubview(confirmMood)
         self.addSubview(suggestMood)
         //self.bringSubview(toFront: label)
+        
+        self.addSubview(textField)
         print("zzz: initialize called")
     }
     
