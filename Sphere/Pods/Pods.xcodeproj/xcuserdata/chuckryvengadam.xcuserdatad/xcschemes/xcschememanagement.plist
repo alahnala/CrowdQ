@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ModernSearchBar-ModernSearchBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ModernSearchBar.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Sphere.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -12,7 +22,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>A13EDC3ECD6FBDAA4922EAAAEC773463</key>
+		<key>3947CFF5C2B3AE8B6E09B96A5789E59E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5AD7B8AF641D66E0D60F5040F37607DA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AB3F5001E1364DCE657468EEE971D329</key>
 		<dict>
 			<key>primary</key>
 			<true/>

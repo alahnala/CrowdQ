@@ -47,11 +47,6 @@ class VenueView : UIView {
         checkinButton.center = CGPoint(x: 187.5, y: 250)
         checkinButton.layer.cornerRadius = 10
         
-        // genre suggestion field 
-        textField.backgroundColor = UIColor.white
-        textField.center = CGPoint(x: 187.5, y: 650)
-        textField.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        
         displayVenueName()
         initializeAllViews()
     }
@@ -109,7 +104,6 @@ class VenueView : UIView {
         self.addSubview(confirmMood)
         self.addSubview(suggestMood)
         //self.bringSubview(toFront: label)
-        self.addSubview(textField)
         print("zzz: initialize called")
     }
     

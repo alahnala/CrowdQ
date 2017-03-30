@@ -7,83 +7,224 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		51864C64EDB67B05AD259824D6180363 /* Pods-Sphere-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FC2708D14411974F9F0BC375488376 /* Pods-Sphere-dummy.m */; };
-		98DB54EAEB3C3EE9991BF058D2BB9E8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		09B91BB8E452D2BBB0593637F372F4E7 /* ModernSearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7A6D608DEF2AF091297918EB46FFB09 /* ModernSearchBarCell.swift */; };
+		0C466BAAA29DDF209A3C9B7417F36D21 /* ModernSearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3097B58B7C579A1986E70A8F496F983 /* ModernSearchBarDelegate.swift */; };
+		482FB5C646E6B4E49336B394085CE2D0 /* ModernSearchBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BD4D7D8AE52C614C010AAA2514E95564 /* ModernSearchBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		53EAEE5B187CD6E6234CD78660DB10AC /* ModernSearchBar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CE11067948ED19983981BDA9191DB272 /* ModernSearchBar-dummy.m */; };
+		5DE69AEDA157A8C9164A2A17389A320E /* ModernSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799637E4F4A44A2EC75054FEFD57595B /* ModernSearchBar.swift */; };
+		66A034919311DADF75BBB40E3730A691 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		711D5CEE90A15A541355BFBFD07535F7 /* ModernSearchBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = C869A0B8980498B467F42FDB2A9FE131 /* ModernSearchBarIcon.swift */; };
+		7C9EAEED32D8C4EA1C50D2643B22AA61 /* Pods-Sphere-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E93178FEA336666DB93831A658544EC7 /* Pods-Sphere-dummy.m */; };
+		9217E458A9B40F30D678C46105961BED /* Pods-Sphere-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3145AFD044A4F4D418074371A57AD37F /* Pods-Sphere-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9AD3C2BC6935DD9AA6596F533E81C692 /* ModernSearchBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B63108F105797F59C1D3EDF06C786ABF /* ModernSearchBar.bundle */; };
+		A266F9CE9D03AB690F5DEC496CB58AE4 /* ModernSearchBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28CA5776E537CB96E0C03E507F4838 /* ModernSearchBarModel.swift */; };
+		CC1792EC4C09C0E9754B864DF7299D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9D9AF8F44CE24205978598863633A13 /* Assets.xcassets */; };
+		E23E111315E08BC5D9E826B1A45F3BBE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		66963726D16D009C95997AEBB87D3A71 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3947CFF5C2B3AE8B6E09B96A5789E59E;
+			remoteInfo = ModernSearchBar;
+		};
+		D64E642622A3A804530F1E280D7118FA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5AD7B8AF641D66E0D60F5040F37607DA;
+			remoteInfo = "ModernSearchBar-ModernSearchBar";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		07790BD46C0A51AE9AF086D8F62242CC /* GooglePlacePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlacePicker.framework; path = Frameworks/GooglePlacePicker.framework; sourceTree = "<group>"; };
-		1117A6D1FE68A6F983D560933AF5E265 /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
-		1939332C5E2BD6E45EC15E74CE13D94B /* Pods-Sphere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sphere.release.xcconfig"; sourceTree = "<group>"; };
-		1BEA363D2A735120201A3BFBAF1A7209 /* Pods-Sphere-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Sphere-acknowledgements.plist"; sourceTree = "<group>"; };
-		8BCCCA295DEE22197B0C283775AB5A26 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
-		8E6CB9DBA4E7CC04938A60ECC3BDFEDF /* libPods-Sphere.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-Sphere.a"; path = "libPods-Sphere.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		91FC2708D14411974F9F0BC375488376 /* Pods-Sphere-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sphere-dummy.m"; sourceTree = "<group>"; };
+		02BB8DDF052CD862E69244FEA04C43A5 /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
+		0D0E52668345DFF3561CF4AF5FD881AD /* ModernSearchBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ModernSearchBar.framework; path = ModernSearchBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		182B9B112F94E7668B274718F7D8FD9B /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		1CB1178BFA2FC161C97AA2D06C02D28B /* GoogleMapsCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsCore.framework; path = Maps/Frameworks/GoogleMapsCore.framework; sourceTree = "<group>"; };
+		30D3FDF40EAF071C337049EBDE80C926 /* ModernSearchBar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ModernSearchBar.xcconfig; sourceTree = "<group>"; };
+		3145AFD044A4F4D418074371A57AD37F /* Pods-Sphere-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Sphere-umbrella.h"; sourceTree = "<group>"; };
+		32940BE52857151D95C7E13048EBBD18 /* ResourceBundle-ModernSearchBar-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-ModernSearchBar-Info.plist"; sourceTree = "<group>"; };
+		432D9FB3A624FC926FE0F154935516CD /* Pods-Sphere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sphere.debug.xcconfig"; sourceTree = "<group>"; };
+		526912990E5B664A0AFD57A3A90EF2D9 /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
+		54856C47DCFA8A53F553ABA84128B850 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = Maps/Frameworks/GoogleMaps.framework; sourceTree = "<group>"; };
+		55A426F1D92C0DAB2C2F67FEE1149D6D /* Pods-Sphere-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sphere-frameworks.sh"; sourceTree = "<group>"; };
+		593E59FA943CEE4CE4BB2CC874FE7008 /* GooglePlacePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlacePicker.framework; path = Frameworks/GooglePlacePicker.framework; sourceTree = "<group>"; };
+		61D191E88E9B63B1B687BEBA07579EAD /* Pods-Sphere-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sphere-resources.sh"; sourceTree = "<group>"; };
+		799637E4F4A44A2EC75054FEFD57595B /* ModernSearchBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModernSearchBar.swift; path = Pod/Classes/ModernSearchBar.swift; sourceTree = "<group>"; };
+		7E5845E65A5B638E3CF06CB8B7FADB9A /* Pods_Sphere.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Sphere.framework; path = "Pods-Sphere.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8930482423AFEC5746ECB46BDA7B3A10 /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlacePicker.bundle; path = Frameworks/GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle; sourceTree = "<group>"; };
+		899D215E1ECE9AB1B5F76F21F9DC6E29 /* ModernSearchBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ModernSearchBar.modulemap; sourceTree = "<group>"; };
+		8F9BEE967014C56F0CA28A836A7A866B /* Pods-Sphere.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Sphere.modulemap"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		955D3A22EB34AB333524A949DC729F6B /* GooglePlaces.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GooglePlaces.framework; path = Frameworks/GooglePlaces.framework; sourceTree = "<group>"; };
-		98957459C29ADD958429059605B06D00 /* Pods-Sphere-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sphere-resources.sh"; sourceTree = "<group>"; };
-		9B00B4367898DBEE58534B7F8CB09FE3 /* Pods-Sphere-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Sphere-frameworks.sh"; sourceTree = "<group>"; };
-		AD38C82AFA27118C80E2A4233210800A /* Pods-Sphere.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sphere.debug.xcconfig"; sourceTree = "<group>"; };
-		CA9245AB5B86A5BCD1E0D3BF7079D64B /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		ABBFCB48B1C933F5F48A080FF45EB8DE /* GoogleMaps.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		AE237B44A77F6160DF0D60941992AC9D /* ModernSearchBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ModernSearchBar-prefix.pch"; sourceTree = "<group>"; };
+		AF7B7F35B39618342C00CBA7B456D5EA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B63108F105797F59C1D3EDF06C786ABF /* ModernSearchBar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ModernSearchBar.bundle; path = ModernSearchBar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB28CA5776E537CB96E0C03E507F4838 /* ModernSearchBarModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModernSearchBarModel.swift; path = Pod/Classes/ModernSearchBarModel.swift; sourceTree = "<group>"; };
+		BD3CCC8C80D79A88C28C38B2F0F0B02C /* Pods-Sphere-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sphere-acknowledgements.markdown"; sourceTree = "<group>"; };
+		BD4D7D8AE52C614C010AAA2514E95564 /* ModernSearchBar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ModernSearchBar-umbrella.h"; sourceTree = "<group>"; };
+		C3097B58B7C579A1986E70A8F496F983 /* ModernSearchBarDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModernSearchBarDelegate.swift; path = Pod/Classes/ModernSearchBarDelegate.swift; sourceTree = "<group>"; };
+		C7A6D608DEF2AF091297918EB46FFB09 /* ModernSearchBarCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModernSearchBarCell.swift; path = Pod/Classes/ModernSearchBarCell.swift; sourceTree = "<group>"; };
+		C869A0B8980498B467F42FDB2A9FE131 /* ModernSearchBarIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ModernSearchBarIcon.swift; path = Pod/Classes/ModernSearchBarIcon.swift; sourceTree = "<group>"; };
+		C9D9AF8F44CE24205978598863633A13 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Pod/Assets.xcassets; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D116D3DA173A990E8D061FE3ADC79682 /* Pods-Sphere-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Sphere-acknowledgements.markdown"; sourceTree = "<group>"; };
-		D1DBCD0071D70866EBEFA8E983E0A2FE /* GoogleMapsBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMapsBase.framework; path = Base/Frameworks/GoogleMapsBase.framework; sourceTree = "<group>"; };
-		F769EDE7CC5A77CDBE3B2309AF3BD5FA /* GooglePlacePicker.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlacePicker.bundle; path = Frameworks/GooglePlacePicker.framework/Versions/A/Resources/GooglePlacePicker.bundle; sourceTree = "<group>"; };
-		F8567FFA809DD02B36CFB593922A14EA /* GooglePlaces.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = GooglePlaces.bundle; path = Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle; sourceTree = "<group>"; };
+		CE11067948ED19983981BDA9191DB272 /* ModernSearchBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ModernSearchBar-dummy.m"; sourceTree = "<group>"; };
+		CE9EDDDB1CAE6975D635D752C4A06F62 /* Pods-Sphere-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Sphere-acknowledgements.plist"; sourceTree = "<group>"; };
+		E032147949CC322AC2F7C3BF9B186516 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E93178FEA336666DB93831A658544EC7 /* Pods-Sphere-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Sphere-dummy.m"; sourceTree = "<group>"; };
+		EAEF76C3C20944DE0E71158144745E8C /* Pods-Sphere.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Sphere.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		986FECA40ECFA2A0C0097D13A26FCCFC /* Frameworks */ = {
+		42359C29A5D82D3915667B4B44DE8BA7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				98DB54EAEB3C3EE9991BF058D2BB9E8D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87E02270212426D30766852B9CAC35D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				66A034919311DADF75BBB40E3730A691 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ADDCB7445C81A83150114D2BBCDD6B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E23E111315E08BC5D9E826B1A45F3BBE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		057612C31241123A1B53E2F8FEE23AB0 /* GooglePlaces */ = {
+		1AA4416EC3B2CC7ECE8275014A07683D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8BA44F82F96D164DA342FB09A0BEE150 /* Frameworks */,
-				9595338FF99D6E406412D70BB160C308 /* Resources */,
+				8930482423AFEC5746ECB46BDA7B3A10 /* GooglePlacePicker.bundle */,
 			);
-			name = GooglePlaces;
-			path = GooglePlaces;
+			name = Resources;
 			sourceTree = "<group>";
 		};
-		10A992119BE8810DCB57A26EDECE11F0 /* Pods-Sphere */ = {
+		24FCD88621811EA16C43024118B70C68 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				D116D3DA173A990E8D061FE3ADC79682 /* Pods-Sphere-acknowledgements.markdown */,
-				1BEA363D2A735120201A3BFBAF1A7209 /* Pods-Sphere-acknowledgements.plist */,
-				91FC2708D14411974F9F0BC375488376 /* Pods-Sphere-dummy.m */,
-				9B00B4367898DBEE58534B7F8CB09FE3 /* Pods-Sphere-frameworks.sh */,
-				98957459C29ADD958429059605B06D00 /* Pods-Sphere-resources.sh */,
-				AD38C82AFA27118C80E2A4233210800A /* Pods-Sphere.debug.xcconfig */,
-				1939332C5E2BD6E45EC15E74CE13D94B /* Pods-Sphere.release.xcconfig */,
+				ABBFCB48B1C933F5F48A080FF45EB8DE /* GoogleMaps.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		3B96DA9F0DDB69870C353FA0E370D244 /* GooglePlacePicker */ = {
+			isa = PBXGroup;
+			children = (
+				6EE26E84EDD5A770254CA56FFD5EEF4D /* Frameworks */,
+				1AA4416EC3B2CC7ECE8275014A07683D /* Resources */,
+			);
+			name = GooglePlacePicker;
+			path = GooglePlacePicker;
+			sourceTree = "<group>";
+		};
+		3DCB298699908946892E3661AFDB6BDF /* Pods-Sphere */ = {
+			isa = PBXGroup;
+			children = (
+				E032147949CC322AC2F7C3BF9B186516 /* Info.plist */,
+				8F9BEE967014C56F0CA28A836A7A866B /* Pods-Sphere.modulemap */,
+				BD3CCC8C80D79A88C28C38B2F0F0B02C /* Pods-Sphere-acknowledgements.markdown */,
+				CE9EDDDB1CAE6975D635D752C4A06F62 /* Pods-Sphere-acknowledgements.plist */,
+				E93178FEA336666DB93831A658544EC7 /* Pods-Sphere-dummy.m */,
+				55A426F1D92C0DAB2C2F67FEE1149D6D /* Pods-Sphere-frameworks.sh */,
+				61D191E88E9B63B1B687BEBA07579EAD /* Pods-Sphere-resources.sh */,
+				3145AFD044A4F4D418074371A57AD37F /* Pods-Sphere-umbrella.h */,
+				432D9FB3A624FC926FE0F154935516CD /* Pods-Sphere.debug.xcconfig */,
+				EAEF76C3C20944DE0E71158144745E8C /* Pods-Sphere.release.xcconfig */,
 			);
 			name = "Pods-Sphere";
 			path = "Target Support Files/Pods-Sphere";
 			sourceTree = "<group>";
 		};
-		24E6408847EA4697EC99A3C22F9B2F8E /* Resources */ = {
+		46FE3C0DC515C8EFA9AB17ECF605F68F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CA9245AB5B86A5BCD1E0D3BF7079D64B /* GoogleMaps.bundle */,
+				DE74F6FAB76361C1CB41B9A9C36C7EBC /* GoogleMaps */,
+				3B96DA9F0DDB69870C353FA0E370D244 /* GooglePlacePicker */,
+				E3AE38755353D8AF9E08EA95FBBFF93B /* GooglePlaces */,
+				B0734336D7E63ACAA7D5B41EA5848273 /* ModernSearchBar */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		4B0502E5D97507BEB862C8A20E3A7A4F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B63108F105797F59C1D3EDF06C786ABF /* ModernSearchBar.bundle */,
+				0D0E52668345DFF3561CF4AF5FD881AD /* ModernSearchBar.framework */,
+				7E5845E65A5B638E3CF06CB8B7FADB9A /* Pods_Sphere.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5722BFA419B4E2A6BD04FC18290BB030 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				6FCF4CC5B60043056E252140ECCCCFC3 /* Frameworks */,
+				24FCD88621811EA16C43024118B70C68 /* Resources */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+		630E5CCA959EB99DD373C827AAE57B0C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				B207DBD09A5433EBA31C430E91134091 /* Frameworks */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		68011F49D5FC6103582F356FFC0886D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				182B9B112F94E7668B274718F7D8FD9B /* GooglePlaces.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		45A6375AD18305E8BA7B79AD1BE61E9D /* Frameworks */ = {
+		6EE26E84EDD5A770254CA56FFD5EEF4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8BCCCA295DEE22197B0C283775AB5A26 /* GoogleMaps.framework */,
-				1117A6D1FE68A6F983D560933AF5E265 /* GoogleMapsCore.framework */,
+				593E59FA943CEE4CE4BB2CC874FE7008 /* GooglePlacePicker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6FCF4CC5B60043056E252140ECCCCFC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				54856C47DCFA8A53F553ABA84128B850 /* GoogleMaps.framework */,
+				1CB1178BFA2FC161C97AA2D06C02D28B /* GoogleMapsCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		72EC4C828655B997A1374F3F3E9496D0 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AF7B7F35B39618342C00CBA7B456D5EA /* Info.plist */,
+				899D215E1ECE9AB1B5F76F21F9DC6E29 /* ModernSearchBar.modulemap */,
+				30D3FDF40EAF071C337049EBDE80C926 /* ModernSearchBar.xcconfig */,
+				CE11067948ED19983981BDA9191DB272 /* ModernSearchBar-dummy.m */,
+				AE237B44A77F6160DF0D60941992AC9D /* ModernSearchBar-prefix.pch */,
+				BD4D7D8AE52C614C010AAA2514E95564 /* ModernSearchBar-umbrella.h */,
+				32940BE52857151D95C7E13048EBBD18 /* ResourceBundle-ModernSearchBar-Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ModernSearchBar";
 			sourceTree = "<group>";
 		};
 		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
@@ -94,80 +235,54 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		7A999BD5B4C2C01904FC59776164FBE1 /* Maps */ = {
-			isa = PBXGroup;
-			children = (
-				45A6375AD18305E8BA7B79AD1BE61E9D /* Frameworks */,
-				24E6408847EA4697EC99A3C22F9B2F8E /* Resources */,
-			);
-			name = Maps;
-			sourceTree = "<group>";
-		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				C62832EC902B481843EFC870F9D95CC2 /* Pods */,
-				945CCCBA8AC611DB7389825C58218C52 /* Products */,
-				9E0614CF4BA8ACEBBED8A05AEDF95B90 /* Targets Support Files */,
+				46FE3C0DC515C8EFA9AB17ECF605F68F /* Pods */,
+				4B0502E5D97507BEB862C8A20E3A7A4F /* Products */,
+				AA75354D99FD139B21A1EB831D48DFAB /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8BA44F82F96D164DA342FB09A0BEE150 /* Frameworks */ = {
+		8947B351101B4E53AE5965E845144480 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				955D3A22EB34AB333524A949DC729F6B /* GooglePlaces.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8FFA7EAE118844748AD9685060A6B673 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				FD4ED290151C28ABCF7A3EA0217355EB /* Frameworks */,
-			);
-			name = Base;
-			sourceTree = "<group>";
-		};
-		9335B78F64E389AD6BD28E5033911D2C /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F769EDE7CC5A77CDBE3B2309AF3BD5FA /* GooglePlacePicker.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		945CCCBA8AC611DB7389825C58218C52 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8E6CB9DBA4E7CC04938A60ECC3BDFEDF /* libPods-Sphere.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9595338FF99D6E406412D70BB160C308 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				F8567FFA809DD02B36CFB593922A14EA /* GooglePlaces.bundle */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		9C0A1FBBD02B7528347BC7FB84DE24F5 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				07790BD46C0A51AE9AF086D8F62242CC /* GooglePlacePicker.framework */,
+				02BB8DDF052CD862E69244FEA04C43A5 /* GooglePlaces.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9E0614CF4BA8ACEBBED8A05AEDF95B90 /* Targets Support Files */ = {
+		AA75354D99FD139B21A1EB831D48DFAB /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				10A992119BE8810DCB57A26EDECE11F0 /* Pods-Sphere */,
+				3DCB298699908946892E3661AFDB6BDF /* Pods-Sphere */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		B0734336D7E63ACAA7D5B41EA5848273 /* ModernSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				799637E4F4A44A2EC75054FEFD57595B /* ModernSearchBar.swift */,
+				C7A6D608DEF2AF091297918EB46FFB09 /* ModernSearchBarCell.swift */,
+				C3097B58B7C579A1986E70A8F496F983 /* ModernSearchBarDelegate.swift */,
+				C869A0B8980498B467F42FDB2A9FE131 /* ModernSearchBarIcon.swift */,
+				BB28CA5776E537CB96E0C03E507F4838 /* ModernSearchBarModel.swift */,
+				FF4C08793615B6B652C6F40CFA2313A3 /* Resources */,
+				72EC4C828655B997A1374F3F3E9496D0 /* Support Files */,
+			);
+			name = ModernSearchBar;
+			path = ModernSearchBar;
+			sourceTree = "<group>";
+		};
+		B207DBD09A5433EBA31C430E91134091 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				526912990E5B664A0AFD57A3A90EF2D9 /* GoogleMapsBase.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -178,62 +293,109 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C62832EC902B481843EFC870F9D95CC2 /* Pods */ = {
+		DE74F6FAB76361C1CB41B9A9C36C7EBC /* GoogleMaps */ = {
 			isa = PBXGroup;
 			children = (
-				E5C0912CEC7444CFF51EFFE502270519 /* GoogleMaps */,
-				CCA175DF4D87459CA14C4E01BCFDEF95 /* GooglePlacePicker */,
-				057612C31241123A1B53E2F8FEE23AB0 /* GooglePlaces */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		CCA175DF4D87459CA14C4E01BCFDEF95 /* GooglePlacePicker */ = {
-			isa = PBXGroup;
-			children = (
-				9C0A1FBBD02B7528347BC7FB84DE24F5 /* Frameworks */,
-				9335B78F64E389AD6BD28E5033911D2C /* Resources */,
-			);
-			name = GooglePlacePicker;
-			path = GooglePlacePicker;
-			sourceTree = "<group>";
-		};
-		E5C0912CEC7444CFF51EFFE502270519 /* GoogleMaps */ = {
-			isa = PBXGroup;
-			children = (
-				8FFA7EAE118844748AD9685060A6B673 /* Base */,
-				7A999BD5B4C2C01904FC59776164FBE1 /* Maps */,
+				630E5CCA959EB99DD373C827AAE57B0C /* Base */,
+				5722BFA419B4E2A6BD04FC18290BB030 /* Maps */,
 			);
 			name = GoogleMaps;
 			path = GoogleMaps;
 			sourceTree = "<group>";
 		};
-		FD4ED290151C28ABCF7A3EA0217355EB /* Frameworks */ = {
+		E3AE38755353D8AF9E08EA95FBBFF93B /* GooglePlaces */ = {
 			isa = PBXGroup;
 			children = (
-				D1DBCD0071D70866EBEFA8E983E0A2FE /* GoogleMapsBase.framework */,
+				8947B351101B4E53AE5965E845144480 /* Frameworks */,
+				68011F49D5FC6103582F356FFC0886D1 /* Resources */,
 			);
-			name = Frameworks;
+			name = GooglePlaces;
+			path = GooglePlaces;
+			sourceTree = "<group>";
+		};
+		FF4C08793615B6B652C6F40CFA2313A3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C9D9AF8F44CE24205978598863633A13 /* Assets.xcassets */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		25A8C4534C54F75F354A13C4488100A3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				482FB5C646E6B4E49336B394085CE2D0 /* ModernSearchBar-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE0E81E750E68888834F1116A34F96C6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9217E458A9B40F30D678C46105961BED /* Pods-Sphere-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		A13EDC3ECD6FBDAA4922EAAAEC773463 /* Pods-Sphere */ = {
+		3947CFF5C2B3AE8B6E09B96A5789E59E /* ModernSearchBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 250C5142FF4820365601CEC56B1DBE29 /* Build configuration list for PBXNativeTarget "Pods-Sphere" */;
+			buildConfigurationList = 554A48D5F9F79C38CF8986B9A13106B1 /* Build configuration list for PBXNativeTarget "ModernSearchBar" */;
 			buildPhases = (
-				4BCE155D21CCA667A351E0E0DE5F4A5F /* Sources */,
-				986FECA40ECFA2A0C0097D13A26FCCFC /* Frameworks */,
+				646FC39744309060DCF713C303B15FDA /* Sources */,
+				87E02270212426D30766852B9CAC35D2 /* Frameworks */,
+				CB303A2AAB36CE89B70923F871856F34 /* Resources */,
+				25A8C4534C54F75F354A13C4488100A3 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12B5FEAC3003A1E9B16481BBB47FC7D1 /* PBXTargetDependency */,
+			);
+			name = ModernSearchBar;
+			productName = ModernSearchBar;
+			productReference = 0D0E52668345DFF3561CF4AF5FD881AD /* ModernSearchBar.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		5AD7B8AF641D66E0D60F5040F37607DA /* ModernSearchBar-ModernSearchBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F998D847C43ABA6760F559C425CF26CD /* Build configuration list for PBXNativeTarget "ModernSearchBar-ModernSearchBar" */;
+			buildPhases = (
+				6153896BC4140EB9D0C6AD3C3ADEB9CF /* Sources */,
+				42359C29A5D82D3915667B4B44DE8BA7 /* Frameworks */,
+				E0B6FE78F3454C779FEE275E892DA196 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = "ModernSearchBar-ModernSearchBar";
+			productName = "ModernSearchBar-ModernSearchBar";
+			productReference = B63108F105797F59C1D3EDF06C786ABF /* ModernSearchBar.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
+		AB3F5001E1364DCE657468EEE971D329 /* Pods-Sphere */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 936296678EC95AD8E61BCF0077E03BDB /* Build configuration list for PBXNativeTarget "Pods-Sphere" */;
+			buildPhases = (
+				87323E077204A84F304425049FB8F94F /* Sources */,
+				ADDCB7445C81A83150114D2BBCDD6B5E /* Frameworks */,
+				BE0E81E750E68888834F1116A34F96C6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2D71974DBC515F4DC837B017A8163DAE /* PBXTargetDependency */,
+			);
 			name = "Pods-Sphere";
 			productName = "Pods-Sphere";
-			productReference = 8E6CB9DBA4E7CC04938A60ECC3BDFEDF /* libPods-Sphere.a */;
-			productType = "com.apple.product-type.library.static";
+			productReference = 7E5845E65A5B638E3CF06CB8B7FADB9A /* Pods_Sphere.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -252,50 +414,83 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 945CCCBA8AC611DB7389825C58218C52 /* Products */;
+			productRefGroup = 4B0502E5D97507BEB862C8A20E3A7A4F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A13EDC3ECD6FBDAA4922EAAAEC773463 /* Pods-Sphere */,
+				3947CFF5C2B3AE8B6E09B96A5789E59E /* ModernSearchBar */,
+				5AD7B8AF641D66E0D60F5040F37607DA /* ModernSearchBar-ModernSearchBar */,
+				AB3F5001E1364DCE657468EEE971D329 /* Pods-Sphere */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		CB303A2AAB36CE89B70923F871856F34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AD3C2BC6935DD9AA6596F533E81C692 /* ModernSearchBar.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0B6FE78F3454C779FEE275E892DA196 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC1792EC4C09C0E9754B864DF7299D66 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		4BCE155D21CCA667A351E0E0DE5F4A5F /* Sources */ = {
+		6153896BC4140EB9D0C6AD3C3ADEB9CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51864C64EDB67B05AD259824D6180363 /* Pods-Sphere-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		646FC39744309060DCF713C303B15FDA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53EAEE5B187CD6E6234CD78660DB10AC /* ModernSearchBar-dummy.m in Sources */,
+				5DE69AEDA157A8C9164A2A17389A320E /* ModernSearchBar.swift in Sources */,
+				09B91BB8E452D2BBB0593637F372F4E7 /* ModernSearchBarCell.swift in Sources */,
+				0C466BAAA29DDF209A3C9B7417F36D21 /* ModernSearchBarDelegate.swift in Sources */,
+				711D5CEE90A15A541355BFBFD07535F7 /* ModernSearchBarIcon.swift in Sources */,
+				A266F9CE9D03AB690F5DEC496CB58AE4 /* ModernSearchBarModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		87323E077204A84F304425049FB8F94F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C9EAEED32D8C4EA1C50D2643B22AA61 /* Pods-Sphere-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin XCBuildConfiguration section */
-		0EF9D71F7F46B0055A38966CC2EEA998 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1939332C5E2BD6E45EC15E74CE13D94B /* Pods-Sphere.release.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MACH_O_TYPE = staticlib;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
+/* Begin PBXTargetDependency section */
+		12B5FEAC3003A1E9B16481BBB47FC7D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ModernSearchBar-ModernSearchBar";
+			target = 5AD7B8AF641D66E0D60F5040F37607DA /* ModernSearchBar-ModernSearchBar */;
+			targetProxy = D64E642622A3A804530F1E280D7118FA /* PBXContainerItemProxy */;
 		};
+		2D71974DBC515F4DC837B017A8163DAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ModernSearchBar;
+			target = 3947CFF5C2B3AE8B6E09B96A5789E59E /* ModernSearchBar */;
+			targetProxy = 66963726D16D009C95997AEBB87D3A71 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
 		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -340,28 +535,175 @@
 			};
 			name = Debug;
 		};
-		B4CB307F6F60AFBC31BF884CD0A66D93 /* Debug */ = {
+		2B3D582BC3BCB05612E2457DC21ADEA2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AD38C82AFA27118C80E2A4233210800A /* Pods-Sphere.debug.xcconfig */;
+			baseConfigurationReference = EAEF76C3C20944DE0E71158144745E8C /* Pods-Sphere.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Sphere/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Sphere/Pods-Sphere.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_Sphere;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		3F0E7B043B7B7AD90D346D1C52F2C18A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30D3FDF40EAF071C337049EBDE80C926 /* ModernSearchBar.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ModernSearchBar";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/ModernSearchBar/ResourceBundle-ModernSearchBar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = ModernSearchBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Debug;
+		};
+		42952167BF5D4F993E1AB71AB0543270 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30D3FDF40EAF071C337049EBDE80C926 /* ModernSearchBar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ModernSearchBar/ModernSearchBar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ModernSearchBar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ModernSearchBar/ModernSearchBar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = ModernSearchBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		57EC13F0B167D543C5310B202E008C1B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 432D9FB3A624FC926FE0F154935516CD /* Pods-Sphere.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/Pods-Sphere/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Sphere/Pods-Sphere.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Pods_Sphere;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
+		};
+		9A3BBC803879A33BC34FCBF0F42F6DD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30D3FDF40EAF071C337049EBDE80C926 /* ModernSearchBar.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ModernSearchBar/ModernSearchBar-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ModernSearchBar/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ModernSearchBar/ModernSearchBar.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ModernSearchBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		AE1FF8696247B9041AE9892B52A39AF0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30D3FDF40EAF071C337049EBDE80C926 /* ModernSearchBar.xcconfig */;
+			buildSettings = {
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/ModernSearchBar";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = "Target Support Files/ModernSearchBar/ResourceBundle-ModernSearchBar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_NAME = ModernSearchBar;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
 		};
 		E72E7977875C2D251FC62736BBDDC389 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -406,20 +748,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		250C5142FF4820365601CEC56B1DBE29 /* Build configuration list for PBXNativeTarget "Pods-Sphere" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B4CB307F6F60AFBC31BF884CD0A66D93 /* Debug */,
-				0EF9D71F7F46B0055A38966CC2EEA998 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				12914D756594D15C6F2CA12FE5F89F1B /* Debug */,
 				E72E7977875C2D251FC62736BBDDC389 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		554A48D5F9F79C38CF8986B9A13106B1 /* Build configuration list for PBXNativeTarget "ModernSearchBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A3BBC803879A33BC34FCBF0F42F6DD8 /* Debug */,
+				42952167BF5D4F993E1AB71AB0543270 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		936296678EC95AD8E61BCF0077E03BDB /* Build configuration list for PBXNativeTarget "Pods-Sphere" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				57EC13F0B167D543C5310B202E008C1B /* Debug */,
+				2B3D582BC3BCB05612E2457DC21ADEA2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F998D847C43ABA6760F559C425CF26CD /* Build configuration list for PBXNativeTarget "ModernSearchBar-ModernSearchBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3F0E7B043B7B7AD90D346D1C52F2C18A /* Debug */,
+				AE1FF8696247B9041AE9892B52A39AF0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
