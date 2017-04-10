@@ -21,6 +21,7 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Where"
+        self.whereView.nameTextField.delegate = self
         self.whereView.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
         self.whereView.submitButton.addTarget(self, action: #selector(self.postVendorInformation), for: .touchUpInside)
         self.whereView.initializeAllViews()

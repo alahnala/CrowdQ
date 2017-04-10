@@ -25,6 +25,11 @@
 		112CD9121E2ED84B0059E4DC /* paper-dim.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD90F1E2ED84B0059E4DC /* paper-dim.png */; };
 		112CD9131E2ED84B0059E4DC /* paper.png in Resources */ = {isa = PBXBuildFile; fileRef = 112CD9101E2ED84B0059E4DC /* paper.png */; };
 		112CD9161E2ED86B0059E4DC /* GoogleAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */; };
+		117594CC1E9C3D690079E951 /* ModernSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117594C71E9C3D690079E951 /* ModernSearchBar.swift */; };
+		117594CD1E9C3D690079E951 /* ModernSearchBarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117594C81E9C3D690079E951 /* ModernSearchBarCell.swift */; };
+		117594CE1E9C3D690079E951 /* ModernSearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117594C91E9C3D690079E951 /* ModernSearchBarDelegate.swift */; };
+		117594CF1E9C3D690079E951 /* ModernSearchBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117594CA1E9C3D690079E951 /* ModernSearchBarIcon.swift */; };
+		117594D01E9C3D690079E951 /* ModernSearchBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117594CB1E9C3D690079E951 /* ModernSearchBarModel.swift */; };
 		11C336061E8C929100C22196 /* WhoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C336051E8C929100C22196 /* WhoViewController.swift */; };
 		11C336081E8C92CC00C22196 /* WhoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C336071E8C92CC00C22196 /* WhoView.swift */; };
 		11C336141E8DB88700C22196 /* SuggestGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C3360E1E8DB88700C22196 /* SuggestGenreViewController.swift */; };
@@ -85,6 +90,11 @@
 		112CD90F1E2ED84B0059E4DC /* paper-dim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "paper-dim.png"; path = "Assets.xcassets/images/paper-dim.png"; sourceTree = "<group>"; };
 		112CD9101E2ED84B0059E4DC /* paper.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = paper.png; path = Assets.xcassets/images/paper.png; sourceTree = "<group>"; };
 		112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAPI.swift; sourceTree = "<group>"; };
+		117594C71E9C3D690079E951 /* ModernSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernSearchBar.swift; sourceTree = "<group>"; };
+		117594C81E9C3D690079E951 /* ModernSearchBarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernSearchBarCell.swift; sourceTree = "<group>"; };
+		117594C91E9C3D690079E951 /* ModernSearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernSearchBarDelegate.swift; sourceTree = "<group>"; };
+		117594CA1E9C3D690079E951 /* ModernSearchBarIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernSearchBarIcon.swift; sourceTree = "<group>"; };
+		117594CB1E9C3D690079E951 /* ModernSearchBarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernSearchBarModel.swift; sourceTree = "<group>"; };
 		11C336051E8C929100C22196 /* WhoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoViewController.swift; sourceTree = "<group>"; };
 		11C336071E8C92CC00C22196 /* WhoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoView.swift; sourceTree = "<group>"; };
 		11C3360E1E8DB88700C22196 /* SuggestGenreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestGenreViewController.swift; sourceTree = "<group>"; };
@@ -227,6 +237,11 @@
 		112CD9141E2ED85A0059E4DC /* APIs */ = {
 			isa = PBXGroup;
 			children = (
+				117594C71E9C3D690079E951 /* ModernSearchBar.swift */,
+				117594C81E9C3D690079E951 /* ModernSearchBarCell.swift */,
+				117594C91E9C3D690079E951 /* ModernSearchBarDelegate.swift */,
+				117594CA1E9C3D690079E951 /* ModernSearchBarIcon.swift */,
+				117594CB1E9C3D690079E951 /* ModernSearchBarModel.swift */,
 				112CD9151E2ED86B0059E4DC /* GoogleAPI.swift */,
 				11FCC64F1E7B221500D59C70 /* SwiftyJSON.swift */,
 			);
@@ -236,11 +251,11 @@
 		11C4FC8A1E819672004F299F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				11C336071E8C92CC00C22196 /* WhoView.swift */,
-				11C4FC8B1E8196B8004F299F /* WhereView.swift */,
 				11C4FC8D1E8196DC004F299F /* MapView.swift */,
 				11C4FC8F1E8196FE004F299F /* UserTypeView.swift */,
 				11C4FC911E81C515004F299F /* VenueView.swift */,
+				11C4FC8B1E8196B8004F299F /* WhereView.swift */,
+				11C336071E8C92CC00C22196 /* WhoView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -457,6 +472,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117594D01E9C3D690079E951 /* ModernSearchBarModel.swift in Sources */,
+				117594CC1E9C3D690079E951 /* ModernSearchBar.swift in Sources */,
 				065FFCD01E819C210049D7BC /* VenueViewController.swift in Sources */,
 				11C336141E8DB88700C22196 /* SuggestGenreViewController.swift in Sources */,
 				112CD8CE1E2EC99E0059E4DC /* Sphere.xcdatamodeld in Sources */,
@@ -474,9 +491,12 @@
 				11C4FC8C1E8196B8004F299F /* WhereView.swift in Sources */,
 				11C4FC921E81C515004F299F /* VenueView.swift in Sources */,
 				11C4FCAC1E81F36D004F299F /* LoginViewController.swift in Sources */,
+				117594CE1E9C3D690079E951 /* ModernSearchBarDelegate.swift in Sources */,
 				06B524A51E7F6B60005D6C46 /* VenueData.swift in Sources */,
+				117594CD1E9C3D690079E951 /* ModernSearchBarCell.swift in Sources */,
 				11FCC6521E7E1D4800D59C70 /* WhereViewController.swift in Sources */,
 				112CD8F81E2ECB4D0059E4DC /* MapViewController.swift in Sources */,
+				117594CF1E9C3D690079E951 /* ModernSearchBarIcon.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,7 +653,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -653,7 +673,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/**",
 				);
 				INFOPLIST_FILE = Sphere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

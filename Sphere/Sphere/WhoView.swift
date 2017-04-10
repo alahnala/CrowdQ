@@ -18,7 +18,7 @@ class WhoView : UIView {
         super.init(frame: UIScreen.main.bounds)
         self.backgroundColor = UIColor.black
         self.nameTextField.backgroundColor = UIColor.white
-        self.nameTextField.placeholder = "Pee Pee :)"
+        self.nameTextField.placeholder = "What's your name"
         self.nameTextField.frame = CGRect(x: 0, y: 150, width: 300, height: 60)
         self.nameTextField.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 3)
         self.nameTextField.textAlignment = .center
