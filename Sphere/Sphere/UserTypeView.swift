@@ -21,7 +21,7 @@ class UserTypeView : UIView {
         // Set up the label button
         label.frame = CGRect(x: 0, y: 0, width: 200, height: 75)
         label.textColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
-        label.center = CGPoint(x: 187.5, y: 100)
+        label.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.width / 3)
         label.textAlignment = .center
         label.text = "I am a ..."
         label.font = label.font.withSize(45)
@@ -31,7 +31,7 @@ class UserTypeView : UIView {
         self.vendorButton.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
         self.vendorButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
         self.vendorButton.bounds = CGRect(x: 0, y: 0, width: 300, height: 100)
-        self.vendorButton.center = CGPoint(x: 187.5, y: 250)
+        self.vendorButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 2 - 30)
         self.vendorButton.layer.cornerRadius = 10
         
         // Set up the explorer button
@@ -39,7 +39,7 @@ class UserTypeView : UIView {
         self.explorerButton.backgroundColor = UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.75)
         self.explorerButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
         self.explorerButton.bounds = CGRect(x: 0, y: 0, width: 300, height: 100)
-        self.explorerButton.center = CGPoint(x: 187.5, y: 400)
+        self.explorerButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 1.5)
         self.explorerButton.layer.cornerRadius = 10
     }
     
