@@ -39,14 +39,14 @@ class LoginViewController: UIViewController {
     
         homeTitle.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 75)
         homeTitle.textColor = UIColor.white
-        homeTitle.center = CGPoint(x: 187.5, y: 250)
+        homeTitle.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 3)
         homeTitle.textAlignment = .center
         homeTitle.text = "Sphere"
         homeTitle.font = homeTitle.font.withSize(52)
         
         homeDescription.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 75)
         homeDescription.textColor = UIColor.white
-        homeDescription.center = CGPoint(x: 187.5, y: 300)
+        homeDescription.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 3 + 50)
         homeDescription.textAlignment = .center
         homeDescription.text = "Let music guide your exploration"
         homeDescription.font = homeDescription.font.withSize(18)
