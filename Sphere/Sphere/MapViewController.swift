@@ -36,55 +36,52 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: --
      */
     func getVenueData() {
-        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/venues?spotifyUserId=\(UserData.sharedInstance.userId)"
-        guard let url = URL(string: todoEndpoint) else {
-            print("Error: cannot create URL")
-            return
-        }
-        var urlRequest = URLRequest(url: url)
-        urlRequest.httpMethod = "GET"
-        
-        // POST stuff: save for later
-        //    let json: [String: Any] = ["userId": "rdoshi023"]
-        //    let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        //    urlRequest.httpBody = jsonData
-        
-        // set up the session
-        _ = URLSessionConfiguration.default
-        let session = URLSession.shared
-        
-        // make the request
-        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
-            if error != nil {
-                print("ERROR: \(error)")
+        DispatchQueue.main.async {
+            let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/venues?spotifyUserId=\(UserData.sharedInstance.userId)"
+            guard let url = URL(string: todoEndpoint) else {
+                print("Error: cannot create URL")
                 return
             }
-            let json = JSON(data: data!)
-            for j in json.array! {
-                print(j)
-                
-                let score = j["expSim"].int
-                let venue = j["venue"]
-                let placeID = venue["venueId"] == JSON.null ? "" : venue["venueId"].string
-                
-                if self.databaseVenuesToGenres[placeID!] == nil {
-                    self.databaseVenuesToGenres[placeID!] = (score!,[String]())
+            var urlRequest = URLRequest(url: url)
+            urlRequest.httpMethod = "GET"
+            
+            // set up the session
+            _ = URLSessionConfiguration.default
+            let session = URLSession.shared
+            
+            // make the request
+            let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+                if error != nil {
+                    print("ERROR: \(error)")
+                    return
                 }
-                
-                for g in venue["musicTaste"].array! {
-                    if !(self.databaseVenuesToGenres[placeID!]!.1.contains(g.string!)) {
-                        self.databaseVenuesToGenres[placeID!]!.1.append(g.string!)
+                let json = JSON(data: data!)
+                print(json)
+
+                for j in json.array! {
+                    let score = j["expSim"].int
+                    let venue = j["venue"]
+                    let placeID = venue["venueId"] == JSON.null ? "" : venue["venueId"].string
+                    
+                    if self.databaseVenuesToGenres[placeID!] == nil {
+                        self.databaseVenuesToGenres[placeID!] = (score!,[String]())
+                    }
+                    
+                    for g in venue["musicTaste"].array! {
+                        if !(self.databaseVenuesToGenres[placeID!]!.1.contains(g.string!)) {
+                            self.databaseVenuesToGenres[placeID!]!.1.append(g.string!)
+                        }
                     }
                 }
-            }
-            
-            self.setupLocation()
-            if !self.databaseVenuesToGenres.isEmpty {
-                return
-            }
-            
-        })
-        task.resume()
+                
+                self.setupLocation()
+                if !self.databaseVenuesToGenres.isEmpty {
+                    return
+                }
+                
+            })
+            task.resume()
+        }
     }
     
     /*
@@ -191,6 +188,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      */
     func createVenueMarkers() {
         for venue in self.venues {
+            print("\(venue.name), \(venue.id), \(self.databaseVenuesToGenres[venue.id])")
             self.assignColorToVenue(venue: venue)
             self.markers.append(self.gmapView.createMarker(venue: venue, info: self.databaseVenuesToGenres[venue.id]))
         }

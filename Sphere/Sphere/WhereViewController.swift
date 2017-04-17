@@ -78,7 +78,7 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
         }
         
         information["name"] = "Default Name"
-        RestManager.sharedInstance.registerVendor(userId: UserData.sharedInstance.userId, name: information["name"]!, lat: Double(information["lat"]!)!, lng: Double(information["lng"]!)!, address: information["address"]!, venue: information["venueName"]!)
+        RestManager.sharedInstance.registerVendor(userId: UserData.sharedInstance.userId, name: information["name"]!, venue: information["venueName"]!, id: information["placeID"]!)
         
         let mapViewController = MapViewController()
         self.present(mapViewController, animated: true, completion: nil)

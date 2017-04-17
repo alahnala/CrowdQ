@@ -63,8 +63,8 @@ class RestManager {
         task.resume()
     }
     
-    func registerVendor(userId: String, name: String, lat: Double, lng: Double, address: String, venue: String) {
-        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/createVendor"
+    func registerVendor(userId: String, name: String, venue: String, id: String) {
+        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/vendor"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -76,11 +76,8 @@ class RestManager {
         let json = NSMutableDictionary()
         json.setValue(name, forKey: "name")
         json.setValue(userId, forKey: "spotifyUserId")
-        json.setValue(lat, forKey: "lat")
-        json.setValue(lng, forKey: "lng")
-        json.setValue(address, forKey: "address")
         json.setValue(venue, forKey: "venueName")
-        json.setValue(venue, forKey: "placeID")
+        json.setValue(id, forKey: "venueId")
         
         let data = try! JSONSerialization.data(withJSONObject: json, options: [])
         urlRequest.httpBody = data

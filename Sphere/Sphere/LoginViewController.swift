@@ -121,6 +121,7 @@ class LoginViewController: UIViewController {
                     print("USER DOES NOT EXIST. CREATE NEW ONE")
                     let userTypeController = UserTypeController()
                     self.present(userTypeController, animated: true, completion: nil)
+                    return
                 } else {
                     print("USER EXISTS. WE NEED TO KNOW WHAT TYPE OF USER THEY ARE")
                     if responseData == "vendor" {
@@ -128,12 +129,12 @@ class LoginViewController: UIViewController {
                     } else {
                         UserData.sharedInstance.userIsExplorer = true
                     }
+                    let mapViewController = MapViewController()
+                    self.present(mapViewController, animated: true, completion: nil)
+
                 }
             })
             task.resume()
-            
-            let mapViewController = MapViewController()
-            self.present(mapViewController, animated: true, completion: nil)
         }
     }
 
