@@ -21,7 +21,6 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Where"
-        self.whereView.nameTextField.delegate = self
         self.whereView.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
         self.whereView.submitButton.addTarget(self, action: #selector(self.postVendorInformation), for: .touchUpInside)
         self.whereView.initializeAllViews()
@@ -58,11 +57,13 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
     }
     
     func postVendorInformation() {
-        if (self.whereView.nameTextField.text?.isEmpty)! || (self.searchController?.searchBar.text?.isEmpty)! {
-            print("Error: All fields must be filled out!")
+        if (searchController?.searchBar.text?.isEmpty)! {
+            let alert = UIAlertController(title: "Oops!", message: "Please enter your venue information!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
-        information["name"] = self.whereView.nameTextField.text!
+        information["name"] = "Default Name"
         
         RestManager.sharedInstance.registerVendor(userId: UserData.sharedInstance.userId, name: information["name"]!, lat: Double(information["lat"]!)!, lng: Double(information["lng"]!)!, address: information["address"]!, venue: information["venueName"]!)
         

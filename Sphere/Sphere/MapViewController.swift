@@ -109,7 +109,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     
     // When device finds GPS coordinates, render the Map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         let loc = manager.location!.coordinate
         UserData.sharedInstance.currentLocation = loc
         
@@ -215,7 +214,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     }
     
     func filterButtonPressed() {
-        let alert = UIAlertController(title: "Filter by Genre!", message: "Please enter the appropriate genres, separated by commas. Select \"Filter In\" to keep those genres only, or \"Filter Out\" to remove them from the data bank.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Filter by Genre!", message: "Please enter the appropriate genres that you would like to keep or filter out of the map.", preferredStyle: .alert)
         alert.addTextField(configurationHandler: {
             (textField: UITextField!) -> Void in
             textField.placeholder = "Genre(s) to Keep"

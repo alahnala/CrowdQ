@@ -108,33 +108,33 @@ class LoginViewController: UIViewController {
         _ = URLSessionConfiguration.default
         let session = URLSession.shared
         
-        let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
-            
-            if error != nil {
-                print("User Verification failed with error: \(error)")
-                return
-            }
-            
-            let responseData = String(data: data!, encoding: String.Encoding.utf8)
-            if responseData == "usernoexist" {
-                print("USER DOES NOT EXIST. CREATE NEW ONE")
-                let userTypeController = UserTypeController()
-                self.present(userTypeController, animated: true, completion: nil)
-            } else {
-                print("USER EXISTS. WE NEED TO KNOW WHAT TYPE OF USER THEY ARE")
-                if responseData == "vendor" {
-                    UserData.sharedInstance.userIsExplorer = false
+        DispatchQueue.main.async {
+            let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
+                
+                if error != nil {
+                    print("User Verification failed with error: \(error)")
+                    return
+                }
+                
+                let responseData = String(data: data!, encoding: String.Encoding.utf8)
+                if responseData == "usernoexist" {
+                    print("USER DOES NOT EXIST. CREATE NEW ONE")
+                    let userTypeController = UserTypeController()
+                    self.present(userTypeController, animated: true, completion: nil)
                 } else {
-                    UserData.sharedInstance.userIsExplorer = true
+                    print("USER EXISTS. WE NEED TO KNOW WHAT TYPE OF USER THEY ARE")
+                    if responseData == "vendor" {
+                        UserData.sharedInstance.userIsExplorer = false
+                    } else {
+                        UserData.sharedInstance.userIsExplorer = true
+                    }
                 }
-                DispatchQueue.main.async {
-                    let mapViewController = MapViewController()
-                    self.present(mapViewController, animated: true, completion: nil)
-                }
-            }
-        })
-        
-        task.resume()
+            })
+            task.resume()
+            
+            let mapViewController = MapViewController()
+            self.present(mapViewController, animated: true, completion: nil)
+        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -52,14 +52,13 @@ class RestManager {
         let session = URLSession.shared
         
         let task = session.dataTask(with: urlRequest, completionHandler: { (data, response, error) in
-            let responseData = String(data: data!, encoding: String.Encoding.utf8)
+            _ = String(data: data!, encoding: String.Encoding.utf8)
             
             if error != nil {
                 print("Error registering explorer: \(error)")
                 return
             }
             
-            print("Registered Explorer: \(responseData)")
         })
         task.resume()
     }

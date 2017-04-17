@@ -49,8 +49,13 @@ class UserTypeController: UIViewController {
     // Input: (spotifyUserId, name)
     // Output: Success/Failure
     func sendExplorerInfo() {
-        let whoViewController = WhoViewController()
-        self.present(whoViewController, animated: true, completion: nil)
+        if !UserData.sharedInstance.sentInfo {
+            RestManager.sharedInstance.registerExplorer(userId: UserData.sharedInstance.userId, name: "Default Name")
+            UserData.sharedInstance.sentInfo = true
+        }
+        
+        let mapViewController = MapViewController()
+        self.present(mapViewController, animated: true, completion: nil)
     }
     
     

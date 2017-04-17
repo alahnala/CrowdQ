@@ -30,8 +30,6 @@
 		117594CE1E9C3D690079E951 /* ModernSearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117594C91E9C3D690079E951 /* ModernSearchBarDelegate.swift */; };
 		117594CF1E9C3D690079E951 /* ModernSearchBarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117594CA1E9C3D690079E951 /* ModernSearchBarIcon.swift */; };
 		117594D01E9C3D690079E951 /* ModernSearchBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117594CB1E9C3D690079E951 /* ModernSearchBarModel.swift */; };
-		11C336061E8C929100C22196 /* WhoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C336051E8C929100C22196 /* WhoViewController.swift */; };
-		11C336081E8C92CC00C22196 /* WhoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C336071E8C92CC00C22196 /* WhoView.swift */; };
 		11C336141E8DB88700C22196 /* SuggestGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C3360E1E8DB88700C22196 /* SuggestGenreViewController.swift */; };
 		11C4FC8C1E8196B8004F299F /* WhereView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC8B1E8196B8004F299F /* WhereView.swift */; };
 		11C4FC8E1E8196DC004F299F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C4FC8D1E8196DC004F299F /* MapView.swift */; };
@@ -95,8 +93,6 @@
 		117594C91E9C3D690079E951 /* ModernSearchBarDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernSearchBarDelegate.swift; sourceTree = "<group>"; };
 		117594CA1E9C3D690079E951 /* ModernSearchBarIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernSearchBarIcon.swift; sourceTree = "<group>"; };
 		117594CB1E9C3D690079E951 /* ModernSearchBarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModernSearchBarModel.swift; sourceTree = "<group>"; };
-		11C336051E8C929100C22196 /* WhoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoViewController.swift; sourceTree = "<group>"; };
-		11C336071E8C92CC00C22196 /* WhoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhoView.swift; sourceTree = "<group>"; };
 		11C3360E1E8DB88700C22196 /* SuggestGenreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestGenreViewController.swift; sourceTree = "<group>"; };
 		11C4FC8B1E8196B8004F299F /* WhereView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereView.swift; sourceTree = "<group>"; };
 		11C4FC8D1E8196DC004F299F /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -212,7 +208,6 @@
 		112CD8F91E2ECB630059E4DC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				11C336051E8C929100C22196 /* WhoViewController.swift */,
 				11C4FCA91E81F36D004F299F /* LoginViewController.swift */,
 				11FCC6511E7E1D4800D59C70 /* WhereViewController.swift */,
 				112CD8F71E2ECB4D0059E4DC /* MapViewController.swift */,
@@ -255,7 +250,6 @@
 				11C4FC8F1E8196FE004F299F /* UserTypeView.swift */,
 				11C4FC911E81C515004F299F /* VenueView.swift */,
 				11C4FC8B1E8196B8004F299F /* WhereView.swift */,
-				11C336071E8C92CC00C22196 /* WhoView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -482,10 +476,8 @@
 				06B524A01E7F3F30005D6C46 /* MusicManager.swift in Sources */,
 				11C4FC901E8196FE004F299F /* UserTypeView.swift in Sources */,
 				06B524A11E7F3F30005D6C46 /* UserData.swift in Sources */,
-				11C336081E8C92CC00C22196 /* WhoView.swift in Sources */,
 				11C4FCAD1E81F36D004F299F /* RestManager.swift in Sources */,
 				112CD8C61E2EC99E0059E4DC /* AppDelegate.swift in Sources */,
-				11C336061E8C929100C22196 /* WhoViewController.swift in Sources */,
 				06B524981E7F128A005D6C46 /* UserTypeController.swift in Sources */,
 				11FCC6501E7B221500D59C70 /* SwiftyJSON.swift in Sources */,
 				11C4FC8C1E8196B8004F299F /* WhereView.swift in Sources */,
