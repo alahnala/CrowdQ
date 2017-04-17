@@ -37,12 +37,22 @@ class WhoView : UIView {
         self.submitButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
         self.submitButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 100)
         self.submitButton.setTitle("Submit", for: .normal)
+        
+        //set up tap
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        self.addGestureRecognizer(tap)
     }
     
     func initializeAllViews() {
         self.addSubview(self.nameTextField)
         self.addSubview(self.backButton)
         self.addSubview(self.submitButton)
+    }
+    
+    //Calls this function when the tap is recognized.
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        self.endEditing(true)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -14,7 +14,6 @@ class WhereView : UIView {
     
     let backButton = UIButton(type: .system)
     let submitButton = UIButton(type: .system)
-    let nameTextField = UITextField()
     
     /*
      *  Create all necessary buttons and text fields
@@ -34,13 +33,6 @@ class WhereView : UIView {
         self.submitButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 100)
         self.submitButton.setTitle("Submit", for: .normal)
         
-        self.nameTextField.placeholder = "Enter your name"
-        self.nameTextField.frame = CGRect(x: 0, y: 150, width: 300, height: 60)
-        self.nameTextField.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height / 3)
-        self.nameTextField.textAlignment = NSTextAlignment.center
-        self.nameTextField.backgroundColor = .white
-        self.nameTextField.layer.cornerRadius = 5
-        self.nameTextField.returnKeyType = UIReturnKeyType.done
     }
 
     /*
@@ -49,7 +41,6 @@ class WhereView : UIView {
     func initializeAllViews() {
         self.addSubview(backButton)
         self.addSubview(submitButton)
-        self.addSubview(nameTextField)
     }
     
     required init?(coder aDecoder: NSCoder) {
