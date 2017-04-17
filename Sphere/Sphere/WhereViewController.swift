@@ -26,6 +26,11 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
         self.whereView.initializeAllViews()
         self.view = self.whereView
         
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = UIImage(named: "venue")
+        backgroundImage.contentMode =  UIViewContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
+        
         // Set up tap
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WhereViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -38,7 +43,11 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
         
-        searchController?.searchBar.barTintColor = UIColor.black
+        searchController?.searchBar.isTranslucent = true
+        searchController?.searchBar.alpha = 1
+        searchController?.searchBar.backgroundImage = UIImage()
+        searchController?.searchBar.barTintColor = UIColor.clear
+        //searchController?.searchBar.barTintColor = UIColor(white: 1, alpha: 0.5)
         let subView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 75))
         subView.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4)
         

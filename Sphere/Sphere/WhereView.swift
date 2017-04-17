@@ -27,11 +27,15 @@ class WhereView : UIView {
         self.backButton.setTitle("Back", for: .normal)
         self.backButton.titleLabel!.font = UIFont.systemFont(ofSize: 20)
         
-        self.submitButton.frame = CGRect(x: 200, y: 200, width: 50, height: 50)
+        self.submitButton.layer.cornerRadius = 15
+        self.submitButton.frame = CGRect(x: 200, y: 200, width: 150, height: 50)
         self.submitButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 1), for: .normal)
         self.submitButton.setTitleColor(UIColor(red: 169/255, green: 66/255, blue:103/255, alpha: 0.5), for: .selected)
-        self.submitButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height - 100)
+        self.submitButton.center = CGPoint(x: UIScreen.main.bounds.width / 2, y: UIScreen.main.bounds.height/2)
         self.submitButton.setTitle("Submit", for: .normal)
+        //self.submitButton.titleLabel = UIFont.systemFontSize(14)
+        self.submitButton.titleLabel!.font = UIFont.systemFont(ofSize: 26)
+        self.submitButton.backgroundColor = UIColor.black
     }
 
     /*
