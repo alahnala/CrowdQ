@@ -37,8 +37,12 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
         searchController?.searchResultsUpdater = resultsViewController
         searchController?.searchBar.sizeToFit()
         searchController?.hidesNavigationBarDuringPresentation = false
-        let subView = UIView(frame: CGRect(x: 0, y: 65.0, width: 350.0, height: 100))
+        
+        searchController?.searchBar.barTintColor = UIColor.black
+        let subView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 75))
         subView.center = CGPoint(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4)
+        
+        
         subView.addSubview((searchController?.searchBar)!)
         self.view.addSubview(subView)
         
@@ -63,8 +67,8 @@ class WhereViewController : UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true, completion: nil)
             return
         }
-        information["name"] = "Default Name"
         
+        information["name"] = "Default Name"
         RestManager.sharedInstance.registerVendor(userId: UserData.sharedInstance.userId, name: information["name"]!, lat: Double(information["lat"]!)!, lng: Double(information["lng"]!)!, address: information["address"]!, venue: information["venueName"]!)
         
         let mapViewController = MapViewController()

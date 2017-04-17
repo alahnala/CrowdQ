@@ -14,7 +14,6 @@ class WhereView : UIView {
     
     let backButton = UIButton(type: .system)
     let submitButton = UIButton(type: .system)
-    let nameTextField = UITextField()
     
     /*
      *  Create all necessary buttons and text fields
