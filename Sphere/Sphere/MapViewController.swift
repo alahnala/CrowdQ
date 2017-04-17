@@ -17,7 +17,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     var PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
     var gmapView = MapView()
 
-    var databaseVenuesToGenres = [VenueData:[String]]()
+    var databaseVenuesToGenres = [String:(Int,[String])]()
     var venues = [VenueData]()
     var markers = [(GMSMarker, GMSCircle)]()
     var filteredGenres = Set<String>()
@@ -61,18 +61,19 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             }
             let json = JSON(data: data!)
             for j in json.array! {
+                print(j)
+                
                 let score = j["expSim"].int
                 let venue = j["venue"]
                 let placeID = venue["venueId"] == JSON.null ? "" : venue["venueId"].string
-                let registeredVenue = VenueData(name: venue["name"].string, id: placeID, location: nil, score: score!)
                 
-                if self.databaseVenuesToGenres[registeredVenue] == nil {
-                    self.databaseVenuesToGenres[registeredVenue] = [String]()
+                if self.databaseVenuesToGenres[placeID!] == nil {
+                    self.databaseVenuesToGenres[placeID!] = (score!,[String]())
                 }
                 
                 for g in venue["musicTaste"].array! {
-                    if !(self.databaseVenuesToGenres[registeredVenue]?.contains(g.string!))! {
-                        self.databaseVenuesToGenres[registeredVenue]!.append(g.string!)
+                    if !(self.databaseVenuesToGenres[placeID!]!.1.contains(g.string!)) {
+                        self.databaseVenuesToGenres[placeID!]!.1.append(g.string!)
                     }
                 }
             }
@@ -81,6 +82,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             if !self.databaseVenuesToGenres.isEmpty {
                 return
             }
+            
         })
         task.resume()
     }
@@ -171,12 +173,13 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         let results = json["results"]
         for result in results {
             let loc = CLLocationCoordinate2D(latitude: CLLocationDegrees(result.1["geometry"]["location"]["lat"].double!), longitude: CLLocationDegrees(result.1["geometry"]["location"]["lng"].double!))
-            let placeID = result.1["placeID"] == JSON.null ? "" : result.1["placeID"].string
+            let placeID = result.1["place_id"] == JSON.null ? "" : result.1["place_id"].string
             let name = result.1["name"].string
             let venue = VenueData(name: name!, id: placeID!, location: loc)
             self.venues.append(venue)
-            self.createVenueMarkers(venue: venue)
         }
+        
+        self.createVenueMarkers()
         let next_page_json : String? = json["next_page_token"].string
         return next_page_json
     }
@@ -186,9 +189,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: Map Marker
      *  Effects: Creates colored markers of Places
      */
-    func createVenueMarkers(venue: VenueData) {
-        let v = self.assignColorToVenue(venue: venue)
-        self.markers.append(self.gmapView.createMarker(venue: v, genres: self.databaseVenuesToGenres[v]))
+    func createVenueMarkers() {
+        for venue in self.venues {
+            self.assignColorToVenue(venue: venue)
+            self.markers.append(self.gmapView.createMarker(venue: venue, info: self.databaseVenuesToGenres[venue.id]))
+        }
     }
     
     /*
@@ -196,11 +201,11 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Modifies: The dictionary of venue ids to colors
      *  Effects: --
      */
-    func assignColorToVenue(venue: VenueData) -> VenueData {
-        if self.databaseVenuesToGenres[venue] != nil {
-            venue.color = MusicManager.sharedInstance.getColorFromGenre(score: venue.score)
+    func assignColorToVenue(venue: VenueData) {
+        if self.databaseVenuesToGenres[venue.id] != nil {
+            let score = self.databaseVenuesToGenres[venue.id]!.0
+            venue.color = MusicManager.sharedInstance.getColorFromGenre(score: score)
         }
-        return venue
     }
     
     /*
@@ -219,36 +224,30 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             (textField: UITextField!) -> Void in
             textField.placeholder = "Genre(s) to Keep"
         })
-        alert.addTextField(configurationHandler: {
-            (textField: UITextField!) -> Void in
-            textField.placeholder = "Genre(s) to Filter"
-        })
         alert.addAction(UIAlertAction(title: "Filter", style: UIAlertActionStyle.default) {
             UIAlertAction in
 
             let keepTextField = alert.textFields![0] as UITextField
-            let removeTextField = alert.textFields![1] as UITextField
             
-            if (keepTextField.text?.isEmpty)! && (removeTextField.text?.isEmpty)! {
+            if (keepTextField.text?.isEmpty)! {
                 return
             }
             
             let inputKeepGenres = keepTextField.text != nil ? Set<String>(keepTextField.text!.lowercased().components(separatedBy: ", ")) : Set<String>()
-            let inputRemoveGenres = removeTextField.text != nil ? Set<String>(removeTextField.text!.lowercased().components(separatedBy: ", ")) : Set<String>()
             
-            for m in self.markers {
-                let markerGenres = Set<String>(m.0.snippet!.lowercased().components(separatedBy: ", "))
-                let keepIntersection = markerGenres.intersection(inputKeepGenres)
-                let removeIntersection = markerGenres.intersection(inputRemoveGenres)
-                
-                if keepIntersection.count >= removeIntersection.count {
-                    m.0.map = self.gmapView.gmapView
-                    m.1.map = self.gmapView.gmapView
-                }
-                
-                if keepIntersection.count < removeIntersection.count {
-                    m.0.map = nil
-                    m.1.map = nil
+            DispatchQueue.main.async {
+                for m in self.markers {
+                    print(m.0.title as Any)
+                    let markerGenres = Set<String>(m.0.snippet!.lowercased().components(separatedBy: ", "))
+                    let keepIntersection = markerGenres.intersection(inputKeepGenres)
+                    
+                    if keepIntersection.isEmpty {
+                        m.0.map = nil
+                        m.1.map = nil
+                    } else {
+                        m.0.map = self.gmapView.gmapView
+                        m.1.map = self.gmapView.gmapView
+                    }
                 }
             }
             

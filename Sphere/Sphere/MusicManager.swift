@@ -30,31 +30,16 @@ class MusicManager {
     }
     
     /*
-     *  Requires: A musical genre in the form of a string
+     *  Requires: A similarity score in the form of an Int
      *  Modifies: --
      *  Effects: Returns the genre's corresponding color as a UIColor
      */
-    func getColorFromGenre(genre: String) -> UIColor {
-        let hexVal = self.genresToColors[genre.lowercased()]
-        if hexVal == nil {
-            return UIColor.white
-        }
-        
-        var rgbValue : UInt32 = 0
-        Scanner(string: hexVal!).scanHexInt32(&rgbValue)
-        
-        let red = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
-        let green = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
-        let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
-        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-    }
-    
     func getColorFromGenre(score: Int) -> UIColor {
         if score == 0 {
             return UIColor.red
         }
         
-        if score > 0 && score < 5 {
+        if score > 0 && score < 3 {
             return UIColor.yellow
         }
 

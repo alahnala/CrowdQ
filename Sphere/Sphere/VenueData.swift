@@ -35,9 +35,9 @@ class VenueData : Hashable {
     }
     
     func printInfo() {
-        print(self.id)
         print(self.name)
-        print(self.location)
+        print(self.id)
+        print(self.location!)
         print(self.color)
     }
 }
