@@ -12,6 +12,7 @@ import GoogleMaps
 
 class MapView : UIView {
     let returnToUserTypeButton = UIButton()
+    let filterButton = UIButton()
     var gmapView = GMSMapView()
     
     init() {
@@ -24,6 +25,15 @@ class MapView : UIView {
         self.returnToUserTypeButton.layer.cornerRadius = 5
         self.returnToUserTypeButton.layer.borderWidth = 1
         self.returnToUserTypeButton.layer.borderColor = UIColor.black.cgColor
+        
+        self.filterButton.frame = CGRect(x: UIScreen.main.bounds.width - 115, y: 20, width: 100, height: 50)
+        self.filterButton.setTitle("Filter", for: .normal)
+        self.filterButton.titleLabel!.font = UIFont.systemFont(ofSize: 16)
+        self.filterButton.setTitleColor(UIColor.black, for: .normal)
+        self.filterButton.backgroundColor = UIColor.white
+        self.filterButton.layer.cornerRadius = 5
+        self.filterButton.layer.borderWidth = 1
+        self.filterButton.layer.borderColor = UIColor.black.cgColor
     }
     
     /*
@@ -50,16 +60,16 @@ class MapView : UIView {
      *  Effects: Returns a GMSMarker and GMSCircle set to appropriate location
      */
     func createMarker(venue: VenueData, genres: [String]?) -> (GMSMarker, GMSCircle) {
-        let lat = venue.location.latitude
-        let long = venue.location.longitude
+        let lat = venue.location?.latitude
+        let long = venue.location?.longitude
         
-        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat, longitude: long))
+        let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: lat!, longitude: long!))
         marker.icon = GMSMarker.markerImage(with: venue.color)
         marker.title = venue.name
         marker.snippet = genres == nil ? "Pop, Rock, Family Friendly" : Array(genres![0...2]).joined(separator: ", ")
         marker.map = self.gmapView
         
-        let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: lat, longitude: long), radius: 10)
+        let circle = GMSCircle(position: CLLocationCoordinate2D(latitude: lat!, longitude: long!), radius: 10)
         circle.fillColor = venue.color
         circle.fillColor?.withAlphaComponent(0.5)
         circle.map = self.gmapView

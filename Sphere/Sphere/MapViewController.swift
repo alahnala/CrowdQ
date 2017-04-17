@@ -20,6 +20,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
     var databaseVenuesToGenres = [VenueData:[String]]()
     var venues = [VenueData]()
     var markers = [(GMSMarker, GMSCircle)]()
+    var filteredGenres = Set<String>()
     var markersOnMap = true
     
     override func viewDidLoad() {
@@ -35,7 +36,7 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      *  Effects: --
      */
     func getVenueData() {
-        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/venues?lat=42.29117&lng=-83.71572&radius=10000"
+        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/venues?spotifyUserId=\(UserData.sharedInstance.userId)"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
@@ -59,19 +60,17 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
                 return
             }
             let json = JSON(data: data!)
-            
             for j in json.array! {
-                let coords = CLLocationCoordinate2D(latitude: Double(j["lat"].double!), longitude: Double(j["lng"].double!))
-                let placeID = j["placeID"] == JSON.null ? "" : j["placeID"].string
-                let registeredVenue = VenueData(name: j["name"].string, loc: coords, address: j["address"].string, id: placeID)
-                registeredVenue.printInfo()
-                
+                let score = j["expSim"].int
+                let venue = j["venue"]
+                let placeID = venue["venueId"] == JSON.null ? "" : venue["venueId"].string
+                let registeredVenue = VenueData(name: venue["name"].string, id: placeID, location: nil, score: score!)
                 
                 if self.databaseVenuesToGenres[registeredVenue] == nil {
                     self.databaseVenuesToGenres[registeredVenue] = [String]()
                 }
                 
-                for g in j["musicTaste"].array! {
+                for g in venue["musicTaste"].array! {
                     if !(self.databaseVenuesToGenres[registeredVenue]?.contains(g.string!))! {
                         self.databaseVenuesToGenres[registeredVenue]!.append(g.string!)
                     }
@@ -84,16 +83,6 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
             }
         })
         task.resume()
-    }
-    
-    /*
-     *  Requires: --
-     *  Modifies: Current view controller
-     *  Effects: Moves user back to initial page
-     */
-    func returnToUserTypeButtonPressed() {
-        let userTypeController = UserTypeController()
-        self.present(userTypeController, animated: true, completion: nil)
     }
     
     /*
@@ -126,13 +115,16 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         self.gmapView = MapView()
         self.gmapView.returnToUserTypeButton.addTarget(self, action: #selector(self.returnToUserTypeButtonPressed), for: .touchUpInside)
+        self.gmapView.filterButton.addTarget(self, action: #selector(self.filterButtonPressed), for: .touchUpInside)
+        
         self.gmapView.gmapView = self.gmapView.renderGoogleMap(loc: loc)
         self.gmapView.gmapView.delegate = self
         self.gmapView.gmapView.indoorDisplay.delegate = self
         self.view = self.gmapView.gmapView
         self.view.addSubview(self.gmapView.returnToUserTypeButton)
+        self.view.addSubview(self.gmapView.filterButton)
         self.view.bringSubview(toFront: self.gmapView.returnToUserTypeButton)
-    
+        self.view.bringSubview(toFront: self.gmapView.filterButton)
         self.makePlacesRequest()
         self.locationManager.stopUpdatingLocation()
     }
@@ -179,12 +171,10 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
         
         let results = json["results"]
         for result in results {
-            
             let loc = CLLocationCoordinate2D(latitude: CLLocationDegrees(result.1["geometry"]["location"]["lat"].double!), longitude: CLLocationDegrees(result.1["geometry"]["location"]["lng"].double!))
-            let address = result.1["vicinity"].string
             let placeID = result.1["placeID"] == JSON.null ? "" : result.1["placeID"].string
             let name = result.1["name"].string
-            let venue = VenueData(name: name!, loc: loc, address: address!, id: placeID!)
+            let venue = VenueData(name: name!, id: placeID!, location: loc)
             self.venues.append(venue)
             self.createVenueMarkers(venue: venue)
         }
@@ -209,16 +199,76 @@ class MapViewController : UIViewController, CLLocationManagerDelegate, UITextFie
      */
     func assignColorToVenue(venue: VenueData) -> VenueData {
         if self.databaseVenuesToGenres[venue] != nil {
-            let genres = databaseVenuesToGenres[venue]
-            venue.color = MusicManager.sharedInstance.getColorFromGenre(genre: genres![0])
+            venue.color = MusicManager.sharedInstance.getColorFromGenre(score: venue.score)
         }
         return venue
+    }
+    
+    /*
+     *  Requires: --
+     *  Modifies: Current view controller
+     *  Effects: Moves user back to initial page
+     */
+    func returnToUserTypeButtonPressed() {
+        let userTypeController = UserTypeController()
+        self.present(userTypeController, animated: true, completion: nil)
+    }
+    
+    func filterButtonPressed() {
+        let alert = UIAlertController(title: "Filter by Genre!", message: "Please enter the appropriate genres, separated by commas. Select \"Filter In\" to keep those genres only, or \"Filter Out\" to remove them from the data bank.", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "Genre(s) to Keep"
+        })
+        alert.addTextField(configurationHandler: {
+            (textField: UITextField!) -> Void in
+            textField.placeholder = "Genre(s) to Filter"
+        })
+        alert.addAction(UIAlertAction(title: "Filter", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+
+            let keepTextField = alert.textFields![0] as UITextField
+            let removeTextField = alert.textFields![1] as UITextField
+            
+            if (keepTextField.text?.isEmpty)! && (removeTextField.text?.isEmpty)! {
+                return
+            }
+            
+            let inputKeepGenres = keepTextField.text != nil ? Set<String>(keepTextField.text!.lowercased().components(separatedBy: ", ")) : Set<String>()
+            let inputRemoveGenres = removeTextField.text != nil ? Set<String>(removeTextField.text!.lowercased().components(separatedBy: ", ")) : Set<String>()
+            
+            for m in self.markers {
+                let markerGenres = Set<String>(m.0.snippet!.lowercased().components(separatedBy: ", "))
+                let keepIntersection = markerGenres.intersection(inputKeepGenres)
+                let removeIntersection = markerGenres.intersection(inputRemoveGenres)
+                
+                if keepIntersection.count >= removeIntersection.count {
+                    m.0.map = self.gmapView.gmapView
+                    m.1.map = self.gmapView.gmapView
+                }
+                
+                if keepIntersection.count < removeIntersection.count {
+                    m.0.map = nil
+                    m.1.map = nil
+                }
+            }
+            
+        })
+        alert.addAction(UIAlertAction(title: "Reset", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            for m in self.markers {
+                m.0.map = self.gmapView.gmapView
+                m.1.map = self.gmapView.gmapView
+            }
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
     // when user tap the info window of store marker, show the product list
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        let venueViewController = VenueViewController(marker: marker)
+        let venueViewController = VenueViewController(marker: marker, loc: (self.locationManager.location?.coordinate)!)
         self.present(venueViewController, animated: true, completion: nil)
     }
     

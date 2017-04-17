@@ -12,7 +12,7 @@ import UIKit
 
 class UserData {
     static let sharedInstance = UserData()
-    static let port = 3000
+    static let port = 5000
     var sentInfo : Bool = false
     var userId : String = ""
     var userIsExplorer : Bool = true

@@ -30,7 +30,7 @@ class RestManager {
     }
 
     func registerExplorer(userId: String, name: String) {
-        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/createExplorer"
+        let todoEndpoint: String = "https://sgodbold.com:\(UserData.port)/explorer"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return

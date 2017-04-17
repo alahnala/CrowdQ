@@ -12,14 +12,16 @@ import GoogleMaps
 
 class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextFieldDelegate, GMSMapViewDelegate, GMSIndoorDisplayDelegate {
     
+    let loc : CLLocationCoordinate2D
     var marker : GMSMarker
     var venueView : VenueView
     
     /*
      *  Create VenueView Page and addTarget to its subViews
      */
-    init(marker: GMSMarker) {
+    init(marker: GMSMarker, loc: CLLocationCoordinate2D) {
         self.marker = marker
+        self.loc = loc
         self.venueView = VenueView(marker: self.marker)
         super.init(nibName: nil, bundle: nil)
         self.title = "Venue"
@@ -42,6 +44,17 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
     }
     
     func checkinButtonPressed() {
+        let placeLat = self.marker.position.latitude
+        let placeLng = self.marker.position.longitude
+        let userLat = self.loc.latitude
+        let userLng = self.loc.longitude
+        
+        if abs(placeLat - userLat) > 0.001 || abs(placeLng - userLng) > 0.001 {
+            let alert = UIAlertController(title: "Oops!", message: "We see that you're not actually at this location.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         
         self.venueView.checkinButton.isHidden = true
 
@@ -82,8 +95,6 @@ class VenueViewController : UIViewController, CLLocationManagerDelegate, UITextF
     }
     
     func suggestMoodPressed() {
-        print("Suggest another mood pressed")
-        
         self.venueView.checked.font = self.venueView.label.font.withSize(40)
         self.venueView.showGenre()
 

@@ -48,4 +48,16 @@ class MusicManager {
         let blue = CGFloat(rgbValue & 0x0000FF) / 255.0
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
+    
+    func getColorFromGenre(score: Int) -> UIColor {
+        if score == 0 {
+            return UIColor.red
+        }
+        
+        if score > 0 && score < 5 {
+            return UIColor.yellow
+        }
+
+        return UIColor.green
+    }
 }

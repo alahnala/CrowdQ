@@ -13,6 +13,7 @@ import ModernSearchBar
 class SuggestGenreViewController : UIViewController, UITextFieldDelegate, UITableViewDelegate, ModernSearchBarDelegate {
     
     var modernSearchBar : ModernSearchBar
+    let suggestionList = Array(MusicManager.sharedInstance.genresToColors.keys)
 //    let suggestGenreView = SuggestGenreView()
     let backButton = UIButton(type: .system)
     let submitButton = UIButton(type: .system)
@@ -41,9 +42,7 @@ class SuggestGenreViewController : UIViewController, UITextFieldDelegate, UITabl
         
         self.backButton.addTarget(self, action: #selector(self.backButtonPressed), for: .touchUpInside)
         self.submitButton.addTarget(self, action: #selector(self.submitButtonPressed), for: .touchUpInside)
-        
-        let suggestionList = Array(MusicManager.sharedInstance.genresToColors.keys)
-        self.modernSearchBar.setDatas(datas: suggestionList)
+        self.modernSearchBar.setDatas(datas: self.suggestionList)
         
         styleSearchBar()
         self.view = self.modernSearchBar
@@ -68,7 +67,13 @@ class SuggestGenreViewController : UIViewController, UITextFieldDelegate, UITabl
     func submitButtonPressed() {
         // Submit selected genre to the database
         if !(self.modernSearchBar.text?.isEmpty)! {
-            let submittedGenre = self.modernSearchBar.text!
+            let submittedGenre = self.modernSearchBar.text!.lowercased()
+            if !self.suggestionList.contains(submittedGenre) {
+                let alert = UIAlertController(title: "Oops!", message: "That genre doesn't exist!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
             // Flash confirmation bubble
             let alert = UIAlertController(title: "You sure?", message: "Would you like to submit \(submittedGenre)?", preferredStyle: .alert)
             let yesAction = UIAlertAction(title: "Yes!", style: UIAlertActionStyle.default) {
@@ -80,8 +85,8 @@ class SuggestGenreViewController : UIViewController, UITextFieldDelegate, UITabl
                 UIAlertAction in
                 print("Changing genre selection")
             }
-            alert.addAction(yesAction)
             alert.addAction(noAction)
+            alert.addAction(yesAction)
             self.present(alert, animated: true, completion: nil)
             return
         } else {
@@ -141,60 +146,6 @@ class SuggestGenreViewController : UIViewController, UITextFieldDelegate, UITabl
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
-    
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        let substring = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-//        searchAutocompleteEntriesWithSubstring(substring)
-//        
-//        return true
-//    }
-//    
-//    func searchAutocompleteEntriesWithSubstring(_ substring: String) {
-//        print("Searching autcomplete entries with substring: ")
-//        print(substring)
-//        
-//        self.suggestGenreView.autoComplete.removeAll(keepingCapacity: false)
-//        
-//        for key in self.suggestGenreView.autoCompletePossibilities {
-//            
-//            let myString:NSString! = key as NSString
-//            
-//            let substringRange :NSRange! = myString.range(of: substring)
-//            
-//            if (substringRange.location  == 0) {
-//                self.suggestGenreView.autoComplete.append(key)
-//            }
-//        }
-//        
-//        self.suggestGenreView.tableView.reloadData()
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as UITableViewCell
-//        
-//        let index = indexPath.row as Int
-//        
-//        cell.textLabel!.text = self.suggestGenreView.autoComplete[index]
-//        
-//        return cell
-//    
-//    }
-//    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        
-//        return self.suggestGenreView.autoComplete.count
-//        
-//    }
-//    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        
-//        let selectedCell: UITableViewCell = tableView.cellForRow(at: indexPath)!
-//        print(selectedCell)
-//        //self.suggestGenreView.textField.text? = selectedCell.text!
-//        
-//        
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import Dispatch
 
 class LoginViewController: UIViewController {
     
@@ -126,8 +127,10 @@ class LoginViewController: UIViewController {
                 } else {
                     UserData.sharedInstance.userIsExplorer = true
                 }
-                let mapViewController = MapViewController()
-                self.present(mapViewController, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    let mapViewController = MapViewController()
+                    self.present(mapViewController, animated: true, completion: nil)
+                }
             }
         })
         
